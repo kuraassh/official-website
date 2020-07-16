@@ -9,13 +9,25 @@ export const SubscribeCSS = styled.div`
   margin-top: 1em;
   margin-bottom: 1em;
 
-  .ui.input > input {
-    color: rgba(255, 255, 255, 1);
-    opacity: 0.3;
+  input::-webkit-input-placeholder {
+    color: white !important;
   }
 
-  input::placeholder {
-    color: ${colors.white};
+  input:-moz-placeholder {
+    color: white !important;
+  }
+
+  input::-moz-placeholder {
+    color: white !important;
+  }
+
+  input:-ms-input-placeholder {
+    color: white !important;
+  }
+
+  .ui.input > input {
+    color: rgba(255, 255, 255, 1);
+    background: rgba(255, 255, 255, 0.3);
   }
 
   h1 {
