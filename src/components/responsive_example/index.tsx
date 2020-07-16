@@ -6,7 +6,7 @@ import ResponsiveExampleDesktop from "./components/desktop";
 
 const ResponseExample = () => {
   const { width } = getWindowSize();
-  if (width <= screenSize.tablet) {
+  if (!width || width <= screenSize.tablet) {
     return <ResponsiveExampleMobile />;
   }
   return <ResponsiveExampleDesktop />;

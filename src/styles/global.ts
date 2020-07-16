@@ -39,8 +39,13 @@ const GlobalCSS = createGlobalStyle`
   h4,
   h5,
   h6 {
+    font-family: ${fonts.hind} !important;
     font-weight: 600;
     margin: 0 0 2rem 0;
+  }
+
+  p{
+    font-family: ${fonts.hind} !important;
   }
 
   a {
@@ -51,6 +56,10 @@ const GlobalCSS = createGlobalStyle`
   img {
     width: 100%;
     height: auto;
+  }
+
+  .ui {
+    font-family: ${fonts.hind} !important;
   }
 `;
 
