@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import Head from "next/head";
-import { NavBar } from "@components";
+import { NavBar, Footer } from "@components";
 import { LayoutCSS } from "./styles";
 
 type Props = {
@@ -17,10 +17,7 @@ const Layout = ({ children, title = "This is the default title" }: Props) => (
     </Head>
     <NavBar />
     {children}
-    <footer>
-      <hr />
-      <span>(Footer)</span>
-    </footer>
+    <Footer />
   </LayoutCSS>
 );
 

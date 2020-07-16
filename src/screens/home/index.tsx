@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Head from "next/head";
-import { Layout, ResponsiveExample, SampleButton } from "@components";
+import { Layout, ResponsiveExample, SampleButton, Telegram } from "@components";
 import { useTranslation } from "i18n";
 import { HomeCSS } from "./styles";
 
@@ -14,6 +14,7 @@ const Home = () => {
           <title>Forbole</title>
         </Head>
         <ResponsiveExample />
+        <Telegram />
         <div className="hero">
           <SampleButton />
           <h1>Co-Building Interchain</h1>
