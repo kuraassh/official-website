@@ -30,7 +30,7 @@ const GlobalCSS = createGlobalStyle`
     width: 100%;
     min-height: 100%;
     line-height: 1.5;
-    font-family: ${fonts.hind};
+    font-family: ${fonts.hind} !important;
   }
 
   h1,
