@@ -11,6 +11,9 @@ export const MobileFooterCSS = styled.div`
   text-align: left;
   width: 100%;
   margin-bottom: 1em;
+  hr {
+    margin-bottom: 1em;
+  }
   li {
     margin-bottom: 1em;
   }

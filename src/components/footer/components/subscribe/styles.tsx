@@ -10,8 +10,8 @@ export const SubscribeCSS = styled.div`
   margin-bottom: 1em;
 
   .ui.input > input {
-    color: rgba(255, 255, 255, 1);
-    opacity: 0.3;
+    background: rgba(255, 255, 255, 0.3);
+    color: ${colors.white};
   }
 
   input::placeholder {
