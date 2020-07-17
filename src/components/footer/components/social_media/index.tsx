@@ -8,7 +8,6 @@ const SocialMedia = () => {
       <a href="#">
         <Telegram />
       </a>
-
       <a href="#">
         <Facebook />
       </a>
