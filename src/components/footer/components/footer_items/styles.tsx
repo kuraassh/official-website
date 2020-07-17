@@ -3,7 +3,7 @@ import { theme } from "@styles";
 
 const { colors } = theme;
 
-export const MobileFooterCSS = styled.div`
+export const FooterItemsCSS = styled.div`
   color: ${colors.offwhite};
   background-color: rgba(26, 26, 44, 1);
   list-style-type: none;

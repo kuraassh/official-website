@@ -2,9 +2,10 @@ import React from "react";
 import SocialMedia from "../social_media";
 import Subscribe from "../subscribe";
 import Forbole from "../forbole";
+import FooterItems from "../footer_items";
 import { MobileFooterCSS } from "./styles";
 
-const MobileFooterLoop = () => {
+const MobileFooter = () => {
   const forbole = ["Forbole", "Stake Now", "Staking"];
   const bigdipper = ["Big Dipper", "Source Code", "Issues"];
   const desmos = ["Desmos", "Souce Code", "Issues"];
@@ -17,32 +18,14 @@ const MobileFooterLoop = () => {
   return (
     <MobileFooterCSS>
       <Forbole />
-      <hr />
-      <div>
-        {forbole.map((x) => (
-          <li key={x}>{x}</li>
-        ))}
-      </div>
-      <hr />
-      <div>
-        {bigdipper.map((x) => (
-          <li key={x}>{x}</li>
-        ))}
-      </div>
-      <hr />
-      <div>
-        {desmos.map((x) => (
-          <li key={x}>{x}</li>
-        ))}
-      </div>
-      <hr />
+      <FooterItems />
       <Subscribe />
       <SocialMedia />
     </MobileFooterCSS>
   );
 };
 
-export default MobileFooterLoop;
+export default MobileFooter;
 
 /*
 const MobileFooter = () => {

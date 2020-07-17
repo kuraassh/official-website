@@ -1,35 +1,28 @@
 import React from "react";
-import Link from "next/link";
+import { SocialMediaCSS } from "./styles";
+import { Telegram, Facebook, Medium, Twitter, Github } from "../../../icons";
 
 const SocialMedia = () => {
   return (
-    <div className="social-container">
-      <Link href="#">
-        <a>
-          <img src="/social_media/telegram.svg" alt="Telegram"></img>
-        </a>
-      </Link>
-      <Link href="#">
-        <a>
-          <img src="/social_media/facebook.svg" alt="Facebook"></img>
-        </a>
-      </Link>
-      <Link href="#">
-        <a>
-          <img src="/social_media/medium.svg" alt="Medium"></img>
-        </a>
-      </Link>
-      <Link href="#">
-        <a>
-          <img src="/social_media/twitter.svg" alt="Twitterm"></img>
-        </a>
-      </Link>
-      <Link href="#">
-        <a>
-          <img src="/social_media/github.svg" alt="Github"></img>
-        </a>
-      </Link>
-    </div>
+    <SocialMediaCSS>
+      <a href="#">
+        <Telegram />
+      </a>
+
+      <a href="#">
+        <Facebook />
+      </a>
+
+      <a href="#">
+        <Medium />
+      </a>
+      <a href="#">
+        <Twitter />
+      </a>
+      <a href="#">
+        <Github />
+      </a>
+    </SocialMediaCSS>
   );
 };
 
