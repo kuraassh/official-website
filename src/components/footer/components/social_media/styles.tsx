@@ -4,6 +4,7 @@ export const SocialMediaCSS = styled.div`
   height: 26px;
   width: 162px;
   padding: 0px;
+  margin-bottom: 1em;
 
   svg path:hover {
     fill: rgba(250, 250, 250, 1);
