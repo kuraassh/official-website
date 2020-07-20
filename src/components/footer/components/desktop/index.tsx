@@ -8,10 +8,12 @@ import { DesktopFooterCSS } from "./styles";
 const DesktopFooter = () => {
   return (
     <DesktopFooterCSS>
-      <Forbole />
+      <div className="desktopFooter-left">
+        <Forbole />
+        <SocialMedia />
+      </div>
       <FooterItems />
       <Subscribe />
-      <SocialMedia />
     </DesktopFooterCSS>
   );
 };

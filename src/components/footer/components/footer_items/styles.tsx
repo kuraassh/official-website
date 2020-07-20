@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "@styles";
+import { theme, media } from "@styles";
 
 const { colors } = theme;
 
@@ -16,11 +16,20 @@ export const FooterItemsCSS = styled.div`
     margin-bottom: 1em;
     opacity: 0.3;
   }
+
+  ${media.phone`
   li {
     margin-bottom: 1em;
   }
   li:first-of-type {
     font-size: 16px;
     font-weight: 500;
-  }
+  `};
+  ${media.bigDesktop`
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-grow: 1;
+  margin: 13px;
+  `};
 `;
