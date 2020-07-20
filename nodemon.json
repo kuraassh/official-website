@@ -1,12 +1,11 @@
 {
-  "verbose": true,
-  "ignore": [
-    "node_modules",
-    ".next"
-  ],
   "watch": [
+    "server",
+    "public"
+  ],
+  "ignore": [
     "src"
   ],
-  "ext": "tsx, json, ts",
-  "exec": "ts-node --project tsconfig.server.json server/index.ts"
+  "exec": "ts-node --project tsconfig.server.json server/index.ts",
+  "ext": "json"
 }

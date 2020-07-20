@@ -1,12 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import fontImport from "./fonts";
-import theme from "./theme";
-
-const { fonts } = theme;
 
 const GlobalCSS = createGlobalStyle`
-  ${fontImport}
-
   html {
     font-size: 16px;
     box-sizing: border-box;
@@ -30,7 +24,6 @@ const GlobalCSS = createGlobalStyle`
     width: 100%;
     min-height: 100%;
     line-height: 1.5;
-    font-family: ${fonts.hind} !important;
   }
 
   h1,
@@ -39,13 +32,13 @@ const GlobalCSS = createGlobalStyle`
   h4,
   h5,
   h6 {
-    font-family: ${fonts.hind} !important;
+
     font-weight: 600;
     margin: 0 0 2rem 0;
   }
 
   p{
-    font-family: ${fonts.hind} !important;
+  
   }
 
   a {
@@ -59,7 +52,7 @@ const GlobalCSS = createGlobalStyle`
   }
 
   .ui {
-    font-family: ${fonts.hind} !important;
+  
   }
 `;
 
