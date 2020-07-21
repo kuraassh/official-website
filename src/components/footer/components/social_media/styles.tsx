@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { media } from "@styles";
 
 export const SocialMediaCSS = styled.div`
   height: 26px;
@@ -14,4 +15,15 @@ export const SocialMediaCSS = styled.div`
   a {
     padding-right: 5px;
   }
+
+  ${media.bigDesktop`
+  margin-top: 1.3rem;
+  width: 20vw;
+  a {
+    padding-right: 15px;
+    svg {
+      height: 25px;
+      width: 25px;
+    }
+  }`}
 `;

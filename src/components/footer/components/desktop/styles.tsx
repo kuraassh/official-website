@@ -6,24 +6,25 @@ const { colors } = theme;
 export const DesktopFooterCSS = styled.div`
   color: ${colors.offwhite};
   background-color: rgba(26, 26, 44, 1);
-  padding: 25px;
+  padding: 2rem;
   list-style-type: none;
   top: 5219px;
   left: 0px;
   width: 100%;
+  height: 19vh;
   display: flex;
   justify-content: center;
 
   .desktopFooter-left {
-    margin-left: 20px;
-    margin-right: 40px;
+    margin-left: 4rem;
+    margin-right: 5rem;
   }
-
   p {
-    font-size: 14px;
+    font-size: 11px;
+    font-weight: 350;
+    height: 1rem;
     width: max-content;
   }
-
   ul li {
     margin: 10px;
   }
@@ -35,9 +36,5 @@ export const DesktopFooterCSS = styled.div`
 
   hr {
     margin: 0px 0px 0px 25px;
-  }
-  li:first-of-type {
-    font-size: 16px;
-    font-weight: 500;
   }
 `;

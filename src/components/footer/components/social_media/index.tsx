@@ -11,7 +11,6 @@ const SocialMedia = () => {
       <a href="#">
         <Facebook />
       </a>
-
       <a href="#">
         <Medium />
       </a>

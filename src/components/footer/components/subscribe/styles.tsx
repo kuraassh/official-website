@@ -26,7 +26,7 @@ export const SubscribeCSS = styled.div`
   }
 
   .ui.input > input {
-    color: rgba(255, 255, 255, 1);
+    color: rgba(255, 255, 255, 0.8);
     background: rgba(255, 255, 255, 0.3);
   }
 
@@ -59,7 +59,8 @@ export const SubscribeCSS = styled.div`
     background: rgba(255, 80, 80, 1);
   }
   ${media.bigDesktop`
-  
+  margin-top: 0.7rem;
+  width: 40vw; 
   h1 + h2 {
   width: fit-content;
   }
@@ -67,7 +68,11 @@ export const SubscribeCSS = styled.div`
     font-weight: 300;
   }
   .ui.action.input {
-    width: 60%;
+    width: 100%;
     height: 30%;
+  }
+  .ui.input > input {
+    font-size: 0.8rem;
+  }
   `}
 `;

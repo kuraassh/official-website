@@ -27,11 +27,21 @@ export const FooterItemsCSS = styled.div`
   justify-content: center;
   align-items: start;
   flex-grow: 1;
-  margin: 13px;
-  li {
-    font-size: 12px;
+  margin-top: 0.5rem;
+  margin-right: 1rem;
+  margin-left: 3rem;
+
+  div{
+    width: 10vw;
+  }
+
+  a li {
+    font-size: 0.8rem;
     margin-bottom: 1em;
     font-weight: 300;
-    letter-spacing: 3px;
+  }
+  li {
+    font-size: 1rem;
+    font-weight: 400;
   }`};
 `;

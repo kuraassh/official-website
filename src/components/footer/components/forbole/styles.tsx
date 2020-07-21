@@ -15,13 +15,11 @@ export const ForboleCSS = styled.div`
   }
 
   ${media.bigDesktop`
-
-  p {
-  font-weight: 300;
-    height: 20px;
-  }
+  margin-top: 0.5rem;
+  width: 10vw; 
+  margin-bottom: 1rem;
   img {
-    height: 30px;
-    width: 155px;
+    height: 30%;
+    width: 70%;
   }`}
 `;
