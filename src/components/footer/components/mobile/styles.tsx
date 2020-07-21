@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "@styles";
+import { media, theme } from "@styles";
 
 const { colors } = theme;
 
@@ -24,4 +24,7 @@ export const MobileFooterCSS = styled.div`
     font-size: 16px;
     font-weight: 500;
   }
+  ${media.bigDesktop`
+    display: none;
+  `}
 `;

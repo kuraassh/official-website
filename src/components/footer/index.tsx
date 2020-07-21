@@ -1,9 +1,13 @@
 import React from "react";
-import MobileFooter from "./components/mobile";
-import DesktopFooter from "./components/desktop";
+import { MobileFooter, DesktopFooter } from "./components";
 
 const Footer = () => {
-  return <DesktopFooter />;
+  return (
+    <>
+      <MobileFooter />
+      <DesktopFooter />
+    </>
+  );
 };
 
 export default Footer;

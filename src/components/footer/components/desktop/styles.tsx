@@ -1,9 +1,11 @@
 import styled from "styled-components";
-import { theme } from "@styles";
+import { media, theme } from "@styles";
 
 const { colors } = theme;
 
 export const DesktopFooterCSS = styled.div`
+  display: none;
+  ${media.bigDesktop`
   color: ${colors.offwhite};
   background-color: rgba(26, 26, 44, 1);
   padding: 2rem;
@@ -37,4 +39,5 @@ export const DesktopFooterCSS = styled.div`
   hr {
     margin: 0px 0px 0px 25px;
   }
+  `}
 `;
