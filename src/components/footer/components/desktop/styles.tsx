@@ -36,11 +36,6 @@ export const DesktopFooterCSS = styled.div`
   hr {
     margin: 0px 0px 0px 25px;
   }
-  li {
-    margin-bottom: 1em;
-    font-weight: 300;
-    letter-spacing: 3px;
-  }
   li:first-of-type {
     font-size: 16px;
     font-weight: 500;

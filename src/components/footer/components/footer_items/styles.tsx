@@ -21,9 +21,6 @@ export const FooterItemsCSS = styled.div`
   li {
     margin-bottom: 1em;
   }
-  li:first-of-type {
-    font-size: 16px;
-    font-weight: 500;
   `};
   ${media.bigDesktop`
   display: flex;
@@ -31,5 +28,10 @@ export const FooterItemsCSS = styled.div`
   align-items: start;
   flex-grow: 1;
   margin: 13px;
-  `};
+  li {
+    font-size: 12px;
+    margin-bottom: 1em;
+    font-weight: 300;
+    letter-spacing: 3px;
+  }`};
 `;

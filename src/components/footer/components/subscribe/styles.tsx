@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "@styles";
+import { media, theme } from "@styles";
 
 const { colors } = theme;
 
@@ -58,4 +58,16 @@ export const SubscribeCSS = styled.div`
     color: rgba(255, 255, 255, 1);
     background: rgba(255, 80, 80, 1);
   }
+  ${media.bigDesktop`
+  
+  h1 + h2 {
+  width: fit-content;
+  }
+  h2 {
+    font-weight: 300;
+  }
+  .ui.action.input {
+    width: 60%;
+    height: 30%;
+  `}
 `;
