@@ -41,12 +41,14 @@ export const NetworkCSS = styled.div`
     display: block;
     padding: 1rem;
     transition: 0.5s ease;
+    height: 193px;
 
     img {
       display: block;
       margin-left: auto;
       margin-right: auto;
       transition: 1s ease;
+      width: 45px;
     }
 
     p {
@@ -92,7 +94,8 @@ export const NetworkCSS = styled.div`
       @keyframes amountHover {
         100% {
           font-size: 1.3rem;
-          margin-top: calc(7px + 1rem);
+          margin-top: calc(7px + 0.5rem);
+          margin-bottom: 1rem;
         }
       }
 
