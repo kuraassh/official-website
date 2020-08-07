@@ -36,8 +36,12 @@ export const MainContentCSS = styled.div`
 
 export const HomeIconsCSS = styled.div`
   .icon {
-    border-radius: 1rem;
-    border: ${colors.white} 1px;
+    border-radius: 0.5rem;
+    border: 1px solid ${colors.white};
+  }
+  svg {
+    width: 20px;
+    height: 20px;
   }
   svg > path {
     fill: ${colors.white};
