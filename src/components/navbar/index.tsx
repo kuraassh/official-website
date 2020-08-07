@@ -2,14 +2,16 @@ import React from "react";
 import DesktopNav from "./components/desktop";
 import MobileNav from "./components/mobile";
 import { INavBar } from "./interfaces";
+import { useNavHook } from "./hooks";
 
 const NavBar = (props: INavBar) => {
-  const { color } = props;
+  const { color, mobileColor } = props;
+  const { displayBackground } = useNavHook();
 
   return (
     <>
-      <DesktopNav color={color} />
-      <MobileNav />
+      <DesktopNav color={color} displayBackground={displayBackground} />
+      <MobileNav color={mobileColor} displayBackground={displayBackground} />
     </>
   );
 };

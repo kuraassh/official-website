@@ -3,13 +3,20 @@ import NavBody from "./components/nav_body";
 import Navbar from "./components/navbar";
 import { useMobileNavHook } from "./hooks";
 import { MobileNavCSS } from "./styles";
+import { IMobileNav } from "./interfaces";
 
-const MobileNav = () => {
+const MobileNav = (props: IMobileNav) => {
   const { isOpen, toggle } = useMobileNavHook();
+  const { color, displayBackground } = props;
 
   return (
     <MobileNavCSS>
-      <Navbar isOpen={isOpen} toggle={toggle} />
+      <Navbar
+        isOpen={isOpen}
+        toggle={toggle}
+        color={color}
+        displayBackground={displayBackground}
+      />
       <NavBody isOpen={isOpen} toggle={toggle} />
     </MobileNavCSS>
   );

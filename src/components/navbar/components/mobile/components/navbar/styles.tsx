@@ -14,14 +14,18 @@ export const MobileNavBarCSS = styled.div<IMobileNavBarIconCSS>`
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-  background: ${(props) => (props.isOpen ? "white" : "transparent")};
+  background: ${(props) =>
+    props.isOpen || props.displayBackground ? "white" : "transparent"};
   transition: 0.3s, background 1s;
 
   svg {
     width: 100px;
-
+    margin-top: 0.5rem;
     path {
-      fill: ${(props) => (props.isOpen ? colors.forboleRed : "white")};
+      fill: ${(props) =>
+    props.isOpen || props.color || props.displayBackground
+      ? colors.forboleRed
+      : "white"};
     }
   }
 `;
@@ -32,7 +36,8 @@ export const MobileNavBarIconCSS = styled.div<IMobileNavBarIconCSS>`
   &:after,
   &:before,
   > div {
-    background-color: white;
+    background-color: ${(props) =>
+    props.color || props.displayBackground ? "black" : "white"};
     border-radius: 10px;
     content: "";
     display: block;
