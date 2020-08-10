@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme, mixins } from "@styles";
+import { theme, mixins, media } from "@styles";
 
 const { colors } = theme;
 
@@ -16,6 +16,10 @@ export const HeroContentCSS = styled.div`
   background-repeat: no-repeat;
   background-position: 50% 52%;
   min-height: 90vh;
+  ${media.tablet`
+  background-size: 181%;
+  background-position: 50% 42%;
+  `}
 `;
 
 export const MainContentCSS = styled.div`
@@ -33,7 +37,19 @@ export const MainContentCSS = styled.div`
     font-size: 0.7rem;
     margin-bottom: 1rem;
     line-height: 1.1rem;
+    font-weight: 100;
   }
+  ${media.tablet`
+  h1 {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+  }
+  p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    width: 35rem;
+  }
+  `}
 `;
 
 export const HomeIconsCSS = styled.div`
