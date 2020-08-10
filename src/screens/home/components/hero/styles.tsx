@@ -45,9 +45,9 @@ export const MainContentCSS = styled.div`
     margin-bottom: 2rem;
   }
   p {
-    font-size: 1rem;
+    font-size: 1.2rem;
     line-height: 1.5rem;
-    width: 35rem;
+    width: 38rem;
   }
   `}
 `;
@@ -56,19 +56,25 @@ export const HomeIconsCSS = styled.div`
   display: inline-flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  margin-bottom: 5rem;
   .icon {
     border-radius: 0.5rem;
     border: 1px solid ${colors.white};
+    box-sizing: border-box;
+    width: 4rem;
+    height: 4rem;
     ${mixins.flexCenter}
     flex-direction: column;
-    padding: 0.5rem;
     font-size: 0.8rem;
   }
   svg {
-    width: 26px;
-    height: 26px;
+    width: 30px;
+    height: 30px;
   }
   svg > path {
     fill: ${colors.white};
   }
+  ${media.tablet`
+  gap: 1rem;
+  `}
 `;
