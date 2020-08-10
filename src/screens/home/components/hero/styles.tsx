@@ -30,20 +30,29 @@ export const MainContentCSS = styled.div`
     margin-bottom: 1rem;
   }
   p {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
+    margin-bottom: 1rem;
+    line-height: 1.1rem;
   }
 `;
 
 export const HomeIconsCSS = styled.div`
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   .icon {
     border-radius: 0.5rem;
     border: 1px solid ${colors.white};
+    ${mixins.flexCenter}
+    flex-direction: column;
+    padding: 0.5rem;
+    font-size: 0.8rem;
   }
   svg {
-    width: 20px;
-    height: 20px;
+    width: 26px;
+    height: 26px;
   }
   svg > path {
-    fill: ${colors.black};
+    fill: ${colors.white};
   }
 `;
