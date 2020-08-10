@@ -4,7 +4,8 @@
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
+      "es2017"
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -45,14 +46,15 @@
       ]
     }
   },
+  "files": [
+    "declarations.d.ts"
+  ],
   "exclude": [
-    "**/*.d.ts",
     "node_modules",
   ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/styles/media.js"
   ]
 }
