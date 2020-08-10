@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import next from "next";
+import cors from "cors";
 
 const nextI18NextMiddleware = require("next-i18next/middleware").default;
 const nextI18next = require("../i18n");
@@ -14,6 +15,7 @@ const port = process.env.PORT || 3000;
     const server = express();
 
     await nextI18next.initPromise;
+    server.use(cors());
     server.use(nextI18NextMiddleware(nextI18next));
 
     server.all("*", (req: Request, res: Response) => {
@@ -21,7 +23,9 @@ const port = process.env.PORT || 3000;
     });
     server.listen(port, (err?: any) => {
       if (err) throw err;
-      console.log(`> Ready on localhost:${port} - env ${process.env.NODE_ENV}`);
+      console.log(
+        `> Ready on http://localhost:${port} - env ${process.env.NODE_ENV}`
+      );
     });
   } catch (e) {
     console.error(e);
