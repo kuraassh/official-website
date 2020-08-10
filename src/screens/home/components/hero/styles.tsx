@@ -44,6 +44,6 @@ export const HomeIconsCSS = styled.div`
     height: 20px;
   }
   svg > path {
-    fill: ${colors.white};
+    fill: ${colors.black};
   }
 `;
