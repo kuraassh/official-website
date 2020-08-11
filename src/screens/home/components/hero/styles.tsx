@@ -20,6 +20,11 @@ export const HeroContentCSS = styled.div`
   background-size: 181%;
   background-position: 50% 42%;
   `}
+  ${media.bigDesktop`
+  background-size: 122%;
+  background-position: 50% 55%;
+  min-height: 100vh;
+  `}
 `;
 
 export const MainContentCSS = styled.div`
@@ -38,6 +43,7 @@ export const MainContentCSS = styled.div`
     margin-bottom: 1rem;
     line-height: 1.1rem;
     font-weight: 100;
+    width: 16rem;
   }
   ${media.tablet`
   h1 {
@@ -47,16 +53,18 @@ export const MainContentCSS = styled.div`
   p {
     font-size: 1.2rem;
     line-height: 1.5rem;
-    width: 38rem;
+    width: 37rem;
   }
   `}
 `;
 
 export const HomeIconsCSS = styled.div`
+  ${mixins.flexBetween}
   display: inline-flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 5rem;
+  // gap: 1rem;
+  width: 17rem;
+  padding-bottom: 4rem;
   .icon {
     border-radius: 0.5rem;
     border: 1px solid ${colors.white};
@@ -75,6 +83,13 @@ export const HomeIconsCSS = styled.div`
     fill: ${colors.white};
   }
   ${media.tablet`
-  gap: 1rem;
+  // gap: 1rem;
+  width: 20rem;
+  `}
+  ${media.bigDesktop`
+  padding-bottom: 15rem;
+  // .icon { 
+  //   padding-right: 1rem;
+  // }
   `}
 `;
