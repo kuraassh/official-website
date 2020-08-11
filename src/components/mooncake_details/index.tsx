@@ -1,11 +1,7 @@
 import React from "react";
 import { useTranslation } from "i18n";
 import { AppStoreButton, GooglePlayButton } from "@icons";
-import {
-  DecentralizedCSS,
-  MooncakeBodyCSS,
-  ButtonsCSS,
-} from "./styles";
+import { DecentralizedCSS, MooncakeBodyCSS, ButtonsCSS } from "./styles";
 
 const MooncakeDetails = () => {
   const { t } = useTranslation("desmos");

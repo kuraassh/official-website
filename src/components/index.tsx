@@ -8,6 +8,8 @@ import Network from "./network";
 import AnimatedNetwork from "./animated_network";
 import Tags from "./tags";
 import DashboardContent from "./delegator_dashboard";
+import MooncakeDetails from "./mooncake_details";
+import MooncakeImg from "./mooncake_img";
 
 export {
   Layout,
@@ -20,4 +22,6 @@ export {
   AnimatedNetwork,
   Tags,
   DashboardContent,
+  MooncakeDetails,
+  MooncakeImg,
 };
