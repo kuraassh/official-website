@@ -1,6 +1,5 @@
 import React from "react";
-import MooncakeDetails from "../mooncake_details";
-import MooncakeImg from "../mooncake_img";
+import { MooncakeDetails, MooncakeImg } from "@components";
 import {
   DesktopCSS,
   MooncakeContentCSS,
