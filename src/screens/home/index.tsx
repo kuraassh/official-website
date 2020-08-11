@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Head from "next/head";
-import { HeroContent, SupportedNetworks } from "./components";
+import { HeroContent, SupportedNetworks, DashboardContent } from "./components";
 import { Layout } from "@components";
 import { useTranslation } from "i18n";
 import { HomeCSS } from "./styles";
@@ -16,6 +16,7 @@ const Home = () => {
         </Head>
         <HeroContent />
         <SupportedNetworks />
+        <DashboardContent />
       </HomeCSS>
     </Layout>
   );
