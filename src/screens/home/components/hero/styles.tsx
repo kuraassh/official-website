@@ -4,26 +4,34 @@ import { theme, mixins, media } from "@styles";
 const { colors } = theme;
 
 export const HeroContentCSS = styled.div`
-  // ${mixins.mobilePadding}
   ${mixins.flexCenter}
+  flex-direction: column;
   padding: 2.5rem 1rem 1rem;
   color: ${colors.white};
   width: 100%;
-  flex-direction: column;
   background-image: linear-gradient(0deg, rgb(0, 0, 0, 0.4), rgb(0, 0, 0, 0.1)),
     url("static/images/assets/horse.png");
   background-size: 444%;
   background-repeat: no-repeat;
   background-position: 50% 52%;
   min-height: 90vh;
+  .wrapper {
+    ${mixins.flexCenter}
+    flex-direction: column;
+    padding-bottom: 5rem;
+    height: 70vh;
+  }
   ${media.tablet`
   background-size: 181%;
   background-position: 50% 42%;
   `}
   ${media.bigDesktop`
-  background-size: 122%;
+  background-size: 100%;
   background-position: 50% 55%;
   min-height: 100vh;
+  .wrapper {
+    ${mixins.desktopMaxWidth}
+  }
   `}
 `;
 
@@ -62,9 +70,7 @@ export const HomeIconsCSS = styled.div`
   ${mixins.flexBetween}
   display: inline-flex;
   flex-wrap: wrap;
-  // gap: 1rem;
   width: 17rem;
-  padding-bottom: 4rem;
   .icon {
     border-radius: 0.5rem;
     border: 1px solid ${colors.white};
@@ -83,13 +89,16 @@ export const HomeIconsCSS = styled.div`
     fill: ${colors.white};
   }
   ${media.tablet`
-  // gap: 1rem;
   width: 20rem;
   `}
   ${media.bigDesktop`
-  padding-bottom: 15rem;
-  // .icon { 
-  //   padding-right: 1rem;
-  // }
   `}
+`;
+export const NextIconCSS = styled.div`
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+  svg > path {
+    fill: ${colors.white};
+  }
 `;

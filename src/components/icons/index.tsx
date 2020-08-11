@@ -19,6 +19,7 @@ import Secure from "./secure.svg";
 import Trusted from "./trust.svg";
 import Reliable from "./reliable.svg";
 import Reward from "./reward.svg";
+import Next from "./next.svg";
 
 export {
   Telegram,
@@ -42,4 +43,5 @@ export {
   Trusted,
   Reliable,
   Reward,
+  Next,
 };
