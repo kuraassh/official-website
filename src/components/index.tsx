@@ -5,6 +5,7 @@ import Footer from "./footer";
 import { Telegram } from "./icons";
 import TermsOfService from "./terms_of_service";
 import Network from "./network";
+import AnimatedNetwork from "./animated_network";
 import Tags from "./tags";
 
 export {
@@ -15,5 +16,6 @@ export {
   Telegram,
   TermsOfService,
   Network,
+  AnimatedNetwork,
   Tags,
 };

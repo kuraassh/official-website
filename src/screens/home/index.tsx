@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Head from "next/head";
-import { HeroContent } from "./components";
+import { HeroContent, SupportedNetworks } from "./components";
 import { Layout } from "@components";
 import { useTranslation } from "i18n";
 import { HomeCSS } from "./styles";
@@ -15,6 +15,7 @@ const Home = () => {
           <title>{t("forbole")}</title>
         </Head>
         <HeroContent />
+        <SupportedNetworks />
       </HomeCSS>
     </Layout>
   );
