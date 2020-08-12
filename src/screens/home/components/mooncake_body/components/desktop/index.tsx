@@ -5,20 +5,25 @@ import {
   MooncakeContentCSS,
   MooncakeBodyCSS,
   MooncakeImgCSS,
+  WrapperCSS,
 } from "./styles";
 
 const Desktop = () => {
   return (
-    <DesktopCSS>
-      <MooncakeBodyCSS>
-        <MooncakeContentCSS>
+    <WrapperCSS>
+      <DesktopCSS>
+        <MooncakeBodyCSS>
+          <MooncakeContentCSS>
+            <MooncakeImgCSS>
+              <MooncakeImg />
+            </MooncakeImgCSS>
+          </MooncakeContentCSS>
+        </MooncakeBodyCSS>
+        <div className="mooncake">
           <MooncakeDetails />
-          <MooncakeImgCSS>
-            <MooncakeImg />
-          </MooncakeImgCSS>
-        </MooncakeContentCSS>
-      </MooncakeBodyCSS>
-    </DesktopCSS>
+        </div>
+      </DesktopCSS>
+    </WrapperCSS>
   );
 };
 
