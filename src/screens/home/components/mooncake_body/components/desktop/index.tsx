@@ -10,8 +10,8 @@ import {
 
 const Desktop = () => {
   return (
-    <WrapperCSS>
-      <DesktopCSS>
+    <DesktopCSS>
+      <WrapperCSS>
         <MooncakeBodyCSS>
           <MooncakeContentCSS>
             <MooncakeImgCSS>
@@ -22,8 +22,8 @@ const Desktop = () => {
         <div className="mooncake">
           <MooncakeDetails />
         </div>
-      </DesktopCSS>
-    </WrapperCSS>
+      </WrapperCSS>
+    </DesktopCSS>
   );
 };
 
