@@ -6,8 +6,6 @@ import {
   CONTAINER_MIN_HEIGHT,
 } from "../../../../config";
 
-const { colors } = theme;
-
 export const DesktopCSS = styled.div`
   display: none;
   ${media.bigDesktop`

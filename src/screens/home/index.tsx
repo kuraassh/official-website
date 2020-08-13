@@ -6,6 +6,7 @@ import {
   SupportedNetworks,
   DashboardContent,
   MooncakeBody,
+  News,
 } from "./components";
 import { Layout } from "@components";
 import { useTranslation } from "i18n";
@@ -23,6 +24,7 @@ const Home = () => {
         <SupportedNetworks />
         <DashboardContent />
         <MooncakeBody />
+        <News />
       </HomeCSS>
     </Layout>
   );
