@@ -28,4 +28,7 @@ export const HeroCSS = styled.div`
   z-index: -1;
   height: 15rem;
   width: 100%;
+  ${media.tablet`
+  height: 30rem;
+  `}
 `;

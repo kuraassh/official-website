@@ -1,3 +1,4 @@
-import Carousel from "./carousel_item";
+import CarouselItem from "./carousel_item";
+import NewsHeader from "./news_header";
 
-export { Carousel };
+export { NewsHeader, CarouselItem };

@@ -1,10 +1,11 @@
 import React from "react";
-import { Carousel } from "./components";
+import { NewsHeader, CarouselItem } from "./components";
 
 const News = () => {
   return (
     <>
-      <Carousel />
+      <NewsHeader />
+      <CarouselItem />
     </>
   );
 };
