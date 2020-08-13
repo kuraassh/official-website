@@ -11,6 +11,13 @@ export const ContentCSS = styled.div`
   ${mixins.mobileHorizontalPadding}
   ${mixins.mobileBottomPadding}
   margin-top: -12rem;
+  ${media.tablet`
+  margin-top: -16rem;
+  img {
+    max-width: 283px;
+    margin: 0 1rem;
+  }
+  `}
 `;
 
 export const HeroCSS = styled.div`
