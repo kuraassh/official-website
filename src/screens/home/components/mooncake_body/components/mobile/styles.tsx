@@ -14,14 +14,18 @@ export const ContentCSS = styled.div`
 `;
 
 export const HeroCSS = styled.div`
-  background-image: url(static/images/assets/desmos-hero.png);
+  background-image: linear-gradient(
+      0deg,
+      rgba(123, 135, 185, 0.33),
+      rgba(123, 135, 185, 0.33)
+    ),
+    url(static/images/assets/desmos-hero.png);
   background-size: 134%;
   background-repeat: no-repeat;
   background-position: left bottom;
+  position: relative;
+  transform: scaleX(-1);
+  z-index: -1;
   height: 15rem;
   width: 100%;
-  // div::before {
-  //   z-inde: -1;
-  //   transform: rotate(180deg);
-  // }
 `;
