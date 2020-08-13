@@ -6,8 +6,10 @@ const NewsHeader = () => {
   const { t } = useTranslation("home");
   return (
     <NewsHeaderCSS>
-      <h2>{t("whatsNews")}</h2>
-      <p>{t("placeholder")}</p>
+      <div className="desktopWrapper">
+        <h2>{t("whatsNews")}</h2>
+        <p>{t("placeholder")}</p>
+      </div>
     </NewsHeaderCSS>
   );
 };
