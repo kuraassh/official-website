@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme, media, mixins } from "@styles";
+import { media, mixins } from "@styles";
 
 export const NewsHeaderCSS = styled.div`
   ${mixins.mobilePadding}

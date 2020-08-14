@@ -1,4 +1,5 @@
-import CarouselItem from "./carousel_item";
+import CarouselItem from "./mobile";
+import CarouselBlogPosts from "./desktop";
 import NewsHeader from "./news_header";
 
-export { NewsHeader, CarouselItem };
+export { NewsHeader, CarouselItem, CarouselBlogPosts };
