@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { mixins, media } from "@styles";
+import { MaxWidthContainerCSS as MaxWidthCSS } from "@styles/components";
 
 export const CarouselCSS = styled.div`
   display: none;
@@ -8,23 +9,6 @@ export const CarouselCSS = styled.div`
    display: flex;
    justify-content: center;
    align-items: center;
-
-  //  .react-multi-carousel-item--active {
-  //     // background: red;
-
-  //     &:first-child {
-  //       background: green;
-  //   }
-
-  //   &:last-child {
-  //       background: yellow;
-  //   }
-  //  }
-
-  .container {
-    // padding: 1rem;
-    // background: yellow;
-  }
   `}
 `;
 
@@ -34,16 +18,23 @@ export const TestCSS = styled.span`
 
   svg {
     width: 35px;
-    path {
-      // fill: blue;
-    }
   }
 
   &.right {
-    right: 0;
+    right: -50px;
   }
 
   &.left {
-    left: 0;
+    left: -50px;
   }
+`;
+
+export const MoreTestCSS = styled.div`
+  width: 100%;
+  position: absolute;
+  top: 50%;
+`;
+
+export const MaxWidthContainerCSS = styled(MaxWidthCSS)`
+  position: relative;
 `;
