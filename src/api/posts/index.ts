@@ -2,12 +2,17 @@ import { ghostApi as api } from "../index";
 import { IPost } from "./interface";
 
 /** Gets posts from remote */
-export const getPosts = async ({ limit = 5, page = 1 }: IPost) => {
+export const getPosts = async ({
+  limit = 5,
+  page = 1,
+  filter = "tag:-[hash-zht,hash-zhs]",
+}: IPost) => {
   return await api.posts
     .browse({
       include: "tags,authors",
       limit,
       page,
+      filter,
     })
     .catch((err) => {
       console.error(err);
