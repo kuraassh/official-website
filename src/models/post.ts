@@ -34,8 +34,8 @@ class Post {
   }
 
   static formatExcerpt(excerpt: string) {
-    const format = excerpt.slice(0, 250);
-    const afterFormat = excerpt.length > 250 ? "..." : "";
+    const format = excerpt?.slice(0, 250) ?? "";
+    const afterFormat = excerpt?.length > 250 ? "..." : "";
     return `${format}${afterFormat}`;
   }
 
