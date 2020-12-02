@@ -24,3 +24,6 @@ jobs:
           cmd: install # will run `yarn install` command
       - name: Run build check
         run: npm run build
+      - run: npm test
+        env:
+          CI: true
