@@ -5,19 +5,13 @@ on:
       - master
       - develop
 
-    # jobs:
-    #   deploy:
-    #     name: Deploy
-    #     runs-on: ubuntu-latest
+jobs:
+  build:
+    runs-on: self-hosted
 
-        jobs:
-          build:
-
-            runs-on: self-hosted
-
-            strategy:
-              matrix:
-                node-version: [12.x]
+    strategy:
+      matrix:
+        node-version: [12.x]
 
       env:
         SOURCE_DIR: "build/"
