@@ -1,8 +1,7 @@
 name: Continuous Deployment
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
 
 jobs:
   build:
@@ -33,3 +32,5 @@ jobs:
           args: --acl public-read --follow-symlinks --delete
         env:
           AWS_S3_BUCKET: ${{ secrets.STAGING_AWS_S3_BUCKET }}
+        env:
+        CI: true
