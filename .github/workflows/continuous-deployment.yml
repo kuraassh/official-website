@@ -1,12 +1,9 @@
 name: Continuous Deployment
 on:
-  pull_request:
-    branches:
-      - master
-
+  push:
 jobs:
   build:
-    runs-on: [self-hosted, linux, X64]
+    runs-on: [self-hosted, staging, linux, X64]
 
     strategy:
       matrix:
