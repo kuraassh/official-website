@@ -4,12 +4,8 @@ on:
 jobs:
   build:
     runs-on: [self-hosted, staging, linux, X64]
-    strategy:
-      matrix:
-        node-version: [12.x]
-    # environment: STAGING
     steps:
-      - name: cleanup #https://github.com/actions/checkout/issues/211
+      - name: Iniital Clean Up #https://github.com/actions/checkout/issues/211
         run: |
           sudo chown -R $USER:$USER $GITHUB_WORKSPACE
       - uses: actions/checkout@v2
@@ -18,7 +14,8 @@ jobs:
         #   cmd: install # will run `yarn install` command
       # - name: Run build check
       #   run: npm run build
-      - run: cp ${{secrets.STAGING_ENV}} .
+      - name: Set up env
+        run: cp ${{secrets.STAGING_ENV}} .
       # - name: Install dependencies
       #   run: npm i
       # - name: Build
