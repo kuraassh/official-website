@@ -2,9 +2,9 @@ name: Continuous Deployment
 on:
   push:
 jobs:
-  environment: STAGING
   build:
     runs-on: [self-hosted, staging, linux, X64]
+    environment: STAGING
     steps:
       - uses: actions/checkout@v2
       - uses: borales/actions-yarn@v2.0.0
