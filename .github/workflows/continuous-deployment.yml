@@ -4,6 +4,9 @@ on:
 jobs:
   build:
     runs-on: [self-hosted, staging, linux, X64]
+    strategy:
+      matrix:
+        node-version: [12.x]
     # environment: STAGING
     steps:
       - uses: actions/checkout@v2
@@ -12,7 +15,7 @@ jobs:
         #   cmd: install # will run `yarn install` command
       # - name: Run build check
       #   run: npm run build
-      - run: echo ${{secrets.NEXTJS_STAGING_ENV}}
+      - run: cp ${{secrets.NEXTJS_STAGING_ENV}} .
       # - name: Install dependencies
       #   run: npm i
       # - name: Build
