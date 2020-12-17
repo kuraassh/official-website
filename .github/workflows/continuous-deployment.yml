@@ -17,8 +17,8 @@ jobs:
       # - name: Run build check
       #   run: npm run build
       - run: |
-        touch .env
-        echo ${{secrets.NEXTJS_STAGING_ENV}} >> .env
+          touch .env
+          echo ${{secrets.NEXTJS_STAGING_ENV}} >> .env
       # - name: Install dependencies
       #   run: npm i
       # - name: Build
