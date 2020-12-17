@@ -10,11 +10,17 @@ jobs:
         node-version: [12.x]
 
     steps:
-      - uses: actions/checkout@v1
-
-      - run: echo $(pwd)
+      - uses: actions/checkout@v2
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install # will run `yarn install` command
+      # - name: Run build check
+      #   run: npm run build
+      - run: |
+        touch .env
+        echo ${{secrets.NEXTJS_STAGING_ENV}} >> .env
       # - name: Install dependencies
-      #   run: yarn
+      #   run: npm i
       # - name: Build
       #   run: yarn build
       # - name: Deploy
