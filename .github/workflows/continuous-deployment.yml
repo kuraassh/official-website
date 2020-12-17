@@ -1,8 +1,8 @@
 name: Continuous Deployment
 on:
   push:
+environment: STAGING
 jobs:
-  environment: STAGING
   build:
     runs-on: [self-hosted, staging, linux, X64]
     steps:
