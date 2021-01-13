@@ -16,7 +16,7 @@ jobs:
           cmd: install # will run `yarn install` command
       - name: Set up env
         run: cp ${{secrets.STAGING_ENV}} .
-      - run: npm run build
+      - run: yarn build
       - run: pm2 reload landing-staging
         env:
           CI: true
