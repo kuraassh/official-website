@@ -8,7 +8,6 @@ import { useBlogHook } from "./hooks";
 const { colors } = theme;
 
 const Blog = (props: any) => {
-  // console.log(props);
   const { posts = [], meta = {}, tags = [], sidePosts = [], error } = props;
   const { t } = useTranslation("blog");
   useBlogHook(error, t);

@@ -1,4 +1,3 @@
-import Blog from "@screens/blog";
 import { getPosts, getTags } from "@api/posts";
 import TagTitlePosts from "@screens/tag";
 // import { getPostsByTag } from "@api/tags";

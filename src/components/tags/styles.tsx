@@ -20,5 +20,7 @@ export const ListCSS = styled.li<any>`
   background: ${(props) => generateBackgroundColor(props.index)};
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
-  color: white;
+  a {
+    color: white;
+  }
 `;

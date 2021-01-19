@@ -43,6 +43,10 @@ export const ContentCSS = styled.div`
     }
   }
 
+  li > a {
+    color: white;
+  }
+
   img {
     width: 100%;
   }

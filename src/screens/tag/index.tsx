@@ -1,8 +1,10 @@
 import React from "react";
 import Link from "next/link";
+import { useTranslation } from "i18n";
 import { Layout, Tags } from "@components";
 import { theme } from "@styles";
 import { TitlePosts, Twitter } from "../blog/components";
+import { useBlogHook } from "./hooks";
 import {
   TagTitlePostsCSS,
   MaxWidthContainerCSS,
@@ -14,7 +16,8 @@ const TagTitlePosts = (props: any) => {
   const { colors } = theme;
   const { post, main = false, sidePosts = [], tags } = props;
   const { featureImage, title, excerpt, publishedAt, slug, error } = post;
-
+  const { t } = useTranslation("blog");
+  useBlogHook(error, t);
   return (
     <Layout
       title={post.title}
