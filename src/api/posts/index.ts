@@ -1,6 +1,7 @@
 import axios from "axios";
 import { ghostApi as api } from "../index";
 import { IPost } from "./interface";
+// import { tags } from "@tryghost/helpers";
 
 /** Gets posts from remote */
 export const getPosts = async ({
@@ -41,6 +42,7 @@ export const getFeaturedPost = async () => {
 /** Get single post by slug */
 export const getSinglePost = async (slug: string) => {
   try {
+    // console.log(slug);
     return await api.posts.read(
       { slug },
       {

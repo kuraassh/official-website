@@ -5,7 +5,7 @@ import { PostCSS } from "./styles";
 
 const Post = (props: any) => {
   const { post, main = false } = props;
-  const { featureImage, title, excerpt, publishedAt, slug } = post;
+  const { featureImage, title, excerpt, publishedAt, slug, tags } = post;
   return (
     <PostCSS className={classNames({ main })}>
       <Link href={`/blog/${slug}`} as={`/blog/${slug}`}>
