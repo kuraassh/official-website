@@ -18,7 +18,8 @@ export const MaxWidthContainerCSS = styled(MaxWidthCSS)`
 
 export const TagTitlePostsCSS = styled.ul`
   ${mixins.mobilePadding}
-  padding-top: 0;
+  padding: 2.5rem 1.5rem 3.5rem;
+  padding-top: 5rem;
   list-style-type: none;
 
   a {
@@ -68,5 +69,11 @@ export const SideCSS = styled.div`
       margin-top: 2rem;
       border: solid 1px ${colors.gray100};
     }
+  `}
+`;
+
+export const BlogCSS = styled.div`
+  ${media.bigDesktop`
+    ${mixins.flexCenter}
   `}
 `;

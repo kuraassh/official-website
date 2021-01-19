@@ -1,8 +1,9 @@
 //import BlogDetails from "@screens/blog_details";
 import TagTitlePosts from "@screens/tag";
 import { getPostsByTag } from "@api/tags";
+import { getPosts, getTags } from "@api/posts";
 // import posts from "@api/tags";
-import { Post } from "@models";
+import { Post, Tag } from "@models";
 import { removeInternalTags } from "@utils/remove_internal_tags";
 
 const TagDetailsPage = (props: any) => {
@@ -10,25 +11,42 @@ const TagDetailsPage = (props: any) => {
 };
 
 TagDetailsPage.getInitialProps = async ({ query }) => {
-  // console.log(query);
-  // let formattedSidePosts = [];
-  // let formattedTags = [];
-  // let meta = {};
-  // let error = false;
   const { tag } = query;
   const posts = await getPostsByTag(tag);
-  const formattedPosts = posts.map((post) => Post.fromJson(post, {}));
-  // console.log(posts);
-  if (formattedPosts) {
+  let formattedPost = [];
+  let formattedSidePosts = [];
+  let formattedTags = [];
+  let meta = {};
+  let error = false;
+  try {
+    const fetchQuery: any = {};
+    if (query.page) {
+      fetchQuery.page = query.page;
+    }
+    const [tags, sidePosts] = await Promise.all([
+      getTags(),
+      getPosts({
+        limit: 10,
+      }),
+    ]);
+    formattedSidePosts = sidePosts.map((post) => Post.fromJson(post, {}));
+    formattedTags = removeInternalTags(tags).map((tag) => Tag.fromJson(tag));
+    meta = posts?.meta;
+    const formattedPosts = posts.map((post) => Post.fromJson(post, {}));
     formattedPosts.tags = posts.map((x) => removeInternalTags(x.tags));
-    // console.log(posts);
-    const formattedPost = posts.map((y) => Post.fromJson(y, {}));
-    // Post.fromJson(posts);
-    // console.log({ post: formattedPost });
-    return { post: formattedPost };
-  } else {
-    return { post: null };
+    formattedPost = posts.map((y) => Post.fromJson(y, {}));
+  } catch (err) {
+    error = true;
+    console.log(error, "error");
   }
+
+  return {
+    post: formattedPost,
+    tags: formattedTags,
+    sidePosts: formattedSidePosts,
+    meta,
+    error,
+  };
 };
 
 export default TagDetailsPage;
