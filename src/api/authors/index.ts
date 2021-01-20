@@ -5,11 +5,7 @@ import { ghostApi as api } from "../index";
 export const getAuthorBySlug = async (query: string) => {
   try {
     const authorInfo = await api.authors.read({
-      filter: `author:${query}`,
-      include: "tags,authors",
-      limit: 5,
-      page: 1,
-      formats: "html",
+      slug: `${query}`,
     });
     return authorInfo ?? null;
   } catch (err) {

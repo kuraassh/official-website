@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useTranslation } from "i18n";
 import { Layout, Tags } from "@components";
 import { theme } from "@styles";
+import Author from "../blog_details/components/author";
 import { TitlePosts, Twitter } from "../blog/components";
 import { useBlogHook } from "./hooks";
 import {
@@ -10,13 +11,16 @@ import {
   MaxWidthContainerCSS,
   SideCSS,
   BlogCSS,
+  AuthorCSS,
 } from "./styles";
 
 const AuthorTitlePosts = (props: any) => {
   const { colors } = theme;
-  const { post, main = false, sidePosts = [], tags } = props;
+  console.log(props);
+  const { post, main = false, sidePosts = [], tags, author } = props;
   const { featureImage, title, excerpt, publishedAt, slug, error } = post;
   const { t } = useTranslation("blog");
+  // console.log(props);
   useBlogHook(error, t);
   return (
     <Layout
@@ -30,6 +34,14 @@ const AuthorTitlePosts = (props: any) => {
     >
       <BlogCSS>
         <MaxWidthContainerCSS>
+          {/* <Author post={primaryAuthor} /> */}
+          <AuthorCSS>
+            <img src={author.profile_image} />
+            <div className="content">
+              <p className="name">{author.name}</p>
+              <p className="date">{author.bio}</p>
+            </div>
+          </AuthorCSS>
           <TagTitlePostsCSS>
             {post.map((x, i) => (
               <Link href={`/blog/${x.slug}`} key={i}>

@@ -1,5 +1,5 @@
 import AuthorTitlePosts from "@screens/author";
-import { getPostsByAuthor } from "@api/authors";
+import { getPostsByAuthor, getAuthorBySlug } from "@api/authors";
 import { getPosts, getTags } from "@api/posts";
 import { Post, Tag } from "@models";
 import { removeInternalTags } from "@utils/remove_internal_tags";
@@ -11,6 +11,7 @@ const AuthorDetailsPage = (props: any) => {
 AuthorDetailsPage.getInitialProps = async ({ query }) => {
   const { author } = query;
   const posts = await getPostsByAuthor(author);
+  const authorInfo = await getAuthorBySlug(author);
 
   let authorPosts = [];
   let formattedSidePosts = [];
@@ -38,6 +39,7 @@ AuthorDetailsPage.getInitialProps = async ({ query }) => {
   }
 
   return {
+    author: authorInfo,
     post: authorPosts,
     tags: formattedTags,
     sidePosts: formattedSidePosts,
