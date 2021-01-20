@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { AuthorCSS } from "./styles";
 
 const Author = ({ post }: any) => {
@@ -7,8 +8,12 @@ const Author = ({ post }: any) => {
     <AuthorCSS>
       <img src={author.profileImage} />
       <div className="content">
-        <p className="name">{author.name}</p>
-        <p className="date">{post.publishedAt}</p>
+        <Link href={`/author/${author.slug}`} as={`/author/${author.slug}`}>
+          <a>
+            <p className="name">{author.name}</p>
+            <p className="date">{post.publishedAt}</p>
+          </a>
+        </Link>
       </div>
     </AuthorCSS>
   );
