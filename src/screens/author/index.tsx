@@ -31,14 +31,14 @@ const AuthorTitlePosts = (props: any) => {
     >
       <BlogCSS>
         <MaxWidthContainerCSS>
-          <AuthorCSS>
-            <img src={author.profile_image} />
-            <div className="content">
-              <p className="name">{author.name}</p>
-              <p className="bio">{author.bio}</p>
-            </div>
-          </AuthorCSS>
           <TagTitlePostsCSS>
+            <AuthorCSS>
+              <img src={author.profile_image} />
+              <div className="content">
+                <p className="name">{author.name}</p>
+                <p className="bio">{author.bio}</p>
+              </div>
+            </AuthorCSS>
             {post.map((x, i) => (
               <Link href={`/blog/${x.slug}`} key={i}>
                 <a>
