@@ -25,8 +25,6 @@ BlogPage.getInitialProps = async ({ query }) => {
       getPosts({
         limit: 10,
       }),
-      // Rachel's to-do:
-      // getPostsByTag(formattedTags),
     ]);
 
     formattedPosts = posts.map((post) => Post.fromJson(post, {}));

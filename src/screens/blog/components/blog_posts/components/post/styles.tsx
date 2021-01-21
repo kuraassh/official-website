@@ -11,6 +11,12 @@ export const PostCSS = styled.div`
     object-fit: cover;
   }
 
+  h4 {
+    font-weight: 400;
+    margin-bottom: 0.1rem;
+    color: ${colors.gray400};
+  }
+
   h3 {
     font-weight: 500;
     margin-bottom: 0;

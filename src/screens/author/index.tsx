@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useTranslation } from "i18n";
 import { Layout, Tags } from "@components";
 import { theme } from "@styles";
-import Author from "../blog_details/components/author";
 import { TitlePosts, Twitter } from "../blog/components";
 import { useBlogHook } from "./hooks";
 import {
@@ -16,11 +15,9 @@ import {
 
 const AuthorTitlePosts = (props: any) => {
   const { colors } = theme;
-  console.log(props);
   const { post, main = false, sidePosts = [], tags, author } = props;
   const { featureImage, title, excerpt, publishedAt, slug, error } = post;
   const { t } = useTranslation("blog");
-  // console.log(props);
   useBlogHook(error, t);
   return (
     <Layout
@@ -34,19 +31,23 @@ const AuthorTitlePosts = (props: any) => {
     >
       <BlogCSS>
         <MaxWidthContainerCSS>
-          {/* <Author post={primaryAuthor} /> */}
           <AuthorCSS>
             <img src={author.profile_image} />
             <div className="content">
               <p className="name">{author.name}</p>
-              <p className="date">{author.bio}</p>
+              <p className="bio">{author.bio}</p>
             </div>
           </AuthorCSS>
           <TagTitlePostsCSS>
             {post.map((x, i) => (
               <Link href={`/blog/${x.slug}`} key={i}>
                 <a>
-                  <li>{x.title}</li>
+                  <img src={x.featureImage} />
+                  <div className="content">
+                    <h3>{x.title}</h3>
+                    <p>{x.excerpt}</p>
+                    <p className="date">{x.publishedAt}</p>
+                  </div>
                 </a>
               </Link>
             ))}

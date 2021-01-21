@@ -4,6 +4,8 @@ import { media, mixins, theme } from "@styles";
 const { colors } = theme;
 
 export const BlogCSS = styled.div`
+  word-spacing: inherit;
+  letter-spacing: 0.01rem;
   ${media.bigDesktop`
     ${mixins.flexCenter}
   `}
@@ -11,7 +13,7 @@ export const BlogCSS = styled.div`
 
 export const MaxWidthContainerCSS = styled.div`
   width: 100%;
-  max-width: 1920px;
+  max-width: 1440px;
 
   ${media.bigDesktop`
     ${mixins.mobileHorizontalPadding}

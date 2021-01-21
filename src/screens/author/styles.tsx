@@ -6,7 +6,7 @@ const { colors } = theme;
 
 export const MaxWidthContainerCSS = styled(MaxWidthCSS)`
   width: 100%;
-
+  flex-direction: column;
   ${media.bigDesktop`
     ${mixins.mobileHorizontalPadding}
     ${mixins.mobileBottomPadding}
@@ -55,6 +55,7 @@ export const TagTitlePostsCSS = styled.ul`
 `;
 
 export const SideCSS = styled.div`
+  display: none;
   .tags-container {
     ${mixins.mobilePadding}
     padding-top: 1.5rem;
@@ -102,7 +103,7 @@ export const AuthorCSS = styled.div`
         font-weight: 500;
       }
 
-      &.date {
+      &.bio {
         color: ${colors.gray600};
       }
     }

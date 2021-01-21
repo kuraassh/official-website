@@ -34,7 +34,12 @@ const TagTitlePosts = (props: any) => {
             {post.map((x, i) => (
               <Link href={`/blog/${x.slug}`} key={i}>
                 <a>
-                  <li>{x.title}</li>
+                  <img src={x.featureImage} />
+                  <div className="content">
+                    <h3>{x.title}</h3>
+                    <p>{x.excerpt}</p>
+                    <p className="date">{x.publishedAt}</p>
+                  </div>
                 </a>
               </Link>
             ))}

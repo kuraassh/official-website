@@ -76,6 +76,7 @@ const BlogDetails = ({ post, raw }: any) => {
   };
 
   const sanitize = DOMPurify.sanitize;
+
   return (
     <Layout
       title={post.title}
@@ -97,6 +98,7 @@ const BlogDetails = ({ post, raw }: any) => {
       <BlogDetailsCSS>
         <MaxWidthContainerCSS>
           <ContentCSS>
+            <h4>{!!tags.length && post.tags[0].name}</h4>
             <h3>{post.title}</h3>
             <FlexContainerCSS>
               <SocialMedia title={post.title} />
