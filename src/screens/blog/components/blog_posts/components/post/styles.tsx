@@ -4,6 +4,9 @@ import { theme, media } from "@styles";
 const { colors } = theme;
 
 export const PostCSS = styled.div`
+  p {
+    display: none;
+  }
   img {
     // height: 150px;
     min-height: 150px;
@@ -40,10 +43,28 @@ export const PostCSS = styled.div`
     padding: 0.5rem;
   }
 
+  span {
+    display: flex;
+    align-items: center;
+    img {
+      margin-right: 0.3rem;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      min-height: 0px;
+      object-fit: cover;
+    }
+  }
+
   ${media.bigDesktop`
     &.main {
       img {
         height: 350px;
+      }
+      span {
+        img {
+          height: 25px;
+        }
       }
     }
     img {

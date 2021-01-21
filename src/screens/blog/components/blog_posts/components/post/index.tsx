@@ -20,9 +20,13 @@ const Post = (props: any) => {
         <a>
           <img src={featureImage} />
           <div className="content">
-            <h4>
-              {author.name} in {post.tags[0].name}
-            </h4>
+            <span>
+              <img src={author.profileImage} />
+              <h4>
+                {author.name} in{" "}
+                {post.tags && post.tags[0] && post.tags[0].name}
+              </h4>
+            </span>
             <h3>{title}</h3>
             <p>{excerpt}</p>
             <p className="date">{publishedAt}</p>

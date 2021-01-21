@@ -17,6 +17,23 @@ export const MaxWidthContainerCSS = styled(MaxWidthCSS)`
 `;
 
 export const TagTitlePostsCSS = styled.ul`
+  span {
+    display: flex;
+    align-items: center;
+    h4 {
+      font-weight: 400;
+      margin-bottom: 0.1rem;
+      color: ${colors.gray400};
+    }
+    img {
+      margin-right: 0.3rem;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      min-height: 0px;
+      object-fit: cover;
+    }
+  }
   ${mixins.mobilePadding}
   padding: 2.5rem 1.5rem 3.5rem;
   padding-top: 5rem;

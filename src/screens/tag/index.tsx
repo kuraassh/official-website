@@ -15,7 +15,15 @@ import {
 const TagTitlePosts = (props: any) => {
   const { colors } = theme;
   const { post, main = false, sidePosts = [], tags } = props;
-  const { featureImage, title, excerpt, publishedAt, slug, error } = post;
+  const {
+    featureImage,
+    title,
+    excerpt,
+    publishedAt,
+    author,
+    slug,
+    error,
+  } = post;
   const { t } = useTranslation("blog");
   useBlogHook(error, t);
   return (
@@ -36,6 +44,13 @@ const TagTitlePosts = (props: any) => {
                 <a>
                   <img src={x.featureImage} />
                   <div className="content">
+                    <span>
+                      <img src={x.author.profileImage} />
+                      <h4>
+                        {x.author.name} in{" "}
+                        {x.tags && x.tags[0] && x.tags[0].name}
+                      </h4>
+                    </span>
                     <h3>{x.title}</h3>
                     <p>{x.excerpt}</p>
                     <p className="date">{x.publishedAt}</p>

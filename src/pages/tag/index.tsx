@@ -15,7 +15,7 @@ BlogPage.getInitialProps = async ({ query }) => {
   let error = false;
   try {
     const fetchQuery: any = {};
-    //console.log(fetchQuery);
+
     if (query.page) {
       fetchQuery.page = query.page;
     }
