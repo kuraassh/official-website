@@ -7,7 +7,7 @@ const networkData = [
   { title: "irisnet", value: 25, color: "#50FFB4" },
   { title: "terra", value: 20, color: "#499EFC" },
   { title: "kava", value: 15, color: "#31DDE6" },
-  { title: "Four", value: 10, color: "#E6A531" },
+  { title: "likecoin", value: 10, color: "#E6A531" },
   { title: "Four", value: 5, color: "#CB86FF" },
   { title: "Four", value: 3, color: "#FF7753" },
   { title: "Four", value: 2, color: "#FDE425" },
@@ -35,7 +35,11 @@ const Chart = (props: any) => {
           : segmentsStyle;
       }}
       animate
-      label={() => `${t(networkData[selected].title)}`}
+      label={() =>
+        `${t(
+          networkData && networkData[selected] && networkData[selected].title
+        )}`
+      }
       labelPosition={0}
       startAngle={285}
       onClick={(_, index) => {

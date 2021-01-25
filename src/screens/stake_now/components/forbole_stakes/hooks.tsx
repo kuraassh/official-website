@@ -7,6 +7,9 @@ import { convertToMoney } from "@utils/convert_to_money";
 
 export const useForboleStakesHook = () => {
   const [selected, setSelected] = useState(0);
+
+  // Cosmos Hub / ATOM
+
   const [cosmos, setCosmos] = useState({
     title: "cosmosHub",
     totalAtom: 0,
@@ -125,6 +128,8 @@ export const useForboleStakesHook = () => {
       )
     );
   };
+
+  // IRIS
 
   const [iris, setIris] = useState({
     title: "irisnet",
@@ -251,6 +256,8 @@ export const useForboleStakesHook = () => {
       )
     );
   };
+
+  // TERRA
 
   const [terra, setTerra] = useState({
     title: "Terra",
@@ -505,12 +512,134 @@ export const useForboleStakesHook = () => {
     );
   };
 
+  // LikeCoin
+  const [likecoin, setLikeCoin] = useState({
+    title: "likecoin",
+    totalAtom: 0,
+    totalMarketValue: "0.00",
+    currentMarketValue: "0.00",
+    denom: "LIKE",
+    voting: {
+      title: "votingPower",
+      atom: 0,
+      percent: 0,
+    },
+    selfDelegations: {
+      title: "selfDelegations",
+      atom: 0,
+      percent: 0,
+    },
+    otherDelegations: {
+      title: "otherDelegations",
+      atom: 0,
+      percent: 0,
+    },
+  });
+
+  const getLikeCoin = async () => {
+    const networkFunction = networkFunctions["likecoin"] ?? null;
+    const { calculator } = getNetworkInfo("likecoin");
+    const bondedApi = axios.post("/api/proxy", {
+      url: calculator.bonded,
+    });
+    const stakingParamsApi = axios.post("/api/proxy", {
+      url: calculator.stakingParams,
+    });
+    const delegationsApi = axios.post("/api/proxy", {
+      url:
+        "http://lcd.likecoin.forbole.com/staking/validators/cosmosvaloper1v8njts96gl5eqstnen4gksdy5k860fau65c3sw/delegations",
+    });
+    const marketPriceApi = axios.get(networkFunction?.gecko);
+
+    const promises = [
+      bondedApi,
+      stakingParamsApi,
+      delegationsApi,
+      marketPriceApi,
+    ];
+
+    const [
+      { data: bondedJson },
+      { data: stakingParamsJson },
+      { data: delegationsJson },
+      { data: marketPriceJson },
+    ] = await Promise.all(promises);
+    const totalLIKE = networkFunction?.converter(
+      Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
+    );
+    //console.log(totalLUNA);
+    const totalLIKEFormat = convertToMoney(
+      networkFunction?.converter(
+        Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
+      )
+    );
+    //console.log(totalLUNAFormat);
+    const bonded = networkFunction?.bonded(bondedJson);
+    const currentMarketValue = networkFunction.marketPrice(marketPriceJson);
+    //console.log(currentMarketValue);
+    const totalMarketValue = convertToMoney(currentMarketValue * totalLIKE);
+    const votingPowerPercent = convertToMoney((totalLIKE / bonded) * 100, 2);
+    //==========================
+    // self-delegations
+    //==========================
+
+    const totalSelfDelegations = networkFunction?.converter(
+      R.pathOr([], ["result"], delegationsJson)
+        .filter(
+          (x) =>
+            x?.["delegator_address"] ===
+            "cosmos1v8njts96gl5eqstnen4gksdy5k860faulqvyua"
+        )
+        .reduce((a, b) => (a += Number(b?.balance) ?? 0), 0)
+    );
+    console.log(totalSelfDelegations);
+    const totalSelfDelegationsFormat = convertToMoney(totalSelfDelegations);
+
+    const totalSelfDelegationsPercent = convertToMoney(
+      (totalSelfDelegations / bonded) * 100,
+      2
+    );
+    //console.log(totalSelfDelegationsPercent);
+    //==========================
+    // other-delegations
+    //==========================
+    const otherDelegations = totalLIKE - totalSelfDelegations;
+    const otherDelegationsFormat = convertToMoney(otherDelegations);
+    const otherDelegationsPercent = convertToMoney(
+      (otherDelegations / bonded) * 100,
+      2
+    );
+    setLikeCoin(
+      R.mergeDeepLeft(
+        {
+          totalAtom: totalLIKEFormat,
+          totalMarketValue,
+          currentMarketValue,
+          voting: {
+            atom: totalLIKEFormat,
+            percent: votingPowerPercent,
+          },
+          selfDelegations: {
+            atom: totalSelfDelegationsFormat,
+            percent: totalSelfDelegationsPercent,
+          },
+          otherDelegations: {
+            atom: otherDelegationsFormat,
+            percent: otherDelegationsPercent,
+          },
+        },
+        likecoin
+      )
+    );
+  };
+
   useEffect(() => {
     try {
       getCosmos();
       getIris();
       getTerra();
       getKava();
+      getLikeCoin();
     } catch (err) {
       console.log(err);
     }
@@ -521,6 +650,7 @@ export const useForboleStakesHook = () => {
     iris,
     terra,
     kava,
+    likecoin,
     selected,
     setSelected,
   };
