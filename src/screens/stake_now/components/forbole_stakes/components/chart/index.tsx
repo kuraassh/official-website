@@ -9,7 +9,7 @@ const networkData = [
   { title: "kava", value: 15, color: "#31DDE6" },
   { title: "likecoin", value: 10, color: "#E6A531" },
   { title: "startname", value: 5, color: "#CB86FF" },
-  { title: "Four", value: 3, color: "#FF7753" },
+  { title: "band-protocol", value: 3, color: "#FF7753" },
   { title: "Four", value: 2, color: "#FDE425" },
 ];
 

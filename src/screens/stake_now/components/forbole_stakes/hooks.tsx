@@ -766,6 +766,126 @@ export const useForboleStakesHook = () => {
   };
 
   // Band Protocol
+  const [band, setBAND] = useState({
+    title: "Band Protocol",
+    totalAtom: 0,
+    totalMarketValue: "0.00",
+    currentMarketValue: "0.00",
+    denom: "BAND",
+    voting: {
+      title: "votingPower",
+      atom: 0,
+      percent: 0,
+    },
+    selfDelegations: {
+      title: "selfDelegations",
+      atom: 0,
+      percent: 0,
+    },
+    otherDelegations: {
+      title: "otherDelegations",
+      atom: 0,
+      percent: 0,
+    },
+  });
+
+  const getBAND = async () => {
+    const networkFunction = networkFunctions["band"] ?? null;
+    const { calculator } = getNetworkInfo("band-protocol");
+    const bondedApi = axios.post("/api/proxy", {
+      url: calculator.bonded,
+    });
+    const stakingParamsApi = axios.post("/api/proxy", {
+      url: calculator.stakingParams,
+    });
+    const delegationsApi = axios.post("/api/proxy", {
+      url:
+        "http://lcd.band.forbole.com/staking/validators/bandvaloper14kn0kk33szpwus9nh8n87fjel8djx0y0wz502z/delegations",
+    });
+    const marketPriceApi = axios.get(networkFunction?.gecko);
+
+    const promises = [
+      bondedApi,
+      stakingParamsApi,
+      delegationsApi,
+      marketPriceApi,
+    ];
+
+    const [
+      { data: bondedJson },
+      { data: stakingParamsJson },
+      { data: delegationsJson },
+      { data: marketPriceJson },
+    ] = await Promise.all(promises);
+
+    const totalBAND = networkFunction?.converter(
+      Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
+    );
+
+    const totalBANDFormat = convertToMoney(
+      networkFunction?.converter(
+        Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
+      )
+    );
+    //console.log(totalLUNAFormat);
+    const bonded = networkFunction?.bonded(bondedJson);
+    const currentMarketValue = networkFunction.marketPrice(marketPriceJson);
+    //console.log(currentMarketValue);
+    const totalMarketValue = convertToMoney(currentMarketValue * totalBAND);
+    const votingPowerPercent = convertToMoney((totalBAND / bonded) * 100, 2);
+    //==========================
+    // self-delegations
+    //==========================
+
+    const totalSelfDelegations = networkFunction?.converter(
+      R.pathOr([], ["result"], delegationsJson)
+        .filter(
+          (x) =>
+            x?.["delegator_address"] ===
+            "band14kn0kk33szpwus9nh8n87fjel8djx0y0z5sv0f"
+        )
+        .reduce((a, b) => (a += Number(b?.balance.amount) ?? 0), 0)
+    );
+    //console.log(totalSelfDelegations);
+    const totalSelfDelegationsFormat = convertToMoney(totalSelfDelegations);
+
+    const totalSelfDelegationsPercent = convertToMoney(
+      (totalSelfDelegations / bonded) * 100,
+      2
+    );
+    //console.log(totalSelfDelegationsPercent);
+    //==========================
+    // other-delegations
+    //==========================
+    const otherDelegations = totalBAND - totalSelfDelegations;
+    const otherDelegationsFormat = convertToMoney(otherDelegations);
+    const otherDelegationsPercent = convertToMoney(
+      (otherDelegations / bonded) * 100,
+      2
+    );
+    setBAND(
+      R.mergeDeepLeft(
+        {
+          totalAtom: totalBANDFormat,
+          totalMarketValue,
+          currentMarketValue,
+          voting: {
+            atom: totalBANDFormat,
+            percent: votingPowerPercent,
+          },
+          selfDelegations: {
+            atom: totalSelfDelegationsFormat,
+            percent: totalSelfDelegationsPercent,
+          },
+          otherDelegations: {
+            atom: otherDelegationsFormat,
+            percent: otherDelegationsPercent,
+          },
+        },
+        band
+      )
+    );
+  };
 
   // Akash
 
@@ -783,6 +903,7 @@ export const useForboleStakesHook = () => {
       getKava();
       getLikeCoin();
       getIOV();
+      getBAND();
     } catch (err) {
       console.log(err);
     }
@@ -795,6 +916,7 @@ export const useForboleStakesHook = () => {
     kava,
     likecoin,
     iov,
+    band,
     selected,
     setSelected,
   };

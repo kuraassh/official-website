@@ -106,5 +106,6 @@ export const networkFunctions = {
   iov,
   likecoin,
   iris,
+  band,
   ["band-protocol"]: band,
 };
