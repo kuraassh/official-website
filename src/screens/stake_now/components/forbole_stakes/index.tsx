@@ -14,8 +14,12 @@ import { useForboleStakesHook } from "./hooks";
 const ForboleStakes = () => {
   const { t } = useTranslation("stake_now");
   const hookProps = useForboleStakesHook();
-  const { cosmos } = hookProps;
-  const { voting, selfDelegations, otherDelegations } = cosmos;
+  const { cosmos, iris, selected } = hookProps;
+  const selectedData = {
+    0: cosmos,
+    1: iris,
+  };
+  const iconData = ["cosmos-hub", "iris"];
   return (
     <ForboleStakesCSS>
       <p>{t("tokensStakedWithForbole")}</p>
@@ -28,32 +32,34 @@ const ForboleStakes = () => {
         <StakesDetailsContainerCSS>
           <HubDetail
             main
-            denom={cosmos.denom}
-            title={cosmos.title}
-            atom={cosmos.totalAtom}
-            usd={cosmos.totalMarketValue}
-            perAtom={cosmos.currentMarketValue}
+            name={iconData[selected]}
+            denom={selectedData[selected]?.denom}
+            title={selectedData[selected]?.title}
+            // title={cosmos.title}
+            atom={selectedData[selected]?.totalAtom}
+            usd={selectedData[selected]?.totalMarketValue}
+            perAtom={selectedData[selected]?.currentMarketValue}
           />
           <hr className="stats-hr" />
           <HubDetail
-            denom={cosmos.denom}
-            title={voting.title}
-            atom={voting.atom}
-            percent={voting.percent}
+            denom={selectedData[selected]?.denom}
+            title={selectedData[selected]?.voting.title}
+            atom={selectedData[selected]?.voting.atom}
+            percent={selectedData[selected]?.voting.percent}
           />
           <hr className="stats-hr" />
           <HubDetail
-            denom={cosmos.denom}
-            title={selfDelegations.title}
-            atom={selfDelegations.atom}
-            percent={selfDelegations.percent}
+            denom={selectedData[selected]?.denom}
+            title={selectedData[selected]?.selfDelegations.title}
+            atom={selectedData[selected]?.selfDelegations.atom}
+            percent={selectedData[selected]?.selfDelegations.percent}
           />
           <hr className="stats-hr" />
           <HubDetail
-            denom={cosmos.denom}
-            title={otherDelegations.title}
-            atom={otherDelegations.atom}
-            percent={otherDelegations.percent}
+            denom={selectedData[selected]?.denom}
+            title={selectedData[selected]?.otherDelegations.title}
+            atom={selectedData[selected]?.otherDelegations.atom}
+            percent={selectedData[selected]?.otherDelegations.percent}
           />
         </StakesDetailsContainerCSS>
       </FlexContainerCSS>

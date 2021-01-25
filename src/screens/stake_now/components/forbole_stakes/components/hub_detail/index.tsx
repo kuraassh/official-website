@@ -6,6 +6,7 @@ import { HubDetailCSS, StatDetailsCSS } from "./styles";
 const HubDetail = (props: any) => {
   const {
     title = "",
+    name = "",
     atom = 0,
     percent = 0,
     main = false,
@@ -19,7 +20,7 @@ const HubDetail = (props: any) => {
   return (
     <HubDetailCSS className={classNames({ main })}>
       <p className={classNames("title", { main })}>
-        {!!main && <img src="/static/images/icons/cosmos-hub.png" />}
+        {!!main && <img src={`/static/images/icons/${name}.png`} />}
         {t(title)}
       </p>
       <StatDetailsCSS className={classNames({ main })}>

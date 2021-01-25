@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useTranslation } from "i18n";
 import { PieChart } from "react-minimal-pie-chart";
 
-const fakeData = [
-  { title: "cosmos", value: 25, color: "#FF6767" },
-  { title: "Two", value: 25, color: "#50FFB4" },
+const networkData = [
+  { title: "cosmosHub", value: 25, color: "#FF6767" },
+  { title: "irisnet", value: 25, color: "#50FFB4" },
   { title: "Four", value: 20, color: "#499EFC" },
   { title: "Three", value: 15, color: "#31DDE6" },
   { title: "Four", value: 10, color: "#E6A531" },
@@ -26,7 +26,7 @@ const Chart = (props: any) => {
       style={{
         fontSize: "8px",
       }}
-      data={fakeData}
+      data={networkData}
       radius={PieChart.defaultProps.radius - 6}
       lineWidth={lineWidth}
       segmentsStyle={(index) => {
@@ -35,12 +35,12 @@ const Chart = (props: any) => {
           : segmentsStyle;
       }}
       animate
-      label={() => `${t("cosmosHub")}`}
+      label={() => `${t(networkData[selected].title)}`}
       labelPosition={0}
       startAngle={285}
-      // onClick={(_, index) => {
-      //   setSelected(index === selected ? undefined : index);
-      // }}
+      onClick={(_, index) => {
+        setSelected(index === selected ? undefined : index);
+      }}
       labelStyle={{
         fill: "#fff",
         opacity: 0.75,
