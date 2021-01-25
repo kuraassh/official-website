@@ -252,10 +252,131 @@ export const useForboleStakesHook = () => {
     );
   };
 
+  const [terra, setTerra] = useState({
+    title: "Terra",
+    totalAtom: 0,
+    totalMarketValue: "0.00",
+    currentMarketValue: "0.00",
+    denom: "LUNA",
+    voting: {
+      title: "votingPower",
+      atom: 0,
+      percent: 0,
+    },
+    selfDelegations: {
+      title: "selfDelegations",
+      atom: 0,
+      percent: 0,
+    },
+    otherDelegations: {
+      title: "otherDelegations",
+      atom: 0,
+      percent: 0,
+    },
+  });
+
+  const getTerra = async () => {
+    const networkFunction = networkFunctions["terra"] ?? null;
+    const { calculator } = getNetworkInfo("terra-money");
+    const bondedApi = axios.post("/api/proxy", {
+      url: calculator.bonded,
+    });
+    const stakingParamsApi = axios.post("/api/proxy", {
+      url: calculator.stakingParams,
+    });
+    const delegationsApi = axios.post("/api/proxy", {
+      url:
+        "https://lcd.terra.bigdipper.live/staking/validators/terravaloper1jkqr2vfg4krfd4zwmsf7elfj07cjuzss30ux8g/delegations",
+    });
+    const marketPriceApi = axios.get(networkFunction?.gecko);
+
+    const promises = [
+      bondedApi,
+      stakingParamsApi,
+      delegationsApi,
+      marketPriceApi,
+    ];
+
+    const [
+      { data: bondedJson },
+      { data: stakingParamsJson },
+      { data: delegationsJson },
+      { data: marketPriceJson },
+    ] = await Promise.all(promises);
+    const totalLUNA = networkFunction?.converter(
+      Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
+    );
+    //console.log(totalLUNA);
+    const totalLUNAFormat = convertToMoney(
+      networkFunction?.converter(
+        Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
+      )
+    );
+    //console.log(totalLUNAFormat);
+    const bonded = networkFunction?.bonded(bondedJson);
+    const currentMarketValue = networkFunction.marketPrice(marketPriceJson);
+    //console.log(currentMarketValue);
+    const totalMarketValue = convertToMoney(currentMarketValue * totalLUNA);
+    const votingPowerPercent = convertToMoney((totalLUNA / bonded) * 100, 2);
+    //==========================
+    // self-delegations
+    //==========================
+
+    const totalSelfDelegations = networkFunction?.converter(
+      R.pathOr([], ["result"], delegationsJson)
+        .filter(
+          (x) =>
+            x?.["delegator_address"] ===
+            "terra1jkqr2vfg4krfd4zwmsf7elfj07cjuzss3qsmhm"
+        )
+        .reduce((a, b) => (a += Number(b?.balance.amount) ?? 0), 0)
+    );
+
+    const totalSelfDelegationsFormat = convertToMoney(totalSelfDelegations);
+    //console.log(totalSelfDelegationsFormat);
+    const totalSelfDelegationsPercent = convertToMoney(
+      (totalSelfDelegations / bonded) * 100,
+      2
+    );
+    //console.log(totalSelfDelegationsPercent);
+    //==========================
+    // other-delegations
+    //==========================
+    const otherDelegations = totalLUNA - totalSelfDelegations;
+    const otherDelegationsFormat = convertToMoney(otherDelegations);
+    const otherDelegationsPercent = convertToMoney(
+      (otherDelegations / bonded) * 100,
+      2
+    );
+    setTerra(
+      R.mergeDeepLeft(
+        {
+          totalAtom: totalLUNAFormat,
+          totalMarketValue,
+          currentMarketValue,
+          voting: {
+            atom: totalLUNAFormat,
+            percent: votingPowerPercent,
+          },
+          selfDelegations: {
+            atom: totalSelfDelegationsFormat,
+            percent: totalSelfDelegationsPercent,
+          },
+          otherDelegations: {
+            atom: otherDelegationsFormat,
+            percent: otherDelegationsPercent,
+          },
+        },
+        terra
+      )
+    );
+  };
+
   useEffect(() => {
     try {
       getCosmos();
       getIris();
+      getTerra();
     } catch (err) {
       console.log(err);
     }
@@ -264,6 +385,7 @@ export const useForboleStakesHook = () => {
   return {
     cosmos,
     iris,
+    terra,
     selected,
     setSelected,
   };

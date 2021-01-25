@@ -9,7 +9,7 @@ export const defaultConverter = (ratio: number) => (num: number) => {
 };
 export const uAtomToAtom = defaultConverter(1000000);
 
-// export const uLunaToLuna = defaultConverter(1000000);
+export const uLunaToLuna = defaultConverter(1000000);
 
 export const uKavaToKava = defaultConverter(1000000);
 
@@ -49,8 +49,8 @@ export const defaultFunctions = (converter: any) => ({
 const cosmos = R.clone(defaultFunctions(uAtomToAtom));
 cosmos.gecko = "https://api.coingecko.com/api/v3/coins/cosmos";
 
-// const terra = R.clone(defaultFunctions(uLunaToLuna));
-// terra.gecko = "https://api.coingecko.com/api/v3/coins/terra-luna";
+const terra = R.clone(defaultFunctions(uLunaToLuna));
+terra.gecko = "https://api.coingecko.com/api/v3/coins/terra-luna";
 
 const kava = R.clone(defaultFunctions(uKavaToKava));
 kava.gecko = "https://api.coingecko.com/api/v3/coins/kava";
@@ -102,6 +102,7 @@ export const networkFunctions = {
   cosmos,
   kava,
   akash,
+  terra,
   iov,
   likecoin,
   iris,

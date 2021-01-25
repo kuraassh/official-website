@@ -14,12 +14,13 @@ import { useForboleStakesHook } from "./hooks";
 const ForboleStakes = () => {
   const { t } = useTranslation("stake_now");
   const hookProps = useForboleStakesHook();
-  const { cosmos, iris, selected } = hookProps;
+  const { cosmos, iris, terra, selected } = hookProps;
   const selectedData = {
     0: cosmos,
     1: iris,
+    2: terra,
   };
-  const iconData = ["cosmos-hub", "iris"];
+  const iconData = ["cosmos-hub", "iris", "terra"];
   return (
     <ForboleStakesCSS>
       <p>{t("tokensStakedWithForbole")}</p>

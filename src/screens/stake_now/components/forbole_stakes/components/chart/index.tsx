@@ -5,7 +5,7 @@ import { PieChart } from "react-minimal-pie-chart";
 const networkData = [
   { title: "cosmosHub", value: 25, color: "#FF6767" },
   { title: "irisnet", value: 25, color: "#50FFB4" },
-  { title: "Four", value: 20, color: "#499EFC" },
+  { title: "terra", value: 20, color: "#499EFC" },
   { title: "Three", value: 15, color: "#31DDE6" },
   { title: "Four", value: 10, color: "#E6A531" },
   { title: "Four", value: 5, color: "#CB86FF" },
