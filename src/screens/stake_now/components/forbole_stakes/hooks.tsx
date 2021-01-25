@@ -9,7 +9,6 @@ export const useForboleStakesHook = () => {
   const [selected, setSelected] = useState(0);
 
   // Cosmos Hub / ATOM
-
   const [cosmos, setCosmos] = useState({
     title: "cosmosHub",
     totalAtom: 0,
@@ -130,7 +129,6 @@ export const useForboleStakesHook = () => {
   };
 
   // IRIS
-
   const [iris, setIris] = useState({
     title: "irisnet",
     totalAtom: 0,
@@ -258,7 +256,6 @@ export const useForboleStakesHook = () => {
   };
 
   // TERRA
-
   const [terra, setTerra] = useState({
     title: "Terra",
     totalAtom: 0,
@@ -380,7 +377,6 @@ export const useForboleStakesHook = () => {
   };
 
   // KAVA
-
   const [kava, setKava] = useState({
     title: "Kava",
     totalAtom: 0,
@@ -567,7 +563,9 @@ export const useForboleStakesHook = () => {
     const totalLIKE = networkFunction?.converter(
       Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
     );
-    //console.log(totalLUNA);
+    console.log(`totalLIKE`, totalLIKE / 1000);
+    const totalLIKEtokens = totalLIKE / 1000;
+    const totalLIKEtokensFormat = convertToMoney(totalLIKEtokens);
     const totalLIKEFormat = convertToMoney(
       networkFunction?.converter(
         Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
@@ -577,7 +575,9 @@ export const useForboleStakesHook = () => {
     const bonded = networkFunction?.bonded(bondedJson);
     const currentMarketValue = networkFunction.marketPrice(marketPriceJson);
     //console.log(currentMarketValue);
-    const totalMarketValue = convertToMoney(currentMarketValue * totalLIKE);
+    const totalMarketValue = convertToMoney(
+      currentMarketValue * totalLIKEtokens
+    );
     const votingPowerPercent = convertToMoney((totalLIKE / bonded) * 100, 2);
     //==========================
     // self-delegations
@@ -612,7 +612,7 @@ export const useForboleStakesHook = () => {
     setLikeCoin(
       R.mergeDeepLeft(
         {
-          totalAtom: totalLIKEFormat,
+          totalAtom: totalLIKEtokensFormat,
           totalMarketValue,
           currentMarketValue,
           voting: {
@@ -633,6 +633,148 @@ export const useForboleStakesHook = () => {
     );
   };
 
+  // iov / Startname
+  const [iov, setIOV] = useState({
+    title: "Startname",
+    totalAtom: 0,
+    totalMarketValue: "0.00",
+    currentMarketValue: "0.00",
+    denom: "IOV",
+    voting: {
+      title: "votingPower",
+      atom: 0,
+      percent: 0,
+    },
+    selfDelegations: {
+      title: "selfDelegations",
+      atom: 0,
+      percent: 0,
+    },
+    otherDelegations: {
+      title: "otherDelegations",
+      atom: 0,
+      percent: 0,
+    },
+  });
+
+  const getIOV = async () => {
+    const networkFunction = networkFunctions["iov"] ?? null;
+    const { calculator } = getNetworkInfo("iov");
+    const bondedApi = axios.post("/api/proxy", {
+      url: calculator.bonded,
+    });
+    const stakingParamsApi = axios.post("/api/proxy", {
+      url: calculator.stakingParams,
+    });
+    const delegationsApi = axios.post("/api/proxy", {
+      url:
+        "http://lcd.iov.forbole.com/staking/validators/starvaloper1jkv2qkpq6cfplx6put7f00wzuyds57fnmtgde0/delegations",
+    });
+    const marketPriceApi = axios.get(networkFunction?.gecko);
+
+    const promises = [
+      bondedApi,
+      stakingParamsApi,
+      delegationsApi,
+      marketPriceApi,
+    ];
+
+    const [
+      { data: bondedJson },
+      { data: stakingParamsJson },
+      { data: delegationsJson },
+      { data: marketPriceJson },
+    ] = await Promise.all(promises);
+
+    const totalIOV = networkFunction?.converter(
+      Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
+    );
+    //console.log(totalLUNA);
+    const totalIOVFormat = convertToMoney(
+      networkFunction?.converter(
+        Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
+      )
+    );
+    //console.log(totalLUNAFormat);
+    const bonded = networkFunction?.bonded(bondedJson);
+    const currentMarketValue = networkFunction.marketPrice(marketPriceJson);
+    //console.log(currentMarketValue);
+    const totalMarketValue = convertToMoney(currentMarketValue * totalIOV);
+    const votingPowerPercent = convertToMoney((totalIOV / bonded) * 100, 2);
+    //==========================
+    // self-delegations
+    //==========================
+
+    const totalSelfDelegations1 = networkFunction?.converter(
+      R.pathOr([], ["result"], delegationsJson)
+        .filter(
+          (x) =>
+            x?.["delegator_address"] ===
+            "star1jkv2qkpq6cfplx6put7f00wzuyds57fn7qva4x"
+        )
+        .reduce((a, b) => (a += Number(b?.balance.amount) ?? 0), 0)
+    );
+    const totalSelfDelegations2 = networkFunction?.converter(
+      R.pathOr([], ["result"], delegationsJson)
+        .filter(
+          (x) =>
+            x?.["delegator_address"] ===
+            "star1j02u9tpjtse9fyd398xvsdfn6caw7ju9xfqa3z"
+        )
+        .reduce((a, b) => (a += Number(b?.balance.amount) ?? 0), 0)
+    );
+    const totalSelfDelegations = totalSelfDelegations1 + totalSelfDelegations2;
+    //console.log(totalSelfDelegations);
+    const totalSelfDelegationsFormat = convertToMoney(totalSelfDelegations);
+
+    const totalSelfDelegationsPercent = convertToMoney(
+      (totalSelfDelegations / bonded) * 100,
+      2
+    );
+    //console.log(totalSelfDelegationsPercent);
+    //==========================
+    // other-delegations
+    //==========================
+    const otherDelegations = totalIOV - totalSelfDelegations;
+    const otherDelegationsFormat = convertToMoney(otherDelegations);
+    const otherDelegationsPercent = convertToMoney(
+      (otherDelegations / bonded) * 100,
+      2
+    );
+    setIOV(
+      R.mergeDeepLeft(
+        {
+          totalAtom: totalIOVFormat,
+          totalMarketValue,
+          currentMarketValue,
+          voting: {
+            atom: totalIOVFormat,
+            percent: votingPowerPercent,
+          },
+          selfDelegations: {
+            atom: totalSelfDelegationsFormat,
+            percent: totalSelfDelegationsPercent,
+          },
+          otherDelegations: {
+            atom: otherDelegationsFormat,
+            percent: otherDelegationsPercent,
+          },
+        },
+        iov
+      )
+    );
+  };
+
+  // Band Protocol
+
+  // Akash
+
+  // V Systems
+
+  // e-Money
+
+  // Solana
+
   useEffect(() => {
     try {
       getCosmos();
@@ -640,6 +782,7 @@ export const useForboleStakesHook = () => {
       getTerra();
       getKava();
       getLikeCoin();
+      getIOV();
     } catch (err) {
       console.log(err);
     }
@@ -651,6 +794,7 @@ export const useForboleStakesHook = () => {
     terra,
     kava,
     likecoin,
+    iov,
     selected,
     setSelected,
   };

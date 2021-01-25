@@ -8,7 +8,7 @@ const networkData = [
   { title: "terra", value: 20, color: "#499EFC" },
   { title: "kava", value: 15, color: "#31DDE6" },
   { title: "likecoin", value: 10, color: "#E6A531" },
-  { title: "Four", value: 5, color: "#CB86FF" },
+  { title: "startname", value: 5, color: "#CB86FF" },
   { title: "Four", value: 3, color: "#FF7753" },
   { title: "Four", value: 2, color: "#FDE425" },
 ];
