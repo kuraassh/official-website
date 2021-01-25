@@ -67,6 +67,9 @@ iov.gecko = "https://api.coingecko.com/api/v3/coins/starname";
 const likecoin = R.clone(defaultFunctions(uBandToBand));
 likecoin.gecko = "https://api.coingecko.com/api/v3/coins/likecoin";
 
+const vsys = R.clone(defaultFunctions(uBandToBand));
+vsys.gecko = "https://api.coingecko.com/api/v3/coins/v-systems";
+
 const iris: any = {
   bonded: (data: any) => {
     return Number(R.pathOr(0, ["bonded_tokens"], data));
@@ -107,5 +110,6 @@ export const networkFunctions = {
   likecoin,
   iris,
   band,
+  vsys,
   ["band-protocol"]: band,
 };

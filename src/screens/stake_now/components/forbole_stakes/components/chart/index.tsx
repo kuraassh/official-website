@@ -10,12 +10,25 @@ const networkData = [
   { title: "likecoin", value: 10, color: "#E6A531" },
   { title: "startname", value: 5, color: "#CB86FF" },
   { title: "band-protocol", value: 3, color: "#FF7753" },
-  { title: "Four", value: 2, color: "#FDE425" },
+  { title: "akash", value: 2, color: "#FDE425" },
 ];
 
 const Chart = (props: any) => {
   const { t } = useTranslation("stake_now");
-  const { selected, setSelected } = props;
+  const {
+    // cosmos,
+    // iris,
+    // terra,
+    // kava,
+    // likecoin,
+    // iov,
+    // band,
+    // akash,
+    selected,
+    setSelected,
+  } = props;
+
+  // console.log(cosmos.voting && cosmos.voting.percent);
 
   const lineWidth = 50;
   // change to pointer in future

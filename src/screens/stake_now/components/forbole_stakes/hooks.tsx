@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import * as R from "ramda";
 import { getNetworkInfo } from "@utils/network_info";
-import { networkFunctions, uIrisToIris } from "../../utils";
+import { networkFunctions } from "../../utils";
 import { convertToMoney } from "@utils/convert_to_money";
 
 export const useForboleStakesHook = () => {
@@ -888,8 +888,169 @@ export const useForboleStakesHook = () => {
   };
 
   // Akash
+  const [akash, setAkash] = useState({
+    title: "Akash",
+    totalAtom: 0,
+    totalMarketValue: "0.00",
+    currentMarketValue: "0.00",
+    denom: "AKT",
+    voting: {
+      title: "votingPower",
+      atom: 0,
+      percent: 0,
+    },
+    selfDelegations: {
+      title: "selfDelegations",
+      atom: 0,
+      percent: 0,
+    },
+    otherDelegations: {
+      title: "otherDelegations",
+      atom: 0,
+      percent: 0,
+    },
+  });
 
-  // V Systems
+  const getAkash = async () => {
+    const networkFunction = networkFunctions["akash"] ?? null;
+    const { calculator } = getNetworkInfo("akash");
+    console.log(getNetworkInfo("akash"));
+    const bondedApi = axios.post("/api/proxy", {
+      url: calculator.bonded,
+    });
+    const stakingParamsApi = axios.post("/api/proxy", {
+      url: calculator.stakingParams,
+    });
+    const delegationsApi = axios.post("/api/proxy", {
+      url:
+        "http://lcd.akash.forbole.com/staking/validators/akashvaloper14kn0kk33szpwus9nh8n87fjel8djx0y0uzn073/delegations",
+    });
+    const marketPriceApi = axios.get(networkFunction?.gecko);
+
+    const promises = [
+      bondedApi,
+      stakingParamsApi,
+      delegationsApi,
+      marketPriceApi,
+    ];
+
+    const [
+      { data: bondedJson },
+      { data: stakingParamsJson },
+      { data: delegationsJson },
+      { data: marketPriceJson },
+    ] = await Promise.all(promises);
+
+    const totalAkash = networkFunction?.converter(
+      Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
+    );
+    //console.log(totalLUNA);
+    const totalAkashFormat = convertToMoney(
+      networkFunction?.converter(
+        Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
+      )
+    );
+    //console.log(totalLUNAFormat);
+    const bonded = networkFunction?.bonded(bondedJson);
+    const currentMarketValue = networkFunction.marketPrice(marketPriceJson);
+    //console.log(currentMarketValue);
+    const totalMarketValue = convertToMoney(currentMarketValue * totalAkash);
+    const votingPowerPercent = convertToMoney((totalAkash / bonded) * 100, 2);
+    //==========================
+    // self-delegations
+    //==========================
+
+    const totalSelfDelegations1 = networkFunction?.converter(
+      R.pathOr([], ["result"], delegationsJson)
+        .filter(
+          (x) =>
+            x?.["delegator_address"] ===
+            "akash14kn0kk33szpwus9nh8n87fjel8djx0y0kqafwm"
+        )
+        .reduce((a, b) => (a += Number(b?.balance.amount) ?? 0), 0)
+    );
+    const totalSelfDelegations2 = networkFunction?.converter(
+      R.pathOr([], ["result"], delegationsJson)
+        .filter(
+          (x) =>
+            x?.["delegator_address"] ===
+            "akash1axa2p2klp4er2z0a29msplf9mtmq7ven7e06pv"
+        )
+        .reduce((a, b) => (a += Number(b?.balance.amount) ?? 0), 0)
+    );
+    const totalSelfDelegations3 = networkFunction?.converter(
+      R.pathOr([], ["result"], delegationsJson)
+        .filter(
+          (x) =>
+            x?.["delegator_address"] ===
+            "akash1um7qp57h59ec7ccezjxzlkvg25rylfmz08wduv"
+        )
+        .reduce((a, b) => (a += Number(b?.balance.amount) ?? 0), 0)
+    );
+    const totalSelfDelegations4 = networkFunction?.converter(
+      R.pathOr([], ["result"], delegationsJson)
+        .filter(
+          (x) =>
+            x?.["delegator_address"] ===
+            "akash1scc089xs8m67e34pt837z3je8m7950rvkzz88g"
+        )
+        .reduce((a, b) => (a += Number(b?.balance.amount) ?? 0), 0)
+    );
+    const totalSelfDelegations5 = networkFunction?.converter(
+      R.pathOr([], ["result"], delegationsJson)
+        .filter(
+          (x) =>
+            x?.["delegator_address"] ===
+            "akash1d3925a6vx08htfyzwf6al8xeq07a8re7zscprk"
+        )
+        .reduce((a, b) => (a += Number(b?.balance.amount) ?? 0), 0)
+    );
+    const totalSelfDelegations =
+      totalSelfDelegations1 +
+      totalSelfDelegations2 +
+      totalSelfDelegations3 +
+      totalSelfDelegations4 +
+      totalSelfDelegations5;
+    //console.log(totalSelfDelegations);
+    const totalSelfDelegationsFormat = convertToMoney(totalSelfDelegations);
+
+    const totalSelfDelegationsPercent = convertToMoney(
+      (totalSelfDelegations / bonded) * 100,
+      2
+    );
+    //console.log(totalSelfDelegationsPercent);
+    //==========================
+    // other-delegations
+    //==========================
+    const otherDelegations = totalAkash - totalSelfDelegations;
+    const otherDelegationsFormat = convertToMoney(otherDelegations);
+    const otherDelegationsPercent = convertToMoney(
+      (otherDelegations / bonded) * 100,
+      2
+    );
+    setAkash(
+      R.mergeDeepLeft(
+        {
+          totalAtom: totalAkashFormat,
+          totalMarketValue,
+          currentMarketValue,
+          voting: {
+            atom: totalAkashFormat,
+            percent: votingPowerPercent,
+          },
+          selfDelegations: {
+            atom: totalSelfDelegationsFormat,
+            percent: totalSelfDelegationsPercent,
+          },
+          otherDelegations: {
+            atom: otherDelegationsFormat,
+            percent: otherDelegationsPercent,
+          },
+        },
+        akash
+      )
+    );
+  };
 
   // e-Money
 
@@ -904,6 +1065,7 @@ export const useForboleStakesHook = () => {
       getLikeCoin();
       getIOV();
       getBAND();
+      getAkash();
     } catch (err) {
       console.log(err);
     }
@@ -917,6 +1079,7 @@ export const useForboleStakesHook = () => {
     likecoin,
     iov,
     band,
+    akash,
     selected,
     setSelected,
   };
