@@ -1053,7 +1053,127 @@ export const useForboleStakesHook = () => {
   };
 
   // e-Money
+  const [emoney, setEMoney] = useState({
+    title: "E-Money",
+    totalAtom: 0,
+    totalMarketValue: "0.00",
+    currentMarketValue: "0.00",
+    denom: "NGM",
+    voting: {
+      title: "votingPower",
+      atom: 0,
+      percent: 0,
+    },
+    selfDelegations: {
+      title: "selfDelegations",
+      atom: 0,
+      percent: 0,
+    },
+    otherDelegations: {
+      title: "otherDelegations",
+      atom: 0,
+      percent: 0,
+    },
+  });
 
+  const getEMoney = async () => {
+    const networkFunction = networkFunctions["emoney"] ?? null;
+    const { calculator } = getNetworkInfo(["e-money"]);
+    //console.log(getNetworkInfo(""));
+    const bondedApi = axios.post("/api/proxy", {
+      url: calculator.bonded,
+    });
+    const stakingParamsApi = axios.post("/api/proxy", {
+      url: calculator.stakingParams,
+    });
+    const delegationsApi = axios.post("/api/proxy", {
+      url:
+        "http://lcd.emoney.forbole.com/staking/validators/emoneyvaloper1293pqwtzu67zp8txuya4yts03ccw5kgf98hz9y/delegations",
+    });
+    const marketPriceApi = axios.get(networkFunction?.gecko);
+
+    const promises = [
+      bondedApi,
+      stakingParamsApi,
+      delegationsApi,
+      marketPriceApi,
+    ];
+
+    const [
+      { data: bondedJson },
+      { data: stakingParamsJson },
+      { data: delegationsJson },
+      { data: marketPriceJson },
+    ] = await Promise.all(promises);
+
+    const totalEMoney = networkFunction?.converter(
+      Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
+    );
+    //console.log(totalLUNA);
+    const totalEMoneyFormat = convertToMoney(
+      networkFunction?.converter(
+        Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
+      )
+    );
+    //console.log(totalLUNAFormat);
+    const bonded = networkFunction?.bonded(bondedJson);
+    const currentMarketValue = networkFunction.marketPrice(marketPriceJson);
+    //console.log(currentMarketValue);
+    const totalMarketValue = convertToMoney(currentMarketValue * totalEMoney);
+    const votingPowerPercent = convertToMoney((totalEMoney / bonded) * 100, 2);
+    //==========================
+    // self-delegations
+    //==========================
+
+    const totalSelfDelegations = networkFunction?.converter(
+      R.pathOr([], ["result"], delegationsJson)
+        .filter(
+          (x) =>
+            x?.["delegator_address"] ===
+            "emoney1293pqwtzu67zp8txuya4yts03ccw5kgfz83kmf"
+        )
+        .reduce((a, b) => (a += Number(b?.balance.amount) ?? 0), 0)
+    );
+    //console.log(totalSelfDelegations);
+    const totalSelfDelegationsFormat = convertToMoney(totalSelfDelegations);
+
+    const totalSelfDelegationsPercent = convertToMoney(
+      (totalSelfDelegations / bonded) * 100,
+      2
+    );
+    //console.log(totalSelfDelegationsPercent);
+    //==========================
+    // other-delegations
+    //==========================
+    const otherDelegations = totalEMoney - totalSelfDelegations;
+    const otherDelegationsFormat = convertToMoney(otherDelegations);
+    const otherDelegationsPercent = convertToMoney(
+      (otherDelegations / bonded) * 100,
+      2
+    );
+    setEMoney(
+      R.mergeDeepLeft(
+        {
+          totalAtom: totalEMoneyFormat,
+          totalMarketValue,
+          currentMarketValue,
+          voting: {
+            atom: totalEMoneyFormat,
+            percent: votingPowerPercent,
+          },
+          selfDelegations: {
+            atom: totalSelfDelegationsFormat,
+            percent: totalSelfDelegationsPercent,
+          },
+          otherDelegations: {
+            atom: otherDelegationsFormat,
+            percent: otherDelegationsPercent,
+          },
+        },
+        emoney
+      )
+    );
+  };
   // Solana
 
   useEffect(() => {
@@ -1066,6 +1186,7 @@ export const useForboleStakesHook = () => {
       getIOV();
       getBAND();
       getAkash();
+      getEMoney();
     } catch (err) {
       console.log(err);
     }
@@ -1080,6 +1201,7 @@ export const useForboleStakesHook = () => {
     iov,
     band,
     akash,
+    emoney,
     selected,
     setSelected,
   };

@@ -3,7 +3,7 @@ import { useTranslation } from "i18n";
 import { PieChart } from "react-minimal-pie-chart";
 
 const networkData = [
-  { title: "cosmosHub", value: 25, color: "#FF6767" },
+  { title: "cosmosHub", value: 20, color: "#FF6767" },
   { title: "irisnet", value: 25, color: "#50FFB4" },
   { title: "terra", value: 20, color: "#499EFC" },
   { title: "kava", value: 15, color: "#31DDE6" },
@@ -11,6 +11,7 @@ const networkData = [
   { title: "startname", value: 5, color: "#CB86FF" },
   { title: "band-protocol", value: 3, color: "#FF7753" },
   { title: "akash", value: 2, color: "#FDE425" },
+  { title: "emoney", value: 5, color: "#FDE688" },
 ];
 
 const Chart = (props: any) => {
