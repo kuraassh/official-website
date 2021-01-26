@@ -21,13 +21,5 @@ const nextConfig = {
 };
 
 module.exports = {
-  // async redirects() {
-  //   return [
-  //     {
-  //       source: "/blog/tag",
-  //       destination: "/tag", // The :path parameter isn't used here so will be automatically passed in the query
-  //     },
-  //   ];
-  // },
   css: withPlugins([[css]], nextConfig),
 };
