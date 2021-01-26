@@ -1174,6 +1174,132 @@ export const useForboleStakesHook = () => {
       )
     );
   };
+
+  // V System
+  const [vsys, setVSYS] = useState({
+    title: "V Systems",
+    totalAtom: 0,
+    totalMarketValue: "0.00",
+    currentMarketValue: "0.00",
+    denom: "VSYS",
+    voting: {
+      title: "votingPower",
+      atom: 0,
+      percent: 0,
+    },
+    selfDelegations: {
+      title: "selfDelegations",
+      atom: 0,
+      percent: 0,
+    },
+    otherDelegations: {
+      title: "otherDelegations",
+      atom: 0,
+      percent: 0,
+    },
+  });
+
+  const getVSYS = async () => {
+    const networkFunction = networkFunctions["vsys"] ?? null;
+    // const { calculator } = getNetworkInfo(["vsys"]);
+    //console.log(getNetworkInfo(""));
+    const bondedApi = axios.post("/api/proxy", {
+      url: "https://api.vsys.forbole.com/consensus/allSlotsInfo",
+    });
+    const selfDelegationsApi = axios.post("/api/proxy", {
+      url:
+        "https://api.vsys.forbole.com/addresses/balance/details/AR6AnRmynHBchobnxTr8rUvZyYEPNFsBBqE",
+    });
+    const tokensApi = axios.post("/api/proxy", {
+      url: "https://api.vsys.forbole.com/consensus/slotInfo/32",
+    });
+    const marketPriceApi = axios.get(networkFunction?.gecko);
+    //console.log(marketPriceApi);
+    const promises = [bondedApi, selfDelegationsApi, tokensApi, marketPriceApi];
+
+    const [
+      { data: bondedJson },
+      { data: selfDelegationsJson },
+      { data: tokensJson },
+      { data: marketPriceJson },
+    ] = await Promise.all(promises);
+    //console.log(tokensJson);
+
+    const totalVSYS = networkFunction?.converter(
+      Number(R.pathOr(0, ["mintingAverageBalance"], tokensJson))
+    );
+
+    const totalVSYStokens = totalVSYS / 100;
+    const totalVSYSFormat = convertToMoney(totalVSYStokens);
+    // console.log(totalVSYSFormat);
+    // console.log(`bonded`, bondedJson);
+    let bonded = 0;
+    for (let i = 1; i < bondedJson.length - 1; i++) {
+      bonded = bonded + bondedJson[i].mintingAverageBalance;
+    }
+    console.log(`bonded`, bonded);
+    const bondedTokens = bonded / 100000000;
+    console.log(`bonded tokens`, bondedTokens);
+
+    const currentMarketValue = networkFunction.marketPrice(marketPriceJson);
+    //console.log(currentMarketValue);
+    const totalMarketValue = convertToMoney(
+      currentMarketValue * totalVSYStokens
+    );
+    //console.log(totalMarketValue);
+    const votingPowerPercent = convertToMoney(
+      (totalVSYStokens / bondedTokens) * 100,
+      2
+    );
+    //console.log(votingPowerPercent);
+    //==========================
+    // self-delegations
+    //==========================
+    const totalSelfDelegations = networkFunction?.converter(
+      R.pathOr([], ["mintingAverage"], selfDelegationsJson)
+    );
+    console.log(`self delegation`, totalSelfDelegations);
+    const totalSelfDelegationsFormat = convertToMoney(totalSelfDelegations);
+
+    const totalSelfDelegationsPercent = convertToMoney(
+      (totalSelfDelegations / bondedTokens) * 100,
+      2
+    );
+    //console.log(totalSelfDelegationsPercent);
+
+    //==========================
+    // other-delegations
+    //==========================
+    const otherDelegations = totalVSYStokens - totalSelfDelegations;
+    console.log(otherDelegations);
+    const otherDelegationsFormat = convertToMoney(otherDelegations);
+    const otherDelegationsPercent = convertToMoney(
+      (otherDelegations / bondedTokens) * 100,
+      2
+    );
+    setVSYS(
+      R.mergeDeepLeft(
+        {
+          totalAtom: totalVSYSFormat,
+          totalMarketValue,
+          currentMarketValue,
+          voting: {
+            atom: totalVSYSFormat,
+            percent: votingPowerPercent,
+          },
+          selfDelegations: {
+            atom: totalSelfDelegationsFormat,
+            percent: totalSelfDelegationsPercent,
+          },
+          otherDelegations: {
+            atom: otherDelegationsFormat,
+            percent: otherDelegationsPercent,
+          },
+        },
+        vsys
+      )
+    );
+  };
   // Solana
 
   useEffect(() => {
@@ -1187,6 +1313,7 @@ export const useForboleStakesHook = () => {
       getBAND();
       getAkash();
       getEMoney();
+      getVSYS();
     } catch (err) {
       console.log(err);
     }
@@ -1202,6 +1329,7 @@ export const useForboleStakesHook = () => {
     band,
     akash,
     emoney,
+    vsys,
     selected,
     setSelected,
   };

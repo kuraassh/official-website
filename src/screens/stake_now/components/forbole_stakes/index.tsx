@@ -24,6 +24,7 @@ const ForboleStakes = () => {
     band,
     akash,
     emoney,
+    vsys,
     selected,
   } = hookProps;
   const selectedData = {
@@ -36,6 +37,7 @@ const ForboleStakes = () => {
     6: band,
     7: akash,
     8: emoney,
+    9: vsys,
   };
   const iconData = [
     "cosmos-hub",
@@ -47,6 +49,7 @@ const ForboleStakes = () => {
     "band-protocol",
     "akash",
     "e-money",
+    "v-system",
   ];
   return (
     <ForboleStakesCSS>
