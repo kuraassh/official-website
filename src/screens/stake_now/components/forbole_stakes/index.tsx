@@ -27,29 +27,17 @@ const ForboleStakes = () => {
     vsys,
     selected,
   } = hookProps;
-  const selectedData = {
-    0: cosmos,
-    1: iris,
-    2: terra,
-    3: kava,
-    4: likecoin,
-    5: iov,
-    6: band,
-    7: akash,
-    8: emoney,
-    9: vsys,
-  };
-  const iconData = [
-    "cosmos-hub",
-    "iris",
-    "terra",
-    "kava",
-    "likecoin",
-    "iov",
-    "band-protocol",
-    "akash",
-    "e-money",
-    "v-system",
+  const selectedData = [
+    { network: cosmos, icon: "cosmos-hub" },
+    { network: iris, icon: "iris" },
+    { network: terra, icon: "terra" },
+    { network: kava, icon: "kava" },
+    { network: likecoin, icon: "likecoin" },
+    { network: iov, icon: "iov" },
+    { network: band, icon: "band-protocol" },
+    { network: akash, icon: "akash" },
+    { network: emoney, icon: "e-money" },
+    { network: vsys, icon: "v-system" },
   ];
   return (
     <ForboleStakesCSS>
@@ -63,34 +51,34 @@ const ForboleStakes = () => {
         <StakesDetailsContainerCSS>
           <HubDetail
             main
-            name={iconData[selected]}
-            denom={selectedData[selected]?.denom}
-            title={selectedData[selected]?.title}
+            name={selectedData[selected].icon}
+            denom={selectedData[selected]?.network.denom}
+            title={selectedData[selected]?.network.title}
             // title={cosmos.title}
-            atom={selectedData[selected]?.totalAtom}
-            usd={selectedData[selected]?.totalMarketValue}
-            perAtom={selectedData[selected]?.currentMarketValue}
+            atom={selectedData[selected]?.network.totalAtom}
+            usd={selectedData[selected]?.network.totalMarketValue}
+            perAtom={selectedData[selected]?.network.currentMarketValue}
           />
           <hr className="stats-hr" />
           <HubDetail
-            denom={selectedData[selected]?.denom}
-            title={selectedData[selected]?.voting.title}
-            atom={selectedData[selected]?.voting.atom}
-            percent={selectedData[selected]?.voting.percent}
+            denom={selectedData[selected]?.network.denom}
+            title={selectedData[selected]?.network.voting.title}
+            atom={selectedData[selected]?.network.voting.atom}
+            percent={selectedData[selected]?.network.voting.percent}
           />
           <hr className="stats-hr" />
           <HubDetail
-            denom={selectedData[selected]?.denom}
-            title={selectedData[selected]?.selfDelegations.title}
-            atom={selectedData[selected]?.selfDelegations.atom}
-            percent={selectedData[selected]?.selfDelegations.percent}
+            denom={selectedData[selected]?.network.denom}
+            title={selectedData[selected]?.network.selfDelegations.title}
+            atom={selectedData[selected]?.network.selfDelegations.atom}
+            percent={selectedData[selected]?.network.selfDelegations.percent}
           />
           <hr className="stats-hr" />
           <HubDetail
-            denom={selectedData[selected]?.denom}
-            title={selectedData[selected]?.otherDelegations.title}
-            atom={selectedData[selected]?.otherDelegations.atom}
-            percent={selectedData[selected]?.otherDelegations.percent}
+            denom={selectedData[selected]?.network.denom}
+            title={selectedData[selected]?.network.otherDelegations.title}
+            atom={selectedData[selected]?.network.otherDelegations.atom}
+            percent={selectedData[selected]?.network.otherDelegations.percent}
           />
         </StakesDetailsContainerCSS>
       </FlexContainerCSS>
