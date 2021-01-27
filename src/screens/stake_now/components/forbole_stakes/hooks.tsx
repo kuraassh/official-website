@@ -506,9 +506,12 @@ export const useForboleStakesHook = () => {
             x?.["delegator_address"] ===
             "kava14kn0kk33szpwus9nh8n87fjel8djx0y08wynpx"
         )
-        .reduce((a, b) => (a += Number(b?.balance.amount) ?? 0), 0)
+        .reduce(
+          (a, b) => (a += Number(b?.balance.amount) ?? 0),
+          totalSelfDelegations1
+        )
     );
-    const totalSelfDelegations = totalSelfDelegations1 + totalSelfDelegations2;
+    const totalSelfDelegations = totalSelfDelegations2;
 
     const totalSelfDelegationsFormat = convertToMoney(totalSelfDelegations);
 
