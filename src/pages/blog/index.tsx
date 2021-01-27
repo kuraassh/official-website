@@ -1,6 +1,5 @@
 import Blog from "@screens/blog";
 import { getPosts, getTags } from "@api/posts";
-// import { getPostsByTag } from "@api/tags";
 import { Post, Tag } from "@models";
 import { removeInternalTags } from "@utils/remove_internal_tags";
 function BlogPage(props: any) {

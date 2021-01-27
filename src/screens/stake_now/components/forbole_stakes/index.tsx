@@ -17,7 +17,7 @@ const ForboleStakes = () => {
   const {
     cosmos,
     iris,
-    terra,
+    // terra,
     kava,
     likecoin,
     iov,
@@ -27,10 +27,11 @@ const ForboleStakes = () => {
     vsys,
     selected,
   } = hookProps;
+  console.log(`index:>>>>>>>>>>>>>>>`, cosmos);
   const selectedData = [
     { network: cosmos, icon: "cosmos-hub" },
+    { network: cosmos, icon: "terra" },
     { network: iris, icon: "iris" },
-    { network: terra, icon: "terra" },
     { network: kava, icon: "kava" },
     { network: likecoin, icon: "likecoin" },
     { network: iov, icon: "iov" },

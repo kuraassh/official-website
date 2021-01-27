@@ -5,16 +5,44 @@ import { getNetworkInfo } from "@utils/network_info";
 import { networkFunctions } from "../../utils";
 import { convertToMoney } from "@utils/convert_to_money";
 
+const solanaWeb3 = require("@solana/web3.js");
+
+const networkData = [
+  {
+    name: "cosmos",
+    title: "cosmos",
+    denom: "ATOM",
+    delegationsApi:
+      "http://lcd.cosmoshub.bigdipper.live/staking/delegators/cosmos14kn0kk33szpwus9nh8n87fjel8djx0y0mmswhp/delegations",
+    R: ["result", "tokens"],
+    x: "validator_address",
+    delegationsJson_R: ["result"],
+    validator_address: "cosmosvaloper14kn0kk33szpwus9nh8n87fjel8djx0y070ymmj",
+  },
+  {
+    name: "terra",
+    title: "terra-money",
+    denom: "LUNA",
+    R: ["result", "tokens"],
+    x: "delegator_address",
+    delegationsApi:
+      "https://lcd.terra.bigdipper.live/staking/validators/terravaloper1jkqr2vfg4krfd4zwmsf7elfj07cjuzss30ux8g/delegations",
+    delegationsJson_R: ["result"],
+    validator_address: "terra1jkqr2vfg4krfd4zwmsf7elfj07cjuzss3qsmhm",
+  },
+];
+
 export const useForboleStakesHook = () => {
   const [selected, setSelected] = useState(0);
+  console.log(`>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>`, selected);
 
   // Cosmos Hub / ATOM
   const [cosmos, setCosmos] = useState({
-    title: "cosmosHub",
+    title: networkData[selected].title,
     totalAtom: 0,
     totalMarketValue: "0.00",
     currentMarketValue: "0.00",
-    denom: "ATOM",
+    denom: networkData[selected].denom,
     voting: {
       title: "votingPower",
       atom: 0,
@@ -31,10 +59,13 @@ export const useForboleStakesHook = () => {
       percent: 0,
     },
   });
+  console.log(`denom`, cosmos.denom);
 
   const getCosmos = async () => {
-    const networkFunction = networkFunctions["cosmos"] ?? null;
-    const { calculator } = getNetworkInfo("cosmos");
+    const networkFunction =
+      networkFunctions[networkData[selected].name] ?? null;
+    console.log(networkFunction);
+    const { calculator } = getNetworkInfo(networkData[selected].title);
     const bondedApi = axios.post("/api/proxy", {
       url: calculator.bonded,
     });
@@ -42,8 +73,7 @@ export const useForboleStakesHook = () => {
       url: calculator.stakingParams,
     });
     const delegationsApi = axios.post("/api/proxy", {
-      url:
-        "http://lcd.cosmoshub.bigdipper.live/staking/delegators/cosmos14kn0kk33szpwus9nh8n87fjel8djx0y0mmswhp/delegations",
+      url: networkData[selected].delegationsApi,
     });
     const marketPriceApi = axios.get(networkFunction?.gecko);
 
@@ -63,7 +93,8 @@ export const useForboleStakesHook = () => {
     const totalAtom = networkFunction?.converter(
       Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
     );
-    //console.log(stakingParamsJson);
+    console.log(stakingParamsJson);
+    console.log(`cosmos hooks >>>>>>>>>>>>:`, totalAtom);
     const totalAtomFormat = convertToMoney(
       networkFunction?.converter(
         Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
@@ -83,12 +114,12 @@ export const useForboleStakesHook = () => {
       R.pathOr([], ["result"], delegationsJson)
         .filter(
           (x) =>
-            x?.["validator_address"] ===
-            "cosmosvaloper14kn0kk33szpwus9nh8n87fjel8djx0y070ymmj"
+            x?.[networkData[selected].x] ===
+            networkData[selected].validator_address
         )
         .reduce((a, b) => (a += Number(b?.balance) ?? 0), 0)
     );
-    //console.log(totalSelfDelegations);
+    console.log(`1`, totalSelfDelegations);
     const totalSelfDelegationsFormat = convertToMoney(totalSelfDelegations);
     const totalSelfDelegationsPercent = convertToMoney(
       (totalSelfDelegations / bonded) * 100,
@@ -104,9 +135,12 @@ export const useForboleStakesHook = () => {
       (otherDelegations / bonded) * 100,
       2
     );
+
     setCosmos(
       R.mergeDeepLeft(
         {
+          title: networkData[selected].title,
+          denom: networkData[selected].denom,
           totalAtom: totalAtomFormat,
           totalMarketValue,
           currentMarketValue,
@@ -127,6 +161,7 @@ export const useForboleStakesHook = () => {
       )
     );
   };
+  console.log(`cosmos`, cosmos);
 
   // IRIS
   const [iris, setIris] = useState({
@@ -1302,6 +1337,41 @@ export const useForboleStakesHook = () => {
   };
   // Solana
 
+  const [solana, setSolana] = useState({
+    title: "Solana",
+    totalAtom: 0,
+    totalMarketValue: "0.00",
+    currentMarketValue: "0.00",
+    denom: "SOL",
+    voting: {
+      title: "votingPower",
+      atom: 0,
+      percent: 0,
+    },
+    selfDelegations: {
+      title: "selfDelegations",
+      atom: 0,
+      percent: 0,
+    },
+    otherDelegations: {
+      title: "otherDelegations",
+      atom: 0,
+      percent: 0,
+    },
+  });
+  const getSolana = async () => {
+    const networkFunction = networkFunctions["solana"] ?? null;
+    const marketPriceApi = axios.get(networkFunction?.gecko);
+    // const [{ data: solanaInfo }] = await solanaWeb3.getVoteAccounts(Promise);
+    const solanaInfo = await solanaWeb3.Connection.getVoteAccounts;
+
+    // const promises = [marketPriceApi];
+
+    // const [{ data: marketPriceJson }] = await Promise.all(promises);
+
+    console.log(solanaInfo);
+  };
+
   useEffect(() => {
     try {
       getCosmos();
@@ -1314,10 +1384,11 @@ export const useForboleStakesHook = () => {
       getAkash();
       getEMoney();
       getVSYS();
+      // getSolana();
     } catch (err) {
       console.log(err);
     }
-  }, []);
+  }, [selected]);
 
   return {
     cosmos,
@@ -1334,3 +1405,4 @@ export const useForboleStakesHook = () => {
     setSelected,
   };
 };
+// };

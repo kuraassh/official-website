@@ -1,6 +1,5 @@
 import { getPosts, getTags } from "@api/posts";
 import TagTitlePosts from "@screens/tag";
-// import { getPostsByTag } from "@api/tags";
 import { Post, Tag } from "@models";
 import { removeInternalTags } from "@utils/remove_internal_tags";
 function BlogPage(props: any) {
@@ -26,8 +25,6 @@ BlogPage.getInitialProps = async ({ query }) => {
       getPosts({
         limit: 10,
       }),
-      // Rachel's to-do:
-      // getPostsByTag(formattedTags),
     ]);
 
     formattedPosts = posts.map((post) => Post.fromJson(post, {}));

@@ -4,7 +4,7 @@ import { PieChart } from "react-minimal-pie-chart";
 
 const networkData = [
   { title: "cosmosHub", value: 20, color: "#FF6767" },
-  { title: "irisnet", value: 20, color: "#50FFB4" },
+  // { title: "irisnet", value: 20, color: "#50FFB4" },
   { title: "terra", value: 20, color: "#499EFC" },
   { title: "kava", value: 15, color: "#31DDE6" },
   { title: "likecoin", value: 10, color: "#E6A531" },
@@ -17,20 +17,7 @@ const networkData = [
 
 const Chart = (props: any) => {
   const { t } = useTranslation("stake_now");
-  const {
-    // cosmos,
-    // iris,
-    // terra,
-    // kava,
-    // likecoin,
-    // iov,
-    // band,
-    // akash,
-    selected,
-    setSelected,
-  } = props;
-
-  // console.log(cosmos.voting && cosmos.voting.percent);
+  const { selected, setSelected } = props;
 
   const lineWidth = 50;
   // change to pointer in future
