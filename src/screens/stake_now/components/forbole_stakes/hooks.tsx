@@ -5,12 +5,13 @@ import { getNetworkInfo } from "@utils/network_info";
 import { networkFunctions } from "../../utils";
 import { convertToMoney } from "@utils/convert_to_money";
 
-const solanaWeb3 = require("@solana/web3.js");
+// const solanaWeb3 = require("@solana/web3.js");
 
 const networkData = [
   {
+    title: "Cosmos",
     name: "cosmos",
-    title: "cosmos",
+    network: "cosmos",
     denom: "ATOM",
     delegationsApi:
       "http://lcd.cosmoshub.bigdipper.live/staking/delegators/cosmos14kn0kk33szpwus9nh8n87fjel8djx0y0mmswhp/delegations",
@@ -20,8 +21,9 @@ const networkData = [
     validator_address: "cosmosvaloper14kn0kk33szpwus9nh8n87fjel8djx0y070ymmj",
   },
   {
+    title: "Terra",
     name: "terra",
-    title: "terra-money",
+    network: "terra-money",
     denom: "LUNA",
     R: ["result", "tokens"],
     x: "delegator_address",
@@ -65,7 +67,7 @@ export const useForboleStakesHook = () => {
     const networkFunction =
       networkFunctions[networkData[selected].name] ?? null;
     console.log(networkFunction);
-    const { calculator } = getNetworkInfo(networkData[selected].title);
+    const { calculator } = getNetworkInfo(networkData[selected].network);
     const bondedApi = axios.post("/api/proxy", {
       url: calculator.bonded,
     });
@@ -1335,42 +1337,42 @@ export const useForboleStakesHook = () => {
       )
     );
   };
-  // Solana
 
-  const [solana, setSolana] = useState({
-    title: "Solana",
-    totalAtom: 0,
-    totalMarketValue: "0.00",
-    currentMarketValue: "0.00",
-    denom: "SOL",
-    voting: {
-      title: "votingPower",
-      atom: 0,
-      percent: 0,
-    },
-    selfDelegations: {
-      title: "selfDelegations",
-      atom: 0,
-      percent: 0,
-    },
-    otherDelegations: {
-      title: "otherDelegations",
-      atom: 0,
-      percent: 0,
-    },
-  });
-  const getSolana = async () => {
-    const networkFunction = networkFunctions["solana"] ?? null;
-    const marketPriceApi = axios.get(networkFunction?.gecko);
-    // const [{ data: solanaInfo }] = await solanaWeb3.getVoteAccounts(Promise);
-    const solanaInfo = await solanaWeb3.Connection.getVoteAccounts;
+  // // Solana
+  // const [solana, setSolana] = useState({
+  //   title: "Solana",
+  //   totalAtom: 0,
+  //   totalMarketValue: "0.00",
+  //   currentMarketValue: "0.00",
+  //   denom: "SOL",
+  //   voting: {
+  //     title: "votingPower",
+  //     atom: 0,
+  //     percent: 0,
+  //   },
+  //   selfDelegations: {
+  //     title: "selfDelegations",
+  //     atom: 0,
+  //     percent: 0,
+  //   },
+  //   otherDelegations: {
+  //     title: "otherDelegations",
+  //     atom: 0,
+  //     percent: 0,
+  //   },
+  // });
+  // const getSolana = async () => {
+  //   const networkFunction = networkFunctions["solana"] ?? null;
+  //   const marketPriceApi = axios.get(networkFunction?.gecko);
+  //   // const [{ data: solanaInfo }] = await solanaWeb3.getVoteAccounts(Promise);
+  //   const solanaInfo = await solanaWeb3.Connection.getVoteAccounts;
 
-    // const promises = [marketPriceApi];
+  //   // const promises = [marketPriceApi];
 
-    // const [{ data: marketPriceJson }] = await Promise.all(promises);
+  //   // const [{ data: marketPriceJson }] = await Promise.all(promises);
 
-    console.log(solanaInfo);
-  };
+  //   console.log(solanaInfo);
+  // };
 
   useEffect(() => {
     try {

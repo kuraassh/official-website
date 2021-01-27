@@ -240,3 +240,6 @@ export const HEIGHT_QUERY =
 
 export const POLKADOT_HEIGHT_QUERY =
   '{"jsonrpc": "2.0","method": "chain_subscribeAllHeads","id":"0","params":[]}';
+
+export const VOTE_HEIGHT_QUERY =
+  '{"jsonrpc": "2.0","id": "1", "method": "getVoteAccounts"}';
