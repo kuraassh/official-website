@@ -119,8 +119,12 @@ export const useForboleStakesHook = () => {
             x?.[networkData[selected].x] ===
             networkData[selected].validator_address
         )
-        .reduce((a, b) => (a += Number(b?.balance) ?? 0), 0)
+        .reduce(
+          (a, b) => (a += Number(b?.balance?.amount ?? b?.balance) ?? 0),
+          0
+        )
     );
+
     console.log(`1`, totalSelfDelegations);
     const totalSelfDelegationsFormat = convertToMoney(totalSelfDelegations);
     const totalSelfDelegationsPercent = convertToMoney(
@@ -163,6 +167,7 @@ export const useForboleStakesHook = () => {
       )
     );
   };
+
   console.log(`cosmos`, cosmos);
 
   // IRIS
