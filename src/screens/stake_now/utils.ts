@@ -19,6 +19,8 @@ export const uBandToBand = defaultConverter(1000000);
 
 export const uIovToIov = defaultConverter(1000000);
 
+export const uEMoneyToEMoney = defaultConverter(1000000);
+
 export const uIrisToIris = defaultConverter(1000000000000000000);
 
 export const nanoLikeToLike = defaultConverter(1000000000);
@@ -61,10 +63,10 @@ akash.gecko = "https://api.coingecko.com/api/v3/coins/akash-network";
 const band = R.clone(defaultFunctions(uBandToBand));
 band.gecko = "https://api.coingecko.com/api/v3/coins/band-protocol";
 
-const iov = R.clone(defaultFunctions(uBandToBand));
+const iov = R.clone(defaultFunctions(uIovToIov));
 iov.gecko = "https://api.coingecko.com/api/v3/coins/starname";
 
-const likecoin = R.clone(defaultFunctions(uBandToBand));
+const likecoin = R.clone(defaultFunctions(nanoLikeToLike));
 likecoin.gecko = "https://api.coingecko.com/api/v3/coins/likecoin";
 
 const vsys = R.clone(defaultFunctions(uBandToBand));

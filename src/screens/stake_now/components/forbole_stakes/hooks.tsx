@@ -8,7 +8,7 @@ import { Network } from "@models";
 
 // const solanaWeb3 = require("@solana/web3.js");
 
-const networkData = [
+const cosmosData = [
   {
     title: "Cosmos",
     name: "cosmos",
@@ -30,17 +30,6 @@ const networkData = [
       "https://lcd.terra.bigdipper.live/staking/validators/terravaloper1jkqr2vfg4krfd4zwmsf7elfj07cjuzss30ux8g/delegations",
     delegationsJson_R: ["result"],
     validator_address: ["terra1jkqr2vfg4krfd4zwmsf7elfj07cjuzss3qsmhm"],
-  },
-  {
-    title: "Iris",
-    name: "iris",
-    network: "iris",
-    denom: "IRIS",
-    x: "delegator_addr",
-    delegationsApi:
-      "http://lcd.iris.bigdipper.live/stake/validators/iva1msqqkd3v0gmullzwm56c4frevyczzxfeczvjru/delegations",
-    delegationsJson_R: ["result"],
-    validator_address: ["iaa1msqqkd3v0gmullzwm56c4frevyczzxfednxa7m"],
   },
   {
     title: "Kava",
@@ -114,6 +103,22 @@ const networkData = [
       "http://lcd.emoney.forbole.com/staking/validators/emoneyvaloper1293pqwtzu67zp8txuya4yts03ccw5kgf98hz9y/delegations",
     validator_address: ["emoney1293pqwtzu67zp8txuya4yts03ccw5kgfz83kmf"],
   },
+];
+
+const irisData = [
+  {
+    title: "Iris",
+    name: "iris",
+    network: "iris",
+    denom: "IRIS",
+    x: "delegator_addr",
+    delegationsApi:
+      "http://lcd.iris.bigdipper.live/stake/validators/iva1msqqkd3v0gmullzwm56c4frevyczzxfeczvjru/delegations",
+    delegationsJson_R: ["result"],
+    validator_address: ["iaa1msqqkd3v0gmullzwm56c4frevyczzxfednxa7m"],
+  },
+];
+const vsysData = [
   {
     title: "V Systems",
     name: "vsys",
@@ -130,136 +135,326 @@ const networkData = [
 export const useForboleStakesHook = () => {
   const [selected, setSelected] = useState(0);
   // Cosmos Hub / ATOM
-  const [cosmos, setCosmos] = useState({
-    title: networkData[selected].title ?? null,
-    totalAtom: 0,
-    totalMarketValue: "0.00",
-    currentMarketValue: "0.00",
-    denom: networkData[selected].denom ?? null,
-    voting: {
-      title: "votingPower",
-      atom: 0,
-      percent: 0,
-    },
-    selfDelegations: {
-      title: "selfDelegations",
-      atom: 0,
-      percent: 0,
-    },
-    otherDelegations: {
-      title: "otherDelegations",
-      atom: 0,
-      percent: 0,
-    },
-  });
 
-  const getCosmos = async () => {
-    const networkFunction =
-      networkFunctions[networkData[selected]?.name] ?? null;
-    console.log(networkFunction);
-    const { calculator } = getNetworkInfo(
-      networkData[selected]?.network ?? null
-    );
-    const bondedApi = axios.post("/api/proxy", {
-      url: calculator.bonded,
-    });
-    const stakingParamsApi = axios.post("/api/proxy", {
-      url: calculator.stakingParams,
-    });
-    const delegationsApi = axios.post("/api/proxy", {
-      url: networkData[selected]?.delegationsApi,
-    });
-    const marketPriceApi = axios.get(networkFunction?.gecko);
+  const [cosmosNetwork, setCosmosNetwork] = useState([
+    {
+      title: cosmosData[0].title ?? null,
+      totalAtom: 0,
+      totalMarketValue: "0.00",
+      currentMarketValue: "0.00",
+      denom: cosmosData[0].denom ?? null,
+      voting: {
+        title: "votingPower",
+        atom: 0,
+        percent: 0,
+      },
+      selfDelegations: {
+        title: "selfDelegations",
+        atom: 0,
+        percent: 0,
+      },
+      otherDelegations: {
+        title: "otherDelegations",
+        atom: 0,
+        percent: 0,
+      },
+    },
+    {
+      title: cosmosData[1].title ?? null,
+      totalAtom: 0,
+      totalMarketValue: "0.00",
+      currentMarketValue: "0.00",
+      denom: cosmosData[1].denom ?? null,
+      voting: {
+        title: "votingPower",
+        atom: 0,
+        percent: 0,
+      },
+      selfDelegations: {
+        title: "selfDelegations",
+        atom: 0,
+        percent: 0,
+      },
+      otherDelegations: {
+        title: "otherDelegations",
+        atom: 0,
+        percent: 0,
+      },
+    },
+    {
+      title: cosmosData[2].title ?? null,
+      totalAtom: 0,
+      totalMarketValue: "0.00",
+      currentMarketValue: "0.00",
+      denom: cosmosData[2].denom ?? null,
+      voting: {
+        title: "votingPower",
+        atom: 0,
+        percent: 0,
+      },
+      selfDelegations: {
+        title: "selfDelegations",
+        atom: 0,
+        percent: 0,
+      },
+      otherDelegations: {
+        title: "otherDelegations",
+        atom: 0,
+        percent: 0,
+      },
+    },
+    {
+      title: cosmosData[3].title ?? null,
+      totalAtom: 0,
+      totalMarketValue: "0.00",
+      currentMarketValue: "0.00",
+      denom: cosmosData[3].denom ?? null,
+      voting: {
+        title: "votingPower",
+        atom: 0,
+        percent: 0,
+      },
+      selfDelegations: {
+        title: "selfDelegations",
+        atom: 0,
+        percent: 0,
+      },
+      otherDelegations: {
+        title: "otherDelegations",
+        atom: 0,
+        percent: 0,
+      },
+    },
+    {
+      title: cosmosData[4].title ?? null,
+      totalAtom: 0,
+      totalMarketValue: "0.00",
+      currentMarketValue: "0.00",
+      denom: cosmosData[4].denom ?? null,
+      voting: {
+        title: "votingPower",
+        atom: 0,
+        percent: 0,
+      },
+      selfDelegations: {
+        title: "selfDelegations",
+        atom: 0,
+        percent: 0,
+      },
+      otherDelegations: {
+        title: "otherDelegations",
+        atom: 0,
+        percent: 0,
+      },
+    },
+    {
+      title: cosmosData[5].title ?? null,
+      totalAtom: 0,
+      totalMarketValue: "0.00",
+      currentMarketValue: "0.00",
+      denom: cosmosData[5].denom ?? null,
+      voting: {
+        title: "votingPower",
+        atom: 0,
+        percent: 0,
+      },
+      selfDelegations: {
+        title: "selfDelegations",
+        atom: 0,
+        percent: 0,
+      },
+      otherDelegations: {
+        title: "otherDelegations",
+        atom: 0,
+        percent: 0,
+      },
+    },
+    {
+      title: cosmosData[6].title ?? null,
+      totalAtom: 0,
+      totalMarketValue: "0.00",
+      currentMarketValue: "0.00",
+      denom: cosmosData[6].denom ?? null,
+      voting: {
+        title: "votingPower",
+        atom: 0,
+        percent: 0,
+      },
+      selfDelegations: {
+        title: "selfDelegations",
+        atom: 0,
+        percent: 0,
+      },
+      otherDelegations: {
+        title: "otherDelegations",
+        atom: 0,
+        percent: 0,
+      },
+    },
+    {
+      title: cosmosData[7].title ?? null,
+      totalAtom: 0,
+      totalMarketValue: "0.00",
+      currentMarketValue: "0.00",
+      denom: cosmosData[7].denom ?? null,
+      voting: {
+        title: "votingPower",
+        atom: 0,
+        percent: 0,
+      },
+      selfDelegations: {
+        title: "selfDelegations",
+        atom: 0,
+        percent: 0,
+      },
+      otherDelegations: {
+        title: "otherDelegations",
+        atom: 0,
+        percent: 0,
+      },
+    },
+  ]);
 
-    const promises = [
-      bondedApi,
-      stakingParamsApi,
-      delegationsApi,
-      marketPriceApi,
-    ];
+  const getCosmosBasedNetwork = async () => {
+    const updatedArr = [];
+    for (let x = 0; x < cosmosData.length; x++) {
+      const networkFunction = networkFunctions[cosmosData[x]?.name] ?? null;
+      console.log(cosmosData[x]);
+      const { calculator } = getNetworkInfo(cosmosData[x]?.network ?? null);
+      const bondedApi = axios.post("/api/proxy", {
+        url: calculator.bonded,
+      });
+      const stakingParamsApi = axios.post("/api/proxy", {
+        url: calculator.stakingParams,
+      });
+      const delegationsApi = axios.post("/api/proxy", {
+        url: cosmosData[x]?.delegationsApi,
+      });
+      const marketPriceApi = axios.get(networkFunction?.gecko);
 
-    const [
-      { data: bondedJson },
-      { data: stakingParamsJson },
-      { data: delegationsJson },
-      { data: marketPriceJson },
-    ] = await Promise.all(promises);
-    const totalAtom = networkFunction?.converter(
-      Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
-    );
-    const totalAtomFormat = convertToMoney(
-      networkFunction?.converter(
+      const promises = [
+        bondedApi,
+        stakingParamsApi,
+        delegationsApi,
+        marketPriceApi,
+      ];
+
+      const [
+        { data: bondedJson },
+        { data: stakingParamsJson },
+        { data: delegationsJson },
+        { data: marketPriceJson },
+      ] = await Promise.all(promises);
+      const totalAtom = networkFunction?.converter(
         Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
-      )
-    );
-
-    const bonded = networkFunction?.bonded(bondedJson);
-    const currentMarketValue = networkFunction.marketPrice(marketPriceJson);
-
-    const totalMarketValue = convertToMoney(currentMarketValue * totalAtom);
-    const votingPowerPercent = convertToMoney((totalAtom / bonded) * 100, 2);
-    //==========================
-    // self-delegations
-    //==========================
-
-    let totalSelfDelegations = 0;
-
-    for (let i = 0; i < networkData[selected].validator_address.length; i++) {
-      const totalSelfDelegation = networkFunction?.converter(
-        R.pathOr([], ["result"], delegationsJson)
-          .filter(
-            (x) =>
-              x?.[networkData[selected]?.x ?? null] ===
-                networkData[selected]?.validator_address[i] ?? null
-          )
-          .reduce(
-            (a, b) => (a += Number(b?.balance?.amount ?? b?.balance) ?? 0),
-            totalSelfDelegations ?? 0
-          )
       );
-      totalSelfDelegations += totalSelfDelegation;
-    }
+      const totalAtomFormat = convertToMoney(
+        networkFunction?.converter(
+          Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
+        )
+      );
 
-    const totalSelfDelegationsFormat = convertToMoney(totalSelfDelegations);
-    const totalSelfDelegationsPercent = convertToMoney(
-      (totalSelfDelegations / bonded) * 100,
-      2
-    );
+      const bonded = networkFunction?.bonded(bondedJson);
+      const currentMarketValue = networkFunction.marketPrice(marketPriceJson);
 
-    //==========================
-    // other-delegations
-    //==========================
-    const otherDelegations = totalAtom - totalSelfDelegations;
-    const otherDelegationsFormat = convertToMoney(otherDelegations);
-    const otherDelegationsPercent = convertToMoney(
-      (otherDelegations / bonded) * 100,
-      2
-    );
+      const totalMarketValue = convertToMoney(currentMarketValue * totalAtom);
+      const votingPowerPercent = convertToMoney((totalAtom / bonded) * 100, 2);
+      //==========================
+      // self-delegations
+      //==========================
 
-    setCosmos(
-      R.mergeDeepLeft(
-        {
-          title: networkData[selected]?.title,
-          denom: networkData[selected]?.denom,
-          totalAtom: totalAtomFormat,
-          totalMarketValue,
-          currentMarketValue,
-          voting: {
-            atom: totalAtomFormat,
-            percent: votingPowerPercent,
-          },
-          selfDelegations: {
-            atom: totalSelfDelegationsFormat,
-            percent: totalSelfDelegationsPercent,
-          },
-          otherDelegations: {
-            atom: otherDelegationsFormat,
-            percent: otherDelegationsPercent,
-          },
+      let totalSelfDelegations = 0;
+
+      for (let i = 0; i < cosmosData[x].validator_address.length; i++) {
+        const totalSelfDelegation = networkFunction?.converter(
+          R.pathOr([], ["result"], delegationsJson)
+            .filter(
+              (y) =>
+                y?.[cosmosData[x]?.x ?? null] ===
+                  cosmosData[x]?.validator_address[i] ?? null
+            )
+            .reduce(
+              (a, b) => (a += Number(b?.balance?.amount ?? b?.balance) ?? 0),
+              totalSelfDelegations ?? 0
+            )
+        );
+        totalSelfDelegations += totalSelfDelegation;
+      }
+
+      const totalSelfDelegationsFormat = convertToMoney(totalSelfDelegations);
+      const totalSelfDelegationsPercent = convertToMoney(
+        (totalSelfDelegations / bonded) * 100,
+        2
+      );
+
+      //==========================
+      // other-delegations
+      //==========================
+      const otherDelegations = totalAtom - totalSelfDelegations;
+      const otherDelegationsFormat = convertToMoney(otherDelegations);
+      const otherDelegationsPercent = convertToMoney(
+        (otherDelegations / bonded) * 100,
+        2
+      );
+
+      // const totalUSD = async () => {
+      //   for (let x = 0; x < networkData.length; x++) {
+      //     const marketPriceApi = await axios.get(
+      //       networkFunction[networkData[x].name]?.gecko
+      //     );
+      //     console.log(marketPriceApi);
+      //   }
+      // };
+      // console.log(cosmosData[x]?.title);
+
+      updatedArr.push({
+        // totalUSD: setInterval(totalUSD, 100000000),
+        title: cosmosData[x]?.title,
+        denom: cosmosData[x]?.denom,
+        totalAtom: totalAtomFormat,
+        totalMarketValue,
+        currentMarketValue,
+        voting: {
+          atom: totalAtomFormat,
+          percent: votingPowerPercent,
         },
-        cosmos
-      )
-    );
+        selfDelegations: {
+          atom: totalSelfDelegationsFormat,
+          percent: totalSelfDelegationsPercent,
+        },
+        otherDelegations: {
+          atom: otherDelegationsFormat,
+          percent: otherDelegationsPercent,
+        },
+      });
+      //console.log(updatedArr);
+    }
+    // setCosmosNetwork((oldArr) => ({
+    //   ...oldArr,
+    //   x: R.mergeDeepLeft({
+    //     // totalUSD: setInterval(totalUSD, 100000000),
+    //     title: cosmosData[x]?.title,
+    //     denom: cosmosData[x]?.denom,
+    //     totalAtom: totalAtomFormat,
+    //     totalMarketValue,
+    //     currentMarketValue,
+    //     voting: {
+    //       atom: totalAtomFormat,
+    //       percent: votingPowerPercent,
+    //     },
+    //     selfDelegations: {
+    //       atom: totalSelfDelegationsFormat,
+    //       percent: totalSelfDelegationsPercent,
+    //     },
+    //     otherDelegations: {
+    //       atom: otherDelegationsFormat,
+    //       percent: otherDelegationsPercent,
+    //     },
+    //   }),
+    // }));
+
+    //console.log(updatedArr);
+    setCosmosNetwork(updatedArr);
   };
 
   // IRIS
@@ -388,25 +583,6 @@ export const useForboleStakesHook = () => {
       )
     );
   };
-
-  const dataMap = {
-    0: getCosmos && getIris,
-    1: getCosmos,
-    2: getIris,
-    3: getCosmos,
-    // 1: {
-    //   dataFunction: getIris,
-    // },
-    // 2: {
-    //   dataFunction: getVSYS,
-    // },
-  };
-
-  const [state, setState] = useState({
-    0: new Network({}),
-    1: new Network({}),
-    2: new Network({}),
-  });
 
   // TERRA
   const [terra, setTerra] = useState({
@@ -1457,86 +1633,35 @@ export const useForboleStakesHook = () => {
     );
   };
 
-  // // Solana
-  // const [solana, setSolana] = useState({
-  //   title: "Solana",
-  //   totalAtom: 0,
-  //   totalMarketValue: "0.00",
-  //   currentMarketValue: "0.00",
-  //   denom: "SOL",
-  //   voting: {
-  //     title: "votingPower",
-  //     atom: 0,
-  //     percent: 0,
-  //   },
-  //   selfDelegations: {
-  //     title: "selfDelegations",
-  //     atom: 0,
-  //     percent: 0,
-  //   },
-  //   otherDelegations: {
-  //     title: "otherDelegations",
-  //     atom: 0,
-  //     percent: 0,
-  //   },
-  // });
-  // const getSolana = async () => {
-  //   const networkFunction = networkFunctions["solana"] ?? null;
-  //   const marketPriceApi = axios.get(networkFunction?.gecko);
-  //   // const [{ data: solanaInfo }] = await solanaWeb3.getVoteAccounts(Promise);
-  //   const solanaInfo = await solanaWeb3.Connection.getVoteAccounts;
-
-  //   // const promises = [marketPriceApi];
-
-  //   // const [{ data: marketPriceJson }] = await Promise.all(promises);
-
-  //   console.log(solanaInfo);
-  // };
+  // console.log(getCosmosBasedNetwork(0));
+  // console.log(getCosmosBasedNetwork(1));
 
   useEffect(() => {
     try {
-      if (selected < 2) {
-        getCosmos();
-      }
-      if (selected == 2) {
-        getIris();
-      }
-      // getTerra();
-      // getKava();
-      if (selected > 2 && selected < 9) {
-        getCosmos();
-      }
-      if (selected == 9) {
-        getVSYS();
-      }
-      // getIOV();
-      // getBAND();
-      // getAkash();
-      // getEMoney();
-      // getVSYS();
-      // getSolana();
-      // if (state[selected] === null && dataMap[selected]) {
-      //   dataMap[selected];
+      getCosmosBasedNetwork();
+      // if (selected < 2) {
+      //   getCosmos();
+      // }
+      // if (selected == 2) {
+      //   getIris();
+      // }
+      // if (selected > 2 && selected < 9) {
+      //   getCosmos();
+      // }
+      // if (selected == 9) {
+      //   getVSYS();
       // }
     } catch (err) {
       console.log(err);
     }
-  }, [selected]);
+  }, []);
 
   return {
-    cosmos,
+    cosmosNetwork,
+    // cosmos,
     iris,
-    // terra,
-    // kava,
-    // likecoin,
-    // iov,
-    // band,
-    // akash,
-    // emoney,
     vsys,
     selected,
     setSelected,
-    // data: state[selected],
   };
 };
-// };

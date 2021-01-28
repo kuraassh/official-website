@@ -14,18 +14,18 @@ import { useForboleStakesHook } from "./hooks";
 const ForboleStakes = () => {
   const { t } = useTranslation("stake_now");
   const hookProps = useForboleStakesHook();
-  const { cosmos, iris, vsys, selected } = hookProps;
-  console.log(`index:>>>>>>>>>>>>>>>`, cosmos);
+  const { cosmosNetwork, iris, vsys, selected } = hookProps;
+  console.log(`index:>>>>>>>>>>>>>>>`, cosmosNetwork);
   const selectedData = [
-    { network: cosmos, icon: "cosmos-hub" },
-    { network: cosmos, icon: "terra" },
+    { network: cosmosNetwork, icon: "cosmos-hub" },
+    { network: cosmosNetwork, icon: "terra" },
     { network: iris, icon: "iris" },
-    { network: cosmos, icon: "kava" },
-    { network: cosmos, icon: "likecoin" },
-    { network: cosmos, icon: "iov" },
-    { network: cosmos, icon: "band-protocol" },
-    { network: cosmos, icon: "akash" },
-    { network: cosmos, icon: "e-money" },
+    // { network: cosmos, icon: "kava" },
+    // { network: cosmos, icon: "likecoin" },
+    // { network: cosmos, icon: "iov" },
+    // { network: cosmos, icon: "band-protocol" },
+    // { network: cosmos, icon: "akash" },
+    // { network: cosmos, icon: "e-money" },
     { network: vsys, icon: "v-system" },
   ];
   return (
@@ -38,7 +38,7 @@ const ForboleStakes = () => {
           <Chart {...hookProps} />
         </ChartContainerCSS>
         <StakesDetailsContainerCSS>
-          <HubDetail
+          {/* <HubDetail
             main
             name={selectedData[selected].icon}
             denom={selectedData[selected]?.network.denom}
@@ -68,7 +68,7 @@ const ForboleStakes = () => {
             title={selectedData[selected]?.network.otherDelegations.title}
             atom={selectedData[selected]?.network.otherDelegations.atom}
             percent={selectedData[selected]?.network.otherDelegations.percent}
-          />
+          /> */}
         </StakesDetailsContainerCSS>
       </FlexContainerCSS>
     </ForboleStakesCSS>
