@@ -415,14 +415,17 @@ export const useForboleStakesHook = () => {
         totalMarketValue,
         currentMarketValue,
         voting: {
+          title: "votingPower",
           atom: totalAtomFormat,
           percent: votingPowerPercent,
         },
         selfDelegations: {
+          title: "selfDelegations",
           atom: totalSelfDelegationsFormat,
           percent: totalSelfDelegationsPercent,
         },
         otherDelegations: {
+          title: "otherDelegations",
           atom: otherDelegationsFormat,
           percent: otherDelegationsPercent,
         },
