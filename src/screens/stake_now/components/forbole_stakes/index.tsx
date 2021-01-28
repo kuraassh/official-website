@@ -26,7 +26,7 @@ const ForboleStakes = () => {
     { network: cosmosNetwork, icon: "band-protocol" },
     { network: cosmosNetwork, icon: "akash" },
     { network: cosmosNetwork, icon: "e-money" },
-    { network: iris, icon: "iris" },
+    { network: cosmosNetwork, icon: "iris" },
     { network: vsys, icon: "v-system" },
   ];
   return (

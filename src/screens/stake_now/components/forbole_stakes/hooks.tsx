@@ -456,9 +456,12 @@ export const useForboleStakesHook = () => {
     //   }),
     // }));
 
-    //console.log(updatedArr);
     setCosmosNetwork(updatedArr);
   };
+  console.log(typeof cosmosNetwork, cosmosNetwork);
+
+  const arr = [...cosmosNetwork];
+  console.log(arr);
 
   // IRIS
   const [iris, setIris] = useState({
@@ -484,7 +487,7 @@ export const useForboleStakesHook = () => {
     },
   });
 
-  const getIris = async () => {
+  const getIrisNetwork = async () => {
     const networkFunction = networkFunctions["iris"] ?? null;
     //console.log(networkFunction);
 
@@ -563,6 +566,32 @@ export const useForboleStakesHook = () => {
       (otherDelegations / bonded) * 100,
       2
     );
+
+    arr.push({
+      title: irisData[0]?.title,
+      denom: irisData[0]?.denom,
+      totalAtom: totalIRISFormat,
+      totalMarketValue,
+      currentMarketValue,
+      voting: {
+        title: "votingPower",
+        atom: totalIRISFormat,
+        percent: votingPowerPercent,
+      },
+      selfDelegations: {
+        title: "selfDelegations",
+        atom: totalSelfDelegationsFormat,
+        percent: totalSelfDelegationsPercent,
+      },
+      otherDelegations: {
+        title: "otherDelegations",
+        atom: otherDelegationsFormat,
+        percent: otherDelegationsPercent,
+      },
+    });
+
+    setCosmosNetwork(arr);
+
     setIris(
       R.mergeDeepLeft(
         {
@@ -1641,7 +1670,8 @@ export const useForboleStakesHook = () => {
 
   useEffect(() => {
     try {
-      getCosmosBasedNetwork();
+      // getCosmosBasedNetwork();
+      getIrisNetwork();
       // if (selected < 2) {
       //   getCosmos();
       // }
