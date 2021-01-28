@@ -4,6 +4,7 @@ import * as R from "ramda";
 import { getNetworkInfo } from "@utils/network_info";
 import { networkFunctions } from "../../utils";
 import { convertToMoney } from "@utils/convert_to_money";
+import { Network } from "@models";
 
 // const solanaWeb3 = require("@solana/web3.js");
 
@@ -15,36 +16,126 @@ const networkData = [
     denom: "ATOM",
     delegationsApi:
       "http://lcd.cosmoshub.bigdipper.live/staking/delegators/cosmos14kn0kk33szpwus9nh8n87fjel8djx0y0mmswhp/delegations",
-    R: ["result", "tokens"],
     x: "validator_address",
     delegationsJson_R: ["result"],
-    validator_address: "cosmosvaloper14kn0kk33szpwus9nh8n87fjel8djx0y070ymmj",
+    validator_address: ["cosmosvaloper14kn0kk33szpwus9nh8n87fjel8djx0y070ymmj"],
   },
   {
     title: "Terra",
     name: "terra",
     network: "terra-money",
     denom: "LUNA",
-    R: ["result", "tokens"],
     x: "delegator_address",
     delegationsApi:
       "https://lcd.terra.bigdipper.live/staking/validators/terravaloper1jkqr2vfg4krfd4zwmsf7elfj07cjuzss30ux8g/delegations",
     delegationsJson_R: ["result"],
-    validator_address: "terra1jkqr2vfg4krfd4zwmsf7elfj07cjuzss3qsmhm",
+    validator_address: ["terra1jkqr2vfg4krfd4zwmsf7elfj07cjuzss3qsmhm"],
+  },
+  {
+    title: "Iris",
+    name: "iris",
+    network: "iris",
+    denom: "IRIS",
+    x: "delegator_addr",
+    delegationsApi:
+      "http://lcd.iris.bigdipper.live/stake/validators/iva1msqqkd3v0gmullzwm56c4frevyczzxfeczvjru/delegations",
+    delegationsJson_R: ["result"],
+    validator_address: ["iaa1msqqkd3v0gmullzwm56c4frevyczzxfednxa7m"],
+  },
+  {
+    title: "Kava",
+    name: "kava",
+    network: "kava",
+    denom: "KAVA",
+    x: "delegator_address",
+    delegationsApi:
+      "http://lcd.kava.forbole.com/staking/validators/kavavaloper14kn0kk33szpwus9nh8n87fjel8djx0y02c7me3/delegations",
+    validator_address: [
+      "kava1axa2p2klp4er2z0a29msplf9mtmq7ven0hkqw3",
+      "kava14kn0kk33szpwus9nh8n87fjel8djx0y08wynpx",
+    ],
+  },
+  {
+    title: "Likecoin",
+    name: "likecoin",
+    network: "likecoin",
+    denom: "LIKE",
+    x: "delegator_address",
+    delegationsApi:
+      "http://lcd.likecoin.forbole.com/staking/validators/cosmosvaloper1v8njts96gl5eqstnen4gksdy5k860fau65c3sw/delegations",
+    validator_address: ["cosmos1v8njts96gl5eqstnen4gksdy5k860faulqvyua"],
+  },
+  {
+    title: "Starname",
+    name: "iov",
+    network: "iov",
+    denom: "IOV",
+    x: "delegator_address",
+    delegationsApi:
+      "http://lcd.iov.forbole.com/staking/validators/starvaloper1jkv2qkpq6cfplx6put7f00wzuyds57fnmtgde0/delegations",
+    validator_address: [
+      "star1jkv2qkpq6cfplx6put7f00wzuyds57fn7qva4x",
+      "star1j02u9tpjtse9fyd398xvsdfn6caw7ju9xfqa3z",
+    ],
+  },
+  {
+    title: "Band-Protocol",
+    name: "band",
+    network: "band-protocol",
+    denom: "BAND",
+    x: "delegator_address",
+    delegationsApi:
+      "http://lcd.band.forbole.com/staking/validators/bandvaloper14kn0kk33szpwus9nh8n87fjel8djx0y0wz502z/delegations",
+    validator_address: ["band14kn0kk33szpwus9nh8n87fjel8djx0y0z5sv0f"],
+  },
+  {
+    title: "Akash",
+    name: "akash",
+    network: "akash",
+    denom: "AKT",
+    x: "delegator_address",
+    delegationsApi:
+      "http://lcd.akash.forbole.com/staking/validators/akashvaloper14kn0kk33szpwus9nh8n87fjel8djx0y0uzn073/delegations",
+    validator_address: [
+      "akash14kn0kk33szpwus9nh8n87fjel8djx0y0kqafwm",
+      "akash1axa2p2klp4er2z0a29msplf9mtmq7ven7e06pv",
+      "akash1scc089xs8m67e34pt837z3je8m7950rvkzz88g",
+      "akash1scc089xs8m67e34pt837z3je8m7950rvkzz88g",
+      "akash1d3925a6vx08htfyzwf6al8xeq07a8re7zscprk",
+    ],
+  },
+  {
+    title: "E-Money",
+    name: "emoney",
+    network: "e-money",
+    denom: "NGM",
+    x: "delegator_address",
+    delegationsApi:
+      "http://lcd.emoney.forbole.com/staking/validators/emoneyvaloper1293pqwtzu67zp8txuya4yts03ccw5kgf98hz9y/delegations",
+    validator_address: ["emoney1293pqwtzu67zp8txuya4yts03ccw5kgfz83kmf"],
+  },
+  {
+    title: "V Systems",
+    name: "vsys",
+    network: "vsys",
+    denom: "NGM",
+    x: "delegator_address",
+    bondedApi: "https://api.vsys.forbole.com/consensus/allSlotsInfo",
+    selfSelegationsApi:
+      "https://api.vsys.forbole.com/addresses/balance/details/AR6AnRmynHBchobnxTr8rUvZyYEPNFsBBqE",
+    tokensApi: "https://api.vsys.forbole.com/consensus/slotInfo/32",
   },
 ];
 
 export const useForboleStakesHook = () => {
   const [selected, setSelected] = useState(0);
-  console.log(`>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>`, selected);
-
   // Cosmos Hub / ATOM
   const [cosmos, setCosmos] = useState({
-    title: networkData[selected].title,
+    title: networkData[selected].title ?? null,
     totalAtom: 0,
     totalMarketValue: "0.00",
     currentMarketValue: "0.00",
-    denom: networkData[selected].denom,
+    denom: networkData[selected].denom ?? null,
     voting: {
       title: "votingPower",
       atom: 0,
@@ -61,13 +152,14 @@ export const useForboleStakesHook = () => {
       percent: 0,
     },
   });
-  console.log(`denom`, cosmos.denom);
 
   const getCosmos = async () => {
     const networkFunction =
-      networkFunctions[networkData[selected].name] ?? null;
+      networkFunctions[networkData[selected]?.name] ?? null;
     console.log(networkFunction);
-    const { calculator } = getNetworkInfo(networkData[selected].network);
+    const { calculator } = getNetworkInfo(
+      networkData[selected]?.network ?? null
+    );
     const bondedApi = axios.post("/api/proxy", {
       url: calculator.bonded,
     });
@@ -75,7 +167,7 @@ export const useForboleStakesHook = () => {
       url: calculator.stakingParams,
     });
     const delegationsApi = axios.post("/api/proxy", {
-      url: networkData[selected].delegationsApi,
+      url: networkData[selected]?.delegationsApi,
     });
     const marketPriceApi = axios.get(networkFunction?.gecko);
 
@@ -95,37 +187,39 @@ export const useForboleStakesHook = () => {
     const totalAtom = networkFunction?.converter(
       Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
     );
-    console.log(stakingParamsJson);
-    console.log(`cosmos hooks >>>>>>>>>>>>:`, totalAtom);
     const totalAtomFormat = convertToMoney(
       networkFunction?.converter(
         Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
       )
     );
-    //console.log(totalAtomFormat);
+
     const bonded = networkFunction?.bonded(bondedJson);
     const currentMarketValue = networkFunction.marketPrice(marketPriceJson);
-    //console.log(currentMarketValue);
+
     const totalMarketValue = convertToMoney(currentMarketValue * totalAtom);
     const votingPowerPercent = convertToMoney((totalAtom / bonded) * 100, 2);
     //==========================
     // self-delegations
     //==========================
 
-    const totalSelfDelegations = networkFunction?.converter(
-      R.pathOr([], ["result"], delegationsJson)
-        .filter(
-          (x) =>
-            x?.[networkData[selected].x] ===
-            networkData[selected].validator_address
-        )
-        .reduce(
-          (a, b) => (a += Number(b?.balance?.amount ?? b?.balance) ?? 0),
-          0
-        )
-    );
+    let totalSelfDelegations = 0;
 
-    console.log(`1`, totalSelfDelegations);
+    for (let i = 0; i < networkData[selected].validator_address.length; i++) {
+      const totalSelfDelegation = networkFunction?.converter(
+        R.pathOr([], ["result"], delegationsJson)
+          .filter(
+            (x) =>
+              x?.[networkData[selected]?.x ?? null] ===
+                networkData[selected]?.validator_address[i] ?? null
+          )
+          .reduce(
+            (a, b) => (a += Number(b?.balance?.amount ?? b?.balance) ?? 0),
+            totalSelfDelegations ?? 0
+          )
+      );
+      totalSelfDelegations += totalSelfDelegation;
+    }
+
     const totalSelfDelegationsFormat = convertToMoney(totalSelfDelegations);
     const totalSelfDelegationsPercent = convertToMoney(
       (totalSelfDelegations / bonded) * 100,
@@ -145,8 +239,8 @@ export const useForboleStakesHook = () => {
     setCosmos(
       R.mergeDeepLeft(
         {
-          title: networkData[selected].title,
-          denom: networkData[selected].denom,
+          title: networkData[selected]?.title,
+          denom: networkData[selected]?.denom,
           totalAtom: totalAtomFormat,
           totalMarketValue,
           currentMarketValue,
@@ -167,8 +261,6 @@ export const useForboleStakesHook = () => {
       )
     );
   };
-
-  console.log(`cosmos`, cosmos);
 
   // IRIS
   const [iris, setIris] = useState({
@@ -296,6 +388,25 @@ export const useForboleStakesHook = () => {
       )
     );
   };
+
+  const dataMap = {
+    0: getCosmos && getIris,
+    1: getCosmos,
+    2: getIris,
+    3: getCosmos,
+    // 1: {
+    //   dataFunction: getIris,
+    // },
+    // 2: {
+    //   dataFunction: getVSYS,
+    // },
+  };
+
+  const [state, setState] = useState({
+    0: new Network({}),
+    1: new Network({}),
+    2: new Network({}),
+  });
 
   // TERRA
   const [terra, setTerra] = useState({
@@ -608,8 +719,8 @@ export const useForboleStakesHook = () => {
     const totalLIKE = networkFunction?.converter(
       Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
     );
-    console.log(`totalLIKE`, totalLIKE / 1000);
-    const totalLIKEtokens = totalLIKE / 1000;
+    console.log(`totalLIKE`, totalLIKE);
+    const totalLIKEtokens = totalLIKE;
     const totalLIKEtokensFormat = convertToMoney(totalLIKEtokens);
     const totalLIKEFormat = convertToMoney(
       networkFunction?.converter(
@@ -680,7 +791,7 @@ export const useForboleStakesHook = () => {
 
   // iov / Startname
   const [iov, setIOV] = useState({
-    title: "Startname",
+    title: "Starname",
     totalAtom: 0,
     totalMarketValue: "0.00",
     currentMarketValue: "0.00",
@@ -959,7 +1070,7 @@ export const useForboleStakesHook = () => {
   const getAkash = async () => {
     const networkFunction = networkFunctions["akash"] ?? null;
     const { calculator } = getNetworkInfo("akash");
-    console.log(getNetworkInfo("akash"));
+
     const bondedApi = axios.post("/api/proxy", {
       url: calculator.bonded,
     });
@@ -1384,17 +1495,29 @@ export const useForboleStakesHook = () => {
 
   useEffect(() => {
     try {
-      getCosmos();
-      getIris();
-      getTerra();
-      getKava();
-      getLikeCoin();
-      getIOV();
-      getBAND();
-      getAkash();
-      getEMoney();
-      getVSYS();
+      if (selected < 2) {
+        getCosmos();
+      }
+      if (selected == 2) {
+        getIris();
+      }
+      // getTerra();
+      // getKava();
+      if (selected > 2 && selected < 9) {
+        getCosmos();
+      }
+      if (selected == 9) {
+        getVSYS();
+      }
+      // getIOV();
+      // getBAND();
+      // getAkash();
+      // getEMoney();
+      // getVSYS();
       // getSolana();
+      // if (state[selected] === null && dataMap[selected]) {
+      //   dataMap[selected];
+      // }
     } catch (err) {
       console.log(err);
     }
@@ -1403,16 +1526,17 @@ export const useForboleStakesHook = () => {
   return {
     cosmos,
     iris,
-    terra,
-    kava,
-    likecoin,
-    iov,
-    band,
-    akash,
-    emoney,
+    // terra,
+    // kava,
+    // likecoin,
+    // iov,
+    // band,
+    // akash,
+    // emoney,
     vsys,
     selected,
     setSelected,
+    // data: state[selected],
   };
 };
 // };

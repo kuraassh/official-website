@@ -14,30 +14,18 @@ import { useForboleStakesHook } from "./hooks";
 const ForboleStakes = () => {
   const { t } = useTranslation("stake_now");
   const hookProps = useForboleStakesHook();
-  const {
-    cosmos,
-    iris,
-    // terra,
-    kava,
-    likecoin,
-    iov,
-    band,
-    akash,
-    emoney,
-    vsys,
-    selected,
-  } = hookProps;
+  const { cosmos, iris, vsys, selected } = hookProps;
   console.log(`index:>>>>>>>>>>>>>>>`, cosmos);
   const selectedData = [
     { network: cosmos, icon: "cosmos-hub" },
     { network: cosmos, icon: "terra" },
     { network: iris, icon: "iris" },
-    { network: kava, icon: "kava" },
-    { network: likecoin, icon: "likecoin" },
-    { network: iov, icon: "iov" },
-    { network: band, icon: "band-protocol" },
-    { network: akash, icon: "akash" },
-    { network: emoney, icon: "e-money" },
+    { network: cosmos, icon: "kava" },
+    { network: cosmos, icon: "likecoin" },
+    { network: cosmos, icon: "iov" },
+    { network: cosmos, icon: "band-protocol" },
+    { network: cosmos, icon: "akash" },
+    { network: cosmos, icon: "e-money" },
     { network: vsys, icon: "v-system" },
   ];
   return (
