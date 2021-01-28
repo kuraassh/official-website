@@ -14,8 +14,8 @@ import { useForboleStakesHook } from "./hooks";
 const ForboleStakes = () => {
   const { t } = useTranslation("stake_now");
   const hookProps = useForboleStakesHook();
-  const { cosmosNetwork, iris, vsys, selected } = hookProps;
-  console.log(`index:>>>>>>>>>>>>>>>`, cosmosNetwork);
+  const { cosmosNetwork, vsys, selected } = hookProps;
+  console.log(`index:>>>>>>>>>>>>>>>`, hookProps);
   //console.log(selectedData[selected]?.network)
   const selectedData = [
     { network: cosmosNetwork, icon: "cosmos-hub" },
@@ -29,6 +29,11 @@ const ForboleStakes = () => {
     { network: cosmosNetwork, icon: "iris" },
     { network: vsys, icon: "v-system" },
   ];
+  console.log(selectedData[selected]?.network[!!(selected == 9) && ""]?.title);
+  console.log(
+    selectedData[selected]?.network[selected]?.title ??
+      selectedData[selected]?.network?.title
+  );
   return (
     <ForboleStakesCSS>
       <p>{t("tokensStakedWithForbole")}</p>
@@ -42,47 +47,87 @@ const ForboleStakes = () => {
           <HubDetail
             main
             name={selectedData[selected]?.icon}
-            denom={selectedData[selected]?.network[selected]?.denom}
-            title={selectedData[selected]?.network[selected]?.title}
+            denom={
+              // selectedData[selected]?.network?.denom ??
+              selectedData[selected]?.network[selected]?.denom
+            }
+            title={
+              // selectedData[selected]?.network[selected]?.title ??
+              selectedData[selected]?.network?.title
+            }
             // title={cosmos.title}
-            atom={selectedData[selected]?.network[selected]?.totalAtom}
-            usd={selectedData[selected]?.network[selected]?.totalMarketValue}
+            atom={
+              // selectedData[selected]?.network?.totalAtom ??
+              selectedData[selected]?.network[selected]?.totalAtom
+            }
+            usd={
+              // selectedData[selected]?.network?.totalMarketValue ??
+              selectedData[selected]?.network[selected]?.totalMarketValue
+            }
             perAtom={
+              // selectedData[selected]?.network?.currentMarketValue ??
               selectedData[selected]?.network[selected]?.currentMarketValue
             }
           />
           <hr className="stats-hr" />
           <HubDetail
-            denom={selectedData[selected]?.network[selected]?.denom}
-            title={selectedData[selected]?.network[selected]?.voting.title}
-            atom={selectedData[selected]?.network[selected]?.voting.atom}
-            percent={selectedData[selected]?.network[selected]?.voting.percent}
+            denom={
+              // selectedData[selected]?.network?.denom ??
+              selectedData[selected]?.network[selected]?.denom
+            }
+            title={
+              // selectedData[selected]?.network?.voting.title ??
+              selectedData[selected]?.network[selected]?.voting.title
+            }
+            atom={
+              // selectedData[selected]?.network?.voting.atom ??
+              selectedData[selected]?.network[selected]?.voting.atom
+            }
+            percent={
+              // selectedData[selected]?.network?.voting.percent ??
+              selectedData[selected]?.network[selected]?.voting.percent
+            }
           />
           <hr className="stats-hr" />
           <HubDetail
-            denom={selectedData[selected]?.network[selected]?.denom}
+            denom={
+              // selectedData[selected]?.network?.denom ??
+              selectedData[selected]?.network[selected]?.denom
+            }
             title={
+              // selectedData[selected]?.network?.selfDelegations.title ??
               selectedData[selected]?.network[selected]?.selfDelegations.title
             }
             atom={
+              // selectedData[selected]?.network?.selfDelegations.atom ??
               selectedData[selected]?.network[selected]?.selfDelegations.atom
             }
             percent={
+              // selectedData[selected]?.network?.selfDelegations.percent ??
               selectedData[selected]?.network[selected]?.selfDelegations.percent
             }
           />
           <hr className="stats-hr" />
           <HubDetail
-            denom={selectedData[selected]?.network[selected]?.denom}
+            denom={
+              // selectedData[selected]?.network?.denom ??
+              selectedData[selected]?.network[selected]?.denom
+            }
             title={
+              // selectedData[selected]?.network?.otherDelegations.title ??
               selectedData[selected]?.network[selected]?.otherDelegations.title
             }
             atom={
-              selectedData[selected]?.network[selected]?.otherDelegations.atom
+              selected == 9
+                ? selectedData[selected]?.network?.otherDelegations.atom
+                : selectedData[selected]?.network[selected]?.otherDelegations
+                    .atom
             }
             percent={
-              selectedData[selected]?.network[selected]?.otherDelegations
-                .percent
+              selected == 9
+                ? selectedData[selected]?.network?.otherDelegations.percent
+                : selectedData[selected]?.network[selected]?.otherDelegations
+                    .percent
             }
           />
         </StakesDetailsContainerCSS>
