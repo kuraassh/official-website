@@ -7,11 +7,11 @@ const HubDetail = (props: any) => {
   const {
     title = "",
     name = "",
-    atom = 0,
+    token = 0,
     percent = 0,
     main = false,
     usd = 0,
-    perAtom = 0,
+    perToken = 0,
     denom,
   } = props;
 
@@ -24,8 +24,8 @@ const HubDetail = (props: any) => {
         {t(title)}
       </p>
       <StatDetailsCSS className={classNames({ main })}>
-        <p className={classNames("atom", { main })}>
-          {atom} {denom}
+        <p className={classNames("token", { main })}>
+          {token} {denom}
         </p>
         {main ? (
           <>
@@ -33,8 +33,8 @@ const HubDetail = (props: any) => {
               <p className="usd">
                 {usd} {t("usd")}
               </p>
-              <p className="per-atom">
-                (${perAtom}/${denom})
+              <p className="per-token">
+                (${perToken}/${denom})
               </p>
             </div>
             <hr className="main-content-hr" />

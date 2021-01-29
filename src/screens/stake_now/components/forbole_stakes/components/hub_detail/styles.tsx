@@ -62,7 +62,7 @@ export const StatDetailsCSS = styled.div`
     flex-direction: column;
   }
 
-  .atom {
+  .token {
     &.main {
       font-size: 1.25rem;
     }
@@ -84,7 +84,7 @@ export const StatDetailsCSS = styled.div`
       flex-direction: row;
     }
 
-    .atom {
+    .token {
       &.main {
         text-align: left;
         font-size: 1.8rem;
