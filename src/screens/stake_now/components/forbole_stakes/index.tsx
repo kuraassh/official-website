@@ -10,12 +10,13 @@ import {
 import HubDetail from "./components/hub_detail";
 import Chart from "./components/chart";
 import { useForboleStakesHook } from "./hooks";
+import { INetworkDataProps } from "./interfaces";
 
 const ForboleStakes = () => {
   const { t } = useTranslation("stake_now");
   const hookProps = useForboleStakesHook();
   const { cosmosNetwork, iris, vsys, totalUSD, selected } = hookProps;
-  const selectedData = [
+  const selectedData: INetworkDataProps[] = [
     { network: cosmosNetwork, icon: "cosmos-hub" },
     { network: cosmosNetwork, icon: "terra" },
     { network: cosmosNetwork, icon: "kava" },

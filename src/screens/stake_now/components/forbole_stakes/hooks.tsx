@@ -7,8 +7,6 @@ import { networkFunctions } from "../../utils";
 import { convertToMoney, moneyToInt } from "@utils/convert_to_money";
 import { cosmosData, irisData, vsysData } from "./config";
 
-// const solanaWeb3 = require("@solana/web3.js");
-
 export const useForboleStakesHook = () => {
   const [selected, setSelected] = useState(0);
 
