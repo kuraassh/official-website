@@ -11,14 +11,15 @@ import { cosmosData, irisData, vsysData } from "./config";
 export const useForboleStakesHook = () => {
   const [selected, setSelected] = useState(0);
 
-  // Cosmos Hub / ATOM
-  const [cosmosNetwork, setCosmosNetwork] = useState([
-    {
-      title: cosmosData[0].title ?? null,
+  // Cosmos-Based Networks
+  const cosmosBasedNetwork = [];
+  for (let i = 0; i < cosmosData.length; i++) {
+    cosmosBasedNetwork.push({
+      title: cosmosData[i].title ?? null,
       totalToken: 0,
       totalMarketValue: "0.00",
       currentMarketValue: "0.00",
-      denom: cosmosData[0].denom ?? null,
+      denom: cosmosData[i].denom ?? null,
       voting: {
         title: "votingPower",
         token: 0,
@@ -34,162 +35,10 @@ export const useForboleStakesHook = () => {
         token: 0,
         percent: 0,
       },
-    },
-    {
-      title: cosmosData[1].title ?? null,
-      totalToken: 0,
-      totalMarketValue: "0.00",
-      currentMarketValue: "0.00",
-      denom: cosmosData[1].denom ?? null,
-      voting: {
-        title: "votingPower",
-        token: 0,
-        percent: 0,
-      },
-      selfDelegations: {
-        title: "selfDelegations",
-        token: 0,
-        percent: 0,
-      },
-      otherDelegations: {
-        title: "otherDelegations",
-        token: 0,
-        percent: 0,
-      },
-    },
-    {
-      title: cosmosData[2].title ?? null,
-      totalToken: 0,
-      totalMarketValue: "0.00",
-      currentMarketValue: "0.00",
-      denom: cosmosData[2].denom ?? null,
-      voting: {
-        title: "votingPower",
-        token: 0,
-        percent: 0,
-      },
-      selfDelegations: {
-        title: "selfDelegations",
-        token: 0,
-        percent: 0,
-      },
-      otherDelegations: {
-        title: "otherDelegations",
-        token: 0,
-        percent: 0,
-      },
-    },
-    {
-      title: cosmosData[3].title ?? null,
-      totalToken: 0,
-      totalMarketValue: "0.00",
-      currentMarketValue: "0.00",
-      denom: cosmosData[3].denom ?? null,
-      voting: {
-        title: "votingPower",
-        token: 0,
-        percent: 0,
-      },
-      selfDelegations: {
-        title: "selfDelegations",
-        token: 0,
-        percent: 0,
-      },
-      otherDelegations: {
-        title: "otherDelegations",
-        token: 0,
-        percent: 0,
-      },
-    },
-    {
-      title: cosmosData[4].title ?? null,
-      totalToken: 0,
-      totalMarketValue: "0.00",
-      currentMarketValue: "0.00",
-      denom: cosmosData[4].denom ?? null,
-      voting: {
-        title: "votingPower",
-        token: 0,
-        percent: 0,
-      },
-      selfDelegations: {
-        title: "selfDelegations",
-        token: 0,
-        percent: 0,
-      },
-      otherDelegations: {
-        title: "otherDelegations",
-        token: 0,
-        percent: 0,
-      },
-    },
-    {
-      title: cosmosData[5].title ?? null,
-      totalToken: 0,
-      totalMarketValue: "0.00",
-      currentMarketValue: "0.00",
-      denom: cosmosData[5].denom ?? null,
-      voting: {
-        title: "votingPower",
-        token: 0,
-        percent: 0,
-      },
-      selfDelegations: {
-        title: "selfDelegations",
-        token: 0,
-        percent: 0,
-      },
-      otherDelegations: {
-        title: "otherDelegations",
-        token: 0,
-        percent: 0,
-      },
-    },
-    {
-      title: cosmosData[6].title ?? null,
-      totalToken: 0,
-      totalMarketValue: "0.00",
-      currentMarketValue: "0.00",
-      denom: cosmosData[6].denom ?? null,
-      voting: {
-        title: "votingPower",
-        token: 0,
-        percent: 0,
-      },
-      selfDelegations: {
-        title: "selfDelegations",
-        token: 0,
-        percent: 0,
-      },
-      otherDelegations: {
-        title: "otherDelegations",
-        token: 0,
-        percent: 0,
-      },
-    },
-    {
-      title: cosmosData[7].title ?? null,
-      totalToken: 0,
-      totalMarketValue: "0.00",
-      currentMarketValue: "0.00",
-      denom: cosmosData[7].denom ?? null,
-      voting: {
-        title: "votingPower",
-        token: 0,
-        percent: 0,
-      },
-      selfDelegations: {
-        title: "selfDelegations",
-        token: 0,
-        percent: 0,
-      },
-      otherDelegations: {
-        title: "otherDelegations",
-        token: 0,
-        percent: 0,
-      },
-    },
-  ]);
+    });
+  }
+
+  const [cosmosNetwork, setCosmosNetwork] = useState(cosmosBasedNetwork);
 
   const getCosmosBasedNetwork = async () => {
     const updatedArr = [];
@@ -529,6 +378,7 @@ export const useForboleStakesHook = () => {
       )
     );
   };
+  // console.log(cosmosNetwork)
 
   const [totalUSD, setNetworkUSD] = useState(0);
 
