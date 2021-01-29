@@ -11,6 +11,12 @@ export const TagsCSS = styled.div<any>`
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
+    a {
+      color: white;
+      &:hover {
+        color: rgba(255, 255, 255);
+      }
+    }
   }
 `;
 

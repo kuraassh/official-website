@@ -48,13 +48,6 @@ export const ContentCSS = styled.div`
     }
   }
 
-  li > a {
-    color: white;
-    &:hover {
-      color: rgba(255, 255, 255);
-    }
-  }
-
   img {
     width: 100%;
   }
