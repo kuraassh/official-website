@@ -23,7 +23,7 @@ export const convertWithDecimal = (num:number | string) => {
   return `${formatFull}${decimal ? '.': ''}${decimal ?? ''}`
 }
 
-export const moneyToInt = (money: any) => { 
+export const moneyToInt = (money: string) => { 
   const num = money.replace(/,/g, '');
   return parseInt(num);
 }

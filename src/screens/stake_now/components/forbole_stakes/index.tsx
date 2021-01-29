@@ -30,7 +30,6 @@ const ForboleStakes = () => {
   return (
     <ForboleStakesCSS>
       <p>{t("tokensStakedWithForbole")}</p>
-      {/* fix later */}
       <h1>${convertToMoney(totalUSD)}</h1>
       <FlexContainerCSS>
         <ChartContainerCSS>

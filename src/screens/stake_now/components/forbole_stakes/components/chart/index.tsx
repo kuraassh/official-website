@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "i18n";
 import { PieChart } from "react-minimal-pie-chart";
 import { useForboleStakesHook } from "../../hooks";
 import { moneyToInt } from "@utils/convert_to_money";
+import { cosmosData, irisData, vsysData } from "../../config";
 
 const Chart = (props: any) => {
   const { t } = useTranslation("stake_now");
@@ -13,53 +14,61 @@ const Chart = (props: any) => {
   const networkData = [
     {
       title: "cosmosHub",
-      value: (moneyToInt(cosmosNetwork[0].totalMarketValue) / totalUSD) * 100,
-      color: "#FF6767",
+      value:
+        (moneyToInt(cosmosNetwork[0].totalMarketValue) / totalUSD) * 100 || 10,
+      color: cosmosData[0].color,
     },
     {
       title: "terra",
-      value: (moneyToInt(cosmosNetwork[1].totalMarketValue) / totalUSD) * 100,
-      color: "#499EFC",
+      value:
+        (moneyToInt(cosmosNetwork[1].totalMarketValue) / totalUSD) * 100 || 10,
+      color: cosmosData[1].color,
     },
     {
       title: "kava",
-      value: (moneyToInt(cosmosNetwork[2].totalMarketValue) / totalUSD) * 100,
-      color: "#31DDE6",
+      value:
+        (moneyToInt(cosmosNetwork[2].totalMarketValue) / totalUSD) * 100 || 10,
+      color: cosmosData[2].color,
     },
     {
       title: "likecoin",
-      value: (moneyToInt(cosmosNetwork[3].totalMarketValue) / totalUSD) * 100,
-      color: "#E6A531",
+      value:
+        (moneyToInt(cosmosNetwork[3].totalMarketValue) / totalUSD) * 100 || 10,
+      color: cosmosData[3].color,
     },
     {
       title: "starname",
-      value: (moneyToInt(cosmosNetwork[4].totalMarketValue) / totalUSD) * 100,
-      color: "#CB86FF",
+      value:
+        (moneyToInt(cosmosNetwork[4].totalMarketValue) / totalUSD) * 100 || 10,
+      color: cosmosData[4].color,
     },
     {
       title: "band-protocol",
-      value: (moneyToInt(cosmosNetwork[5].totalMarketValue) / totalUSD) * 100,
-      color: "#FF7753",
+      value:
+        (moneyToInt(cosmosNetwork[5].totalMarketValue) / totalUSD) * 100 || 10,
+      color: cosmosData[5].color,
     },
     {
       title: "akash",
-      value: (moneyToInt(cosmosNetwork[6].totalMarketValue) / totalUSD) * 100,
-      color: "#FDE425",
+      value:
+        (moneyToInt(cosmosNetwork[6].totalMarketValue) / totalUSD) * 100 || 10,
+      color: cosmosData[6].color,
     },
     {
-      title: "emoney",
-      value: (moneyToInt(cosmosNetwork[7].totalMarketValue) / totalUSD) * 100,
-      color: "#FDE688",
+      title: "eMoney",
+      value:
+        (moneyToInt(cosmosNetwork[7].totalMarketValue) / totalUSD) * 100 || 10,
+      color: cosmosData[7].color,
     },
     {
       title: "irisnet",
-      value: (moneyToInt(iris.totalMarketValue) / totalUSD) * 100,
-      color: "#50FFB4",
+      value: (moneyToInt(iris.totalMarketValue) / totalUSD) * 100 || 10,
+      color: irisData[0].color,
     },
     {
       title: "vsys",
-      value: (moneyToInt(vsys.totalMarketValue) / totalUSD) * 100,
-      color: "#FFF688",
+      value: (moneyToInt(vsys.totalMarketValue) / totalUSD) * 100 || 10,
+      color: vsysData[0].color,
     },
   ];
 

@@ -9,6 +9,7 @@ export const cosmosData = [
     x: "validator_address",
     delegationsJson_R: ["result"],
     validator_address: ["cosmosvaloper14kn0kk33szpwus9nh8n87fjel8djx0y070ymmj"],
+    color: "#ba3fd9",
   },
   {
     title: "Terra",
@@ -20,6 +21,7 @@ export const cosmosData = [
       "https://lcd.terra.bigdipper.live/staking/validators/terravaloper1jkqr2vfg4krfd4zwmsf7elfj07cjuzss30ux8g/delegations",
     delegationsJson_R: ["result"],
     validator_address: ["terra1jkqr2vfg4krfd4zwmsf7elfj07cjuzss3qsmhm"],
+    color: "#2845AE",
   },
   {
     title: "Kava",
@@ -33,6 +35,7 @@ export const cosmosData = [
       "kava1axa2p2klp4er2z0a29msplf9mtmq7ven0hkqw3",
       "kava14kn0kk33szpwus9nh8n87fjel8djx0y08wynpx",
     ],
+    color: "#ff564f",
   },
   {
     title: "Likecoin",
@@ -43,6 +46,7 @@ export const cosmosData = [
     delegationsApi:
       "http://lcd.likecoin.forbole.com/staking/validators/cosmosvaloper1v8njts96gl5eqstnen4gksdy5k860fau65c3sw/delegations",
     validator_address: ["cosmos1v8njts96gl5eqstnen4gksdy5k860faulqvyua"],
+    color: "#28646e",
   },
   {
     title: "Starname",
@@ -56,6 +60,7 @@ export const cosmosData = [
       "star1jkv2qkpq6cfplx6put7f00wzuyds57fn7qva4x",
       "star1j02u9tpjtse9fyd398xvsdfn6caw7ju9xfqa3z",
     ],
+    color: "#6610f2",
   },
   {
     title: "Band-Protocol",
@@ -66,6 +71,7 @@ export const cosmosData = [
     delegationsApi:
       "http://lcd.band.forbole.com/staking/validators/bandvaloper14kn0kk33szpwus9nh8n87fjel8djx0y0wz502z/delegations",
     validator_address: ["band14kn0kk33szpwus9nh8n87fjel8djx0y0z5sv0f"],
+    color: "#516FFA",
   },
   {
     title: "Akash",
@@ -82,6 +88,7 @@ export const cosmosData = [
       "akash1scc089xs8m67e34pt837z3je8m7950rvkzz88g",
       "akash1d3925a6vx08htfyzwf6al8xeq07a8re7zscprk",
     ],
+    color: "#eb3825",
   },
   {
     title: "E-Money",
@@ -92,6 +99,7 @@ export const cosmosData = [
     delegationsApi:
       "http://lcd.emoney.forbole.com/staking/validators/emoneyvaloper1293pqwtzu67zp8txuya4yts03ccw5kgf98hz9y/delegations",
     validator_address: ["emoney1293pqwtzu67zp8txuya4yts03ccw5kgfz83kmf"],
+    color: "#1e5877",
   },
 ];
 
@@ -106,6 +114,7 @@ export const irisData = [
       "http://lcd.iris.bigdipper.live/stake/validators/iva1msqqkd3v0gmullzwm56c4frevyczzxfeczvjru/delegations",
     delegationsJson_R: ["result"],
     validator_address: ["iaa1msqqkd3v0gmullzwm56c4frevyczzxfednxa7m"],
+    color: "#7a41ff",
   },
 ];
 
@@ -120,6 +129,7 @@ export const vsysData = [
     selfSelegationsApi:
       "https://api.vsys.forbole.com/addresses/balance/details/AR6AnRmynHBchobnxTr8rUvZyYEPNFsBBqE",
     tokensApi: "https://api.vsys.forbole.com/consensus/slotInfo/32",
+    color: "#ff8836",
   },
 ];
 

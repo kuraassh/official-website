@@ -120,28 +120,55 @@ export const useForboleStakesHook = () => {
         2
       );
 
-      updatedArr.push({
-        title: cosmosData[x]?.title,
-        denom: cosmosData[x]?.denom,
-        totalToken: totalTokenFormat,
-        totalMarketValue,
-        currentMarketValue,
-        voting: {
-          title: "votingPower",
-          token: totalTokenFormat,
-          percent: votingPowerPercent,
-        },
-        selfDelegations: {
-          title: "selfDelegations",
-          token: totalSelfDelegationsFormat,
-          percent: totalSelfDelegationsPercent,
-        },
-        otherDelegations: {
-          title: "otherDelegations",
-          token: otherDelegationsFormat,
-          percent: otherDelegationsPercent,
-        },
-      });
+      // resolve any possible Promise error (in case any api endpoint doesn't work )
+      try {
+        updatedArr.push({
+          title: cosmosData[x]?.title,
+          denom: cosmosData[x]?.denom,
+          totalToken: totalTokenFormat,
+          totalMarketValue,
+          currentMarketValue,
+          voting: {
+            title: "votingPower",
+            token: totalTokenFormat,
+            percent: votingPowerPercent,
+          },
+          selfDelegations: {
+            title: "selfDelegations",
+            token: totalSelfDelegationsFormat,
+            percent: totalSelfDelegationsPercent,
+          },
+          otherDelegations: {
+            title: "otherDelegations",
+            token: otherDelegationsFormat,
+            percent: otherDelegationsPercent,
+          },
+        });
+      } catch (err) {
+        console.log(err);
+        updatedArr.push({
+          title: cosmosData[x].title ?? null,
+          totalToken: 0,
+          totalMarketValue: "0.00",
+          currentMarketValue: "0.00",
+          denom: cosmosData[x].denom ?? null,
+          voting: {
+            title: "votingPower",
+            token: 0,
+            percent: 0,
+          },
+          selfDelegations: {
+            title: "selfDelegations",
+            token: 0,
+            percent: 0,
+          },
+          otherDelegations: {
+            title: "otherDelegations",
+            token: 0,
+            percent: 0,
+          },
+        });
+      }
     }
     setCosmosNetwork(updatedArr, cosmosNetwork);
   };
@@ -378,7 +405,6 @@ export const useForboleStakesHook = () => {
       )
     );
   };
-  // console.log(cosmosNetwork)
 
   const [totalUSD, setNetworkUSD] = useState(0);
 
@@ -398,9 +424,9 @@ export const useForboleStakesHook = () => {
 
   useEffect(() => {
     try {
-      getCosmosBasedNetwork();
-      getIrisNetwork();
-      getVSYSNetwork();
+      getCosmosBasedNetwork()
+        .then(() => getIrisNetwork())
+        .then(() => getVSYSNetwork());
     } catch (err) {
       console.log(err);
     }
