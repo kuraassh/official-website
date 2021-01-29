@@ -170,7 +170,7 @@ export const useForboleStakesHook = () => {
         });
       }
     }
-    setCosmosNetwork(updatedArr, cosmosNetwork);
+    setCosmosNetwork(updatedArr);
   };
 
   // IRIS
