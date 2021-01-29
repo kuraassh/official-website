@@ -5,7 +5,6 @@ import { getNetworkInfo } from "@utils/network_info";
 import { networkFunctions } from "../../utils";
 import { convertToMoney, moneyToInt } from "@utils/convert_to_money";
 import { cosmosData, irisData, vsysData } from "./config";
-import { Network } from "@models";
 
 // const solanaWeb3 = require("@solana/web3.js");
 
