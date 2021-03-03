@@ -11,8 +11,7 @@ export const ContactHeaderCSS = styled.div`
   align-items: left;
   flex-direction: column;
   justify-content: flex-start;
-  background: linear-gradient(0deg, rgb(32, 6, 105, 0.7), rgb(24, 0, 88, 0.84)),
-    url("/static/images/assets/contact-us.png");
+  background: url("/static/images/assets/contact-us.png");
   height: 350px;
   background-repeat: no-repeat;
   background-position: center center;
@@ -30,13 +29,13 @@ export const ContactHeaderCSS = styled.div`
   }
 
   ${media.bigDesktop`
-    background: linear-gradient(0deg, rgb(32, 6, 105, 0.7), rgb(24, 0, 88, 0.4)),url("/static/images/assets/contact-us.png");
+    background: url("/static/images/assets/contact-us.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
     display: flex;
     align-items: center;
-    height: 500px;
+    height: 586px;
     padding-top: 11rem;
 
   h2 {
