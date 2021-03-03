@@ -18,13 +18,13 @@ export const ContactHeaderCSS = styled.div`
   background-size: cover;
 
   h2 {
-    color: white;
+    color: rgb(0, 0, 0);
     font-weight: 300;
     margin-bottom: ${headerMargin.small};
   }
 
   p {
-    color: white;
+    color: rgb(0, 0, 0);
     font-weight: 100;
   }
 
@@ -36,7 +36,7 @@ export const ContactHeaderCSS = styled.div`
     display: flex;
     align-items: center;
     height: 586px;
-    padding-top: 11rem;
+    padding-top: 15rem;
 
   h2 {
     ${mixins.desktopMaxWidth}

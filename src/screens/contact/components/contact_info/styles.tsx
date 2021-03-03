@@ -42,9 +42,8 @@ export const ContactInfoCSS = styled.div`
   }
   .ui.raised.raised.segment {
     background-color: rgb(189, 8, 28, 1);
-    box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12),
-      0 2px 10px 0 rgba(34, 36, 38, 0.15);
     border: none;
+    border-radius: 0px 8px 8px 0px;
     padding: 2rem 1.5rem;
   }
   path {
