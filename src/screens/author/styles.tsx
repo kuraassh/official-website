@@ -58,8 +58,7 @@ export const AuthorCSS = styled.div`
   display: flex;
   margin-bottom: 1rem;
   flex-direction: column;
-  padding-top: 0.5rem;
-  padding-left: 1.5rem;
+
   img {
     border-radius: 0.5rem;
     width: 120px;
@@ -83,9 +82,8 @@ export const AuthorCSS = styled.div`
     }
   }
   ${media.tablet`
-    padding-left: 2rem;
+    padding-left: 0;
   `}
   ${media.bigDesktop`
-    padding-left: 0;
   `}
 `;

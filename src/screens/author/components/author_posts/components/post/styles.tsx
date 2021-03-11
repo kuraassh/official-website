@@ -25,9 +25,6 @@ export const PostCSS = styled.div`
       font-weight: 300;
     }
   }
-  .content {
-    padding: 0.5rem;
-  }
   span {
     display: flex;
     align-items: center;

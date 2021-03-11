@@ -3,6 +3,7 @@ import { mixins, media } from "@styles";
 
 export const BlogPostCSS = styled.div`
   ${mixins.mobilePadding}
+  padding: 2.5rem 0rem 0rem;
   padding-top: 4rem;
   display: grid;
   grid-gap: 20px;
