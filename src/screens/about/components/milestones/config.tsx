@@ -80,6 +80,7 @@ export const fetchMileStoneData = () => {
       results.push(milestoneRowTwo[i]);
     }
   }
+  console.log(`row`, milestoneRowOne, milestoneRowTwo);
 
   return results;
 };
