@@ -30,11 +30,11 @@ const logos = {
       "https://iris.bigdipper.live/validators/iva1msqqkd3v0gmullzwm56c4frevyczzxfeczvjru/delegate",
     heightSocket: "wss://ws.iris.forbole.com",
     calculator: {
-      bonded: "http://lcd.iris.forbole.com/stake/pool",
-      inflation: "http://lcd.iris.forbole.com/params",
-      supply: "http://lcd.iris.forbole.com/bank/token-stats",
+      bonded: "https://lcd.iris.forbole.com/stake/pool",
+      inflation: "https://lcd.iris.forbole.com/params",
+      supply: "https://lcd.iris.forbole.com/bank/token-stats",
       stakingParams:
-        "http://lcd.iris.forbole.com/stake/validators/iva1msqqkd3v0gmullzwm56c4frevyczzxfeczvjru",
+        "https://lcd.iris.forbole.com/stake/validators/iva1msqqkd3v0gmullzwm56c4frevyczzxfeczvjru",
     },
   },
   ["terra-money"]: {
