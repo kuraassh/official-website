@@ -40,6 +40,146 @@ export const useForboleStakesHook = () => {
 
   const [cosmosNetwork, setCosmosNetwork] = useState(cosmosBasedNetwork);
   //const [cosmos, setCosmos] = useCosmos(cosmosNetwork[0]);
+  const [cosmos, setCosmos] = useState(cosmosNetwork[0]);
+
+  const useCosmos = async (input) => {
+    setLoading(true);
+    //console.log(input);
+    const networkFunction = networkFunctions[input?.name] ?? null;
+    //console.log(networkFunction);
+    const { calculator } = getNetworkInfo(input?.network ?? null);
+    const bondedApi = axios.post("/api/proxy", {
+      url: calculator.bonded,
+    });
+    const stakingParamsApi = axios.post("/api/proxy", {
+      url: calculator.stakingParams,
+    });
+    const delegationsApi = axios.post("/api/proxy", {
+      url: input?.delegationsApi,
+    });
+    const marketPriceApi = axios.get(networkFunction?.gecko);
+
+    const promises = [
+      bondedApi,
+      stakingParamsApi,
+      delegationsApi,
+      marketPriceApi,
+    ];
+
+    // const result = await Promise.allSettled(promises);
+    // console.log(
+    //   `hiiiiiiiiiiiiii`,
+    //   result.map((x) => x.status)
+    // );
+
+    const [
+      { data: bondedJson },
+      { data: stakingParamsJson },
+      { data: delegationsJson },
+      { data: marketPriceJson },
+    ] = await Promise.all(promises);
+
+    const totalToken = networkFunction?.converter(
+      Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
+    );
+    const totalTokenFormat = convertToMoney(
+      networkFunction?.converter(
+        Number(R.pathOr(0, ["result", "tokens"], stakingParamsJson))
+      )
+    );
+
+    const bonded = networkFunction?.bonded(bondedJson);
+    const currentMarketValue = networkFunction.marketPrice(marketPriceJson);
+    const totalMarketValue = convertToMoney(currentMarketValue * totalToken);
+    const votingPowerPercent = convertToMoney((totalToken / bonded) * 100, 2);
+    //==========================
+    // self-delegations
+    //==========================
+
+    let totalSelfDelegations = 0;
+
+    for (let i = 0; i < input.validator_address.length; i++) {
+      const totalSelfDelegation = networkFunction?.converter(
+        R.pathOr([], ["result"], delegationsJson)
+          .filter(
+            (y) => y?.[input?.x ?? null] === input?.validator_address[i] ?? null
+          )
+          .reduce(
+            (a, b) => (a += Number(b?.balance?.amount ?? b?.balance) ?? 0),
+            totalSelfDelegations ?? 0
+          )
+      );
+      totalSelfDelegations += totalSelfDelegation;
+    }
+
+    const totalSelfDelegationsFormat = convertToMoney(totalSelfDelegations);
+    const totalSelfDelegationsPercent = convertToMoney(
+      (totalSelfDelegations / bonded) * 100,
+      2
+    );
+
+    //==========================
+    // other-delegations
+    //==========================
+    const otherDelegations = totalToken - totalSelfDelegations;
+    const otherDelegationsFormat = convertToMoney(otherDelegations);
+    const otherDelegationsPercent = convertToMoney(
+      (otherDelegations / bonded) * 100,
+      2
+    );
+
+    // resolve any possible Promise error (in case any api endpoint doesn't work )
+    try {
+      setCosmos({
+        title: input?.title,
+        denom: input?.denom,
+        totalToken: totalTokenFormat,
+        totalMarketValue,
+        currentMarketValue,
+        voting: {
+          title: "votingPower",
+          token: totalTokenFormat,
+          percent: votingPowerPercent,
+        },
+        selfDelegations: {
+          title: "selfDelegations",
+          token: totalSelfDelegationsFormat,
+          percent: totalSelfDelegationsPercent,
+        },
+        otherDelegations: {
+          title: "otherDelegations",
+          token: otherDelegationsFormat,
+          percent: otherDelegationsPercent,
+        },
+      });
+    } catch (err) {
+      console.log(`error`, err);
+      setCosmos({
+        title: input?.title,
+        denom: input?.denom,
+        totalToken: totalTokenFormat,
+        totalMarketValue,
+        currentMarketValue,
+        voting: {
+          title: "votingPower",
+          token: totalTokenFormat,
+          percent: votingPowerPercent,
+        },
+        selfDelegations: {
+          title: "selfDelegations",
+          token: totalSelfDelegationsFormat,
+          percent: totalSelfDelegationsPercent,
+        },
+        otherDelegations: {
+          title: "otherDelegations",
+          token: otherDelegationsFormat,
+          percent: otherDelegationsPercent,
+        },
+      });
+    }
+    //console.log(updatedArr[x], x, cosmosNetwork);
+    // setCosmosNetwork(updatedArr[x]);
+  };
 
   // change this to useCosmos hook
   const getCosmosBasedNetwork = async () => {
@@ -534,12 +674,13 @@ export const useForboleStakesHook = () => {
   };
 
   useEffect(() => {
-    getCosmosBasedNetwork()
-      .then(() => getIrisNetwork())
+    useCosmos(cosmosData[0])
+      // getCosmosBasedNetwork()
+      //   .then(() => getIrisNetwork())
       // .then(() => getVSYSNetwork())
       .then(() => setLoading(false))
       .catch((err) => {
-        console.log(`err`, err.response.data);
+        console.log(`err`, err);
         setLoading(false);
       });
     return () => {
@@ -556,6 +697,7 @@ export const useForboleStakesHook = () => {
   }, [cosmosNetwork, vsys, iris]);
 
   return {
+    cosmos,
     cosmosNetwork,
     iris,
     vsys,

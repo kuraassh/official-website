@@ -17,6 +17,7 @@ const ForboleStakes = () => {
   const { t } = useTranslation("stake_now");
   const hookProps = useForboleStakesHook();
   const {
+    cosmos,
     cosmosNetwork,
     iris,
     vsys,
@@ -25,7 +26,7 @@ const ForboleStakes = () => {
     isLoading,
   } = hookProps;
   const selectedData: INetworkDataProps[] = [
-    { network: cosmosNetwork, icon: "cosmos-hub" },
+    { network: cosmos, icon: "cosmos-hub" },
     { network: cosmosNetwork, icon: "terra" },
     { network: cosmosNetwork, icon: "kava" },
     { network: cosmosNetwork, icon: "likecoin" },
@@ -49,6 +50,7 @@ const ForboleStakes = () => {
           <Chart {...hookProps} />
         </ChartContainerCSS>
         <StakesDetailsContainerCSS>
+          {console.log(selectedData[selected], cosmos)}
           <HubDetail
             main
             name={selectedData[selected]?.icon}
