@@ -12,12 +12,14 @@ import Chart from "./components/chart";
 import { useForboleStakesHook } from "./hooks";
 import { INetworkDataProps } from "./interfaces";
 import { Loader } from "semantic-ui-react";
+import { cosmosData, irisData, vsysData } from "./config";
 
 const ForboleStakes = () => {
   const { t } = useTranslation("stake_now");
   const hookProps = useForboleStakesHook();
   const {
     cosmos,
+    terra,
     cosmosNetwork,
     iris,
     vsys,
@@ -25,9 +27,10 @@ const ForboleStakes = () => {
     selected,
     isLoading,
   } = hookProps;
+  // console.log(cosmos);
   const selectedData: INetworkDataProps[] = [
     { network: cosmos, icon: "cosmos-hub" },
-    { network: cosmosNetwork, icon: "terra" },
+    { network: terra, icon: "terra" },
     { network: cosmosNetwork, icon: "kava" },
     { network: cosmosNetwork, icon: "likecoin" },
     { network: cosmosNetwork, icon: "iov" },
@@ -50,145 +53,40 @@ const ForboleStakes = () => {
           <Chart {...hookProps} />
         </ChartContainerCSS>
         <StakesDetailsContainerCSS>
-          {console.log(selectedData[selected], cosmos)}
+          {console.log(
+            selected
+            // selectedData[selected],
+            // selectedData[selected]?.network?.totalToken
+          )}
           <HubDetail
             main
             name={selectedData[selected]?.icon}
-            denom={
-              selected >= 8
-                ? selectedData[selected]?.network?.denom
-                : selectedData[selected]?.network[selected]?.denom
-            }
-            title={
-              selected >= 8
-                ? selectedData[selected]?.network[selected]?.title
-                : selectedData[selected]?.network?.title
-            }
-            token={
-              isLoading ? (
-                <Loader size="medium" active></Loader>
-              ) : selected >= 8 ? (
-                selectedData[selected]?.network?.totalToken
-              ) : (
-                selectedData[selected]?.network[selected]?.totalToken
-              )
-            }
-            usd={
-              isLoading ? (
-                <Loader size="tiny" active></Loader>
-              ) : selected >= 8 ? (
-                selectedData[selected]?.network?.totalMarketValue
-              ) : (
-                selectedData[selected]?.network[selected]?.totalMarketValue
-              )
-            }
-            perToken={
-              isLoading ? (
-                <Loader size="mini" active></Loader>
-              ) : selected >= 8 ? (
-                selectedData[selected]?.network?.currentMarketValue
-              ) : (
-                selectedData[selected]?.network[selected]?.currentMarketValue
-              )
-            }
+            denom={selectedData[selected]?.network?.denom}
+            title={selectedData[selected]?.network?.title}
+            token={selectedData[selected]?.network?.totalToken}
+            usd={selectedData[selected]?.network?.totalMarketValue}
+            perToken={selectedData[selected]?.network?.currentMarketValue}
           />
           <hr className="stats-hr" />
           <HubDetail
-            denom={
-              selected >= 8
-                ? selectedData[selected]?.network?.denom
-                : selectedData[selected]?.network[selected]?.denom
-            }
-            title={
-              selected >= 8
-                ? selectedData[selected]?.network?.voting.title
-                : selectedData[selected]?.network[selected]?.voting.title
-            }
-            token={
-              isLoading ? (
-                <Loader size="mini" active></Loader>
-              ) : selected >= 8 ? (
-                selectedData[selected]?.network?.voting.token
-              ) : (
-                selectedData[selected]?.network[selected]?.voting.token
-              )
-            }
-            percent={
-              isLoading ? (
-                <Loader size="mini" active></Loader>
-              ) : selected >= 8 ? (
-                selectedData[selected]?.network?.voting.percent
-              ) : (
-                selectedData[selected]?.network[selected]?.voting.percent
-              )
-            }
+            denom={selectedData[selected]?.network?.denom}
+            title={selectedData[selected]?.network?.voting.title}
+            token={selectedData[selected]?.network?.voting.token}
+            percent={selectedData[selected]?.network?.voting.percent}
           />
           <hr className="stats-hr" />
           <HubDetail
-            denom={
-              selected >= 8
-                ? selectedData[selected]?.network?.denom
-                : selectedData[selected]?.network[selected]?.denom
-            }
-            title={
-              selected >= 8
-                ? selectedData[selected]?.network?.selfDelegations.title
-                : selectedData[selected]?.network[selected]?.selfDelegations
-                    .title
-            }
-            token={
-              isLoading ? (
-                <Loader size="mini" active></Loader>
-              ) : selected >= 8 ? (
-                selectedData[selected]?.network?.selfDelegations.token
-              ) : (
-                selectedData[selected]?.network[selected]?.selfDelegations.token
-              )
-            }
-            percent={
-              isLoading ? (
-                <Loader size="mini" active></Loader>
-              ) : selected >= 8 ? (
-                selectedData[selected]?.network?.selfDelegations.percent
-              ) : (
-                selectedData[selected]?.network[selected]?.selfDelegations
-                  .percent
-              )
-            }
+            denom={selectedData[selected]?.network?.denom}
+            title={selectedData[selected]?.network?.selfDelegations.title}
+            token={selectedData[selected]?.network?.selfDelegations.token}
+            percent={selectedData[selected]?.network?.selfDelegations.percent}
           />
           <hr className="stats-hr" />
           <HubDetail
-            denom={
-              selected >= 8
-                ? selectedData[selected]?.network?.denom
-                : selectedData[selected]?.network[selected]?.denom
-            }
-            title={
-              selected >= 8
-                ? selectedData[selected]?.network?.otherDelegations.title
-                : selectedData[selected]?.network[selected]?.otherDelegations
-                    .title
-            }
-            token={
-              isLoading ? (
-                <Loader size="mini" active></Loader>
-              ) : selected >= 8 ? (
-                selectedData[selected]?.network?.otherDelegations.token
-              ) : (
-                selectedData[selected]?.network[selected]?.otherDelegations
-                  .token
-              )
-            }
-            percent={
-              isLoading ? (
-                <Loader size="mini" active></Loader>
-              ) : selected >= 8 ? (
-                selectedData[selected]?.network?.otherDelegations.percent
-              ) : (
-                selectedData[selected]?.network[selected]?.otherDelegations
-                  .percent
-              )
-            }
+            denom={selectedData[selected]?.network?.denom}
+            title={selectedData[selected]?.network?.otherDelegations.title}
+            token={selectedData[selected]?.network?.otherDelegations.token}
+            percent={selectedData[selected]?.network?.otherDelegations.percent}
           />
         </StakesDetailsContainerCSS>
       </FlexContainerCSS>
