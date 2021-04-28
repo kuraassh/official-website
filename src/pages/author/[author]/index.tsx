@@ -17,7 +17,6 @@ AuthorDetailsPage.getInitialProps = async ({ query }) => {
   let error = false;
   try {
     const fetchQuery: any = {};
-    console.log(`author page`, query);
     if (query.page) {
       fetchQuery.page = query.page;
     }

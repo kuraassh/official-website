@@ -5,7 +5,6 @@ import next from "next";
 import cors from "cors";
 import nodemailer from "nodemailer";
 import axios from 'axios';
-//import { useRouter } from "next/router";
 
 const GhostAdminAPI = require('@tryghost/admin-api');
 const nextI18NextMiddleware = require("next-i18next/middleware").default;
@@ -15,7 +14,6 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 const port = process.env.PORT;
 const url = process.env.NEXT_PUBLIC_URL;
-//const router = useRouter();
 const transporter = nodemailer.createTransport({
   service: "Mailgun",
   host: "smtp.mailgun.org",
@@ -43,7 +41,7 @@ const ghostAdminApi = new GhostAdminAPI({
     server.use(nextI18NextMiddleware(nextI18next));
     server.use(express.json());
 
-    server.get('/author/:author', (req, res, next:any) => {
+    server.get('/author/:author', (req: Request, res: Response, next:any) => {
       try {
       const actualPage = `/author/${req.params.author}`
       const queryParams = Object.assign({}, req.params, req.query);

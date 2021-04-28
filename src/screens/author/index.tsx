@@ -69,7 +69,7 @@ const AuthorTitlePosts = (props: any) => {
                   <p className="position">{t(position)}</p>
                 </span>
               </AuthorCSS>
-              <AuthorPosts blogs={post.slice(1)} meta={meta} />
+              <AuthorPosts main={post[0]} blogs={post.slice(1)} meta={meta} />
             </TagTitlePostsCSS>
           </MaxWidthContainerCSS>
         </BlogCSS>
