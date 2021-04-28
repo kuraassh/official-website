@@ -10,7 +10,7 @@ const AuthorPosts = ({ blogs, meta }: IProps) => {
   const currentPage = R.pathOr(0, ["pagination", "page"], meta);
   const totalPages = R.pathOr(0, ["pagination", "pages"], meta);
 
-  const { handleTagPageChange } = useBlogPostsHook();
+  const { handleAuthorPageChange } = useBlogPostsHook();
 
   return (
     <BlogContainerCSS>
@@ -23,7 +23,7 @@ const AuthorPosts = ({ blogs, meta }: IProps) => {
         boundaryRange={0}
         activePage={currentPage}
         totalPages={totalPages}
-        onPageChange={handleTagPageChange}
+        onPageChange={handleAuthorPageChange}
       />
     </BlogContainerCSS>
   );
