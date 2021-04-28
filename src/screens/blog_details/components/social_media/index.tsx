@@ -8,7 +8,6 @@ const SocialMedia = (props: any) => {
   const router = useRouter();
   const path = router.asPath;
   const shareUrl = `${process.env.NEXT_PUBLIC_URL}${path}`;
-  console.log(shareUrl);
 
   const handleClick = (url: string) => {
     const config: { [key: string]: string | number } = {
@@ -62,7 +61,6 @@ const SocialMedia = (props: any) => {
       >
         <Twitter />
       </span>
-
       <span
         onClick={() =>
           handleClick(
