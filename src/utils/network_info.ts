@@ -271,25 +271,10 @@ const logos = {
     name: "Straightedge",
     key: "straightedge",
   },
-  tachyon: {
-    image: "/static/images/icons/tachyon.png",
-    name: "Tachyon",
-    key: "tachyon",
-  },
-  near: {
-    image: "/static/images/icons/near.png",
-    name: "Near",
-    key: "near",
-  },
   ["oasis-labs"]: {
     image: "/static/images/icons/oasis-labs.png",
     name: "Oasis Labs",
     key: "oasis-labs",
-  },
-  ["open-libra"]: {
-    image: "/static/images/icons/open-libra.png",
-    name: "Open Libra",
-    key: "open-libra",
   },
 };
 
