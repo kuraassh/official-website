@@ -28,7 +28,6 @@ const ButtonGroup = (props: any) => {
 
 const CarouselNetworks = ({ network }: any) => {
   const { width } = useWindowSize();
-  console.log(network);
   const responsive: any = {
     desktop: {
       breakpoint: { max: 3000, min: 1100 },
