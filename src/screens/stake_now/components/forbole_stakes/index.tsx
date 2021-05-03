@@ -48,7 +48,7 @@ const ForboleStakes = () => {
       </ForboleStakesCSS>
       <FlexContainerCSS>
         <CarouselDesktopContainerCSS>
-          <CarouselNetworks loading={loading} network={networkData} />
+          <CarouselNetworks network={networkData} />
         </CarouselDesktopContainerCSS>
       </FlexContainerCSS>
     </StakeNowContainerCSS>
