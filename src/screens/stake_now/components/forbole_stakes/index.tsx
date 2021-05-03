@@ -44,15 +44,11 @@ const ForboleStakes = () => {
     <StakeNowContainerCSS>
       <ForboleStakesCSS>
         <p>{t("tokensStakedWithForbole")}</p>
-        {isNaN(totalUSD) ? (
-          <h1>${" " + "---"}</h1>
-        ) : (
-          <h1>${convertToMoney(totalUSD)}</h1>
-        )}
+        {<h1>${totalUSD}</h1>}
       </ForboleStakesCSS>
       <FlexContainerCSS>
         <CarouselDesktopContainerCSS>
-          <CarouselNetworks network={networkData} />
+          <CarouselNetworks loading={loading} network={networkData} />
         </CarouselDesktopContainerCSS>
       </FlexContainerCSS>
     </StakeNowContainerCSS>
