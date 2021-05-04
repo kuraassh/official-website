@@ -18,6 +18,7 @@ const NetworkBlock = (props: any) => {
     delegate = process.env.NEXT_PUBLIC_URL,
   } = props;
   const { t } = useTranslation("stake_now");
+  console.log(token);
 
   const formattedAmount = token === "---" ? token : convertToMoney(token);
   return (
@@ -28,12 +29,36 @@ const NetworkBlock = (props: any) => {
             <img src={`/static/images/icons/${icon}.png`} />
             <h3>{t(title)}</h3>
           </div>
-          <p className={"token"}>
-            {token} {denom}
-          </p>
-          <p className="usd">
-            {usd} {t("usd")}
-          </p>
+          {token == 0 ? (
+            <div className="loadingToken">
+              <ReactLoading
+                type={"bars"}
+                color={"#000"}
+                height={"100%"}
+                width={"100%"}
+              />{" "}
+              {denom}
+            </div>
+          ) : (
+            <p className="token">
+              {token} {denom}
+            </p>
+          )}
+          {usd == 0 ? (
+            <div className="loadingusd">
+              <ReactLoading
+                type={"bars"}
+                color={"#000"}
+                height={"100%"}
+                width={"100%"}
+              />{" "}
+              {t("usd")}
+            </div>
+          ) : (
+            <p className="usd">
+              {usd} {t("usd")}
+            </p>
+          )}
           <PercentCSS>
             <p>{percent}%</p>
           </PercentCSS>

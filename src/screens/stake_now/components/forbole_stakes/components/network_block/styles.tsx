@@ -44,6 +44,11 @@ export const BlockCSS = styled.div`
     color: ${colors.black};
   }
 
+  .loadingToken {
+    color: ${colors.black};
+    margin: auto;
+  }
+
   h3 {
     font-weight: 300;
     margin-bottom: 0;
