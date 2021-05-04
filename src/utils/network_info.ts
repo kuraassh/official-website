@@ -52,7 +52,7 @@ const logos = {
     denom: "LUNA",
     color: "#2845AE",
     delegate:
-      "https://app.lunie.io/terra/validators/terravaloper1jkqr2vfg4krfd4zwmsf7elfj07cjuzss30ux8g",
+      "https://station.terra.money/validator/terravaloper1jkqr2vfg4krfd4zwmsf7elfj07cjuzss30ux8g",
     heightSocket: "wss://ws.terra.forbole.com",
     calculator: {
       bonded: "https://lcd.terra.bigdipper.live/staking/pool",
@@ -86,6 +86,8 @@ const logos = {
     name: "Sentinel",
     key: "sentinel",
     bigDipper: "https://explorer.sentinel.co/",
+    delegate:
+      "https://explorer.sentinel.co/validator/sentvaloper14kn0kk33szpwus9nh8n87fjel8djx0y0l9e6u8",
   },
   likecoin: {
     image: "/static/images/icons/likecoin.png",
@@ -111,6 +113,8 @@ const logos = {
     name: "Regen Network",
     key: "regen-network",
     bigDipper: "https://explorer.regen.vitwit.com/",
+    delegate:
+      "https://wallet.keplr.app/#/regen/stake?modal=detail&validator=regenvaloper14kn0kk33szpwus9nh8n87fjel8djx0y0c7xhe5",
   },
   ["e-money"]: {
     image: "/static/images/icons/e-money.png",
@@ -119,7 +123,7 @@ const logos = {
     color: "#1e5877",
     bigDipper: "https://e-money.network/",
     delegate:
-      "https://e-money.network/validator/emoneyvaloper1293pqwtzu67zp8txuya4yts03ccw5kgf98hz9y/delegate",
+      "https://wallet.e-money.com/earn/emoneyvaloper1293pqwtzu67zp8txuya4yts03ccw5kgf98hz9y",
     heightSocket: "wss://ws.emoney.forbole.com",
     calculator: {
       bonded: "http://lcd.emoney.forbole.com/staking/pool",
@@ -142,13 +146,13 @@ const logos = {
   },
   iov: {
     image: "/static/images/icons/iov.png",
-    name: "Iov",
+    name: "Starname",
     label: "Iov - IOV",
     key: "iov",
     denom: "IOV",
     color: "#6610f2",
     delegate:
-      "https://big-dipper.iov-mainnet-2.iov.one/validator/starvaloper1jkv2qkpq6cfplx6put7f00wzuyds57fnmtgde0/delegate",
+      "https://big-dipper.iov-mainnet-2.iov.one/validator/starvaloper1jkv2qkpq6cfplx6put7f00wzuyds57fnmtgde0",
     heightSocket: "wss://ws.iov.forbole.com",
     calculator: {
       bonded: "http://lcd.iov.forbole.com/staking/pool",
@@ -162,6 +166,7 @@ const logos = {
     image: "/static/images/icons/oasis-protocol.png",
     name: "Oasis protocol",
     key: "oasis-protocol",
+    delegate: "https://anthem.chorus.one/networks",
   },
   akash: {
     image: "/static/images/icons/akash.png",
@@ -185,6 +190,7 @@ const logos = {
     image: "/static/images/icons/bitsongs.png",
     name: "BitSongs",
     key: "bitsongs",
+    delegate: "https://play.bitsong.io/",
   },
   ["band-protocol"]: {
     image: "/static/images/icons/band-protocol.png",
@@ -208,33 +214,34 @@ const logos = {
     image: "/static/images/icons/solana.png",
     name: "Solana",
     key: "solana",
+    delegate: "https://solflare.com/",
   },
   ["v-system"]: {
     image: "/static/images/icons/v-system.png",
     name: "V-System",
     key: "v-system",
     color: "#ff8836",
+    delegate: "https://wallet.v.systems/",
   },
   polkadot: {
     image: "/static/images/icons/polkadot.png",
     name: "Polkadot",
     key: "polkadot",
-    delegate:
-      "https://app.lunie.io/polkadot/validators/12L5PhJ2CT4MujSXoHTsBRZHQym4e6WYRhpAkgNWSwAnjZTf",
+    delegate: "https://polkadot.js.org/apps/#/accounts",
     heightSocket: "wss://rpc.polkadot.io/",
   },
   kusama: {
     image: "/static/images/icons/kusama.png",
     name: "Kusama",
     key: "kusama",
-    delegate:
-      "https://app.lunie.io/kusama/validators/D9rwRxuG8xm8TZf5tgkbPxhhTJK5frCJU9wvp59VRjcMkUf",
+    delegate: "https://polkadot.js.org/apps/#/accounts",
     heightSocket: "wss://kusama-rpc.polkadot.io/",
   },
   celo: {
     image: "/static/images/icons/celo.png",
     name: "Celo",
     key: "celo",
+    delegate: "https://celo.bigdipper.live/",
   },
   agoric: {
     image: "/static/images/icons/agoric.png",
@@ -245,6 +252,7 @@ const logos = {
     image: "/static/images/icons/flow.png",
     name: "Flow",
     key: "flow",
+    delegate: "https://port.onflow.org/",
   },
   ["persistence-one"]: {
     image: "/static/images/icons/persistence-one.png",
@@ -260,11 +268,14 @@ const logos = {
     image: "/static/images/icons/fetch-ai.png",
     name: "Fetch.ai",
     key: "fetch-ai",
+    delegate:
+      "https://explore.fetch.ai/validator/fetchvaloper14kn0kk33szpwus9nh8n87fjel8djx0y0dzxfx3",
   },
   ["injective-protocol"]: {
     image: "/static/images/icons/injective-protocol.png",
     name: "Injective Portocol",
     key: "injective-protocol",
+    delegate: "https://staking.injective.network/connect",
   },
   straightedge: {
     image: "/static/images/icons/straightedge.png",
@@ -275,6 +286,19 @@ const logos = {
     image: "/static/images/icons/oasis-labs.png",
     name: "Oasis Labs",
     key: "oasis-labs",
+  },
+  cosmwasm: {
+    image: "/static/images/icons/cosmwasm.png",
+    name: "CosmWasm",
+    key: "cosmwasm",
+    delegate: "https://www.cosmwasm.com/",
+  },
+  ["crypto.org"]: {
+    image: "/static/images/icons/crypto-org.svg",
+    name: "Crypto.org",
+    key: "crypto-org",
+    delegate:
+      "https://crypto-org.bigdipper.live/validator/crocncl15xphw2m025acwnjd2ucq9t5ku4ggaqyecekzqa",
   },
 };
 
