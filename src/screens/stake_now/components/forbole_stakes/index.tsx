@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "i18n";
-import { convertToMoney } from "@utils/convert_to_money";
+import ReactLoading from "react-loading";
 import {
   ForboleStakesCSS,
   CarouselDesktopContainerCSS,
@@ -44,7 +44,16 @@ const ForboleStakes = () => {
     <StakeNowContainerCSS>
       <ForboleStakesCSS>
         <p>{t("tokensStakedWithForbole")}</p>
-        {<h1>${totalUSD}</h1>}
+        {totalUSD == 0 ? (
+          <ReactLoading
+            type={"bars"}
+            color={"#FFF"}
+            height={"5%"}
+            width={"5%"}
+          />
+        ) : (
+          <h1>${totalUSD}</h1>
+        )}
       </ForboleStakesCSS>
       <FlexContainerCSS>
         <CarouselDesktopContainerCSS>

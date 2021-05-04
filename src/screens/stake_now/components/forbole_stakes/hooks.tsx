@@ -16,25 +16,25 @@ export const useForboleStakesHook = () => {
   for (let i = 0; i < cosmosData.length; i++) {
     cosmosBasedNetwork.push({
       title: cosmosData[i].title ?? null,
-      totalToken: "---",
+      totalToken: 0,
       totalUSDPrice: 0,
-      totalMarketValue: "---",
-      currentMarketValue: "---",
+      totalMarketValue: 0,
+      currentMarketValue: 0,
       denom: cosmosData[i].denom ?? null,
       voting: {
         title: "votingPower",
-        token: "---",
-        percent: "---",
+        token: 0,
+        percent: 0,
       },
       selfDelegations: {
         title: "selfDelegations",
-        token: "---",
-        percent: "---",
+        token: 0,
+        percent: 0,
       },
       otherDelegations: {
         title: "otherDelegations",
-        token: "---",
-        percent: "---",
+        token: 0,
+        percent: 0,
       },
     });
   }
@@ -255,25 +255,25 @@ export const useForboleStakesHook = () => {
   // V System
   const [vsys, setVSYS] = useState({
     title: vsysData[0].title,
-    totalToken: "---",
+    totalToken: 0,
     totalUSDPrice: 0,
-    totalMarketValue: "---",
-    currentMarketValue: "---",
+    totalMarketValue: 0,
+    currentMarketValue: 0,
     denom: vsysData[0].denom,
     voting: {
       title: "votingPower",
-      token: "---",
-      percent: "---",
+      token: 0,
+      percent: 0,
     },
     selfDelegations: {
       title: "selfDelegations",
-      token: "---",
-      percent: "---",
+      token: 0,
+      percent: 0,
     },
     otherDelegations: {
       title: "otherDelegations",
-      token: "---",
-      percent: "---",
+      token: 0,
+      percent: 0,
     },
   });
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import ReactLoading from "react-loading";
 import classNames from "classnames";
 import { useTranslation } from "i18n";
 import { convertToMoney } from "@utils/convert_to_money";
