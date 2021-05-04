@@ -26,6 +26,7 @@ export const NetworkCSS = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     &.amount {
+      display: none;
       margin-top: 0;
       display: flex;
       align-items: center;
@@ -74,7 +75,7 @@ export const NetworkCSS = styled.div`
         position: absolute;
         left: 0;
         right: 0;
-        top: 37%;
+        top: 50%;
       }
     }
 

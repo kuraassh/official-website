@@ -261,6 +261,21 @@ const logos = {
     name: "Fetch.ai",
     key: "fetch-ai",
   },
+  ["injective-protocol"]: {
+    image: "/static/images/icons/injective-protocol.png",
+    name: "Injective Portocol",
+    key: "injective-protocol",
+  },
+  straightedge: {
+    image: "/static/images/icons/straightedge.png",
+    name: "Straightedge",
+    key: "straightedge",
+  },
+  ["oasis-labs"]: {
+    image: "/static/images/icons/oasis-labs.png",
+    name: "Oasis Labs",
+    key: "oasis-labs",
+  },
 };
 
 export const getNetworkInfo = (key) => {
