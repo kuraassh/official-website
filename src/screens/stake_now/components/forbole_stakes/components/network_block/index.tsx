@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
+import React from "react";
 import ReactLoading from "react-loading";
 import classNames from "classnames";
 import { useTranslation } from "i18n";
-import { convertToMoney } from "@utils/convert_to_money";
 import { BlockCSS, FlexCSS, PercentCSS, Button } from "./styles";
 
 const NetworkBlock = (props: any) => {
@@ -19,7 +17,6 @@ const NetworkBlock = (props: any) => {
   } = props;
   const { t } = useTranslation("stake_now");
 
-  const formattedAmount = token === "---" ? token : convertToMoney(token);
   return (
     <a href={delegate} target="_blank" rel="noreferrer">
       <BlockCSS className={classNames({ active: active })}>

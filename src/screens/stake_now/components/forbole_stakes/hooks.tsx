@@ -8,7 +8,6 @@ import { convertToMoney } from "@utils/convert_to_money";
 import { cosmosData, vsysData } from "./config";
 
 export const useForboleStakesHook = () => {
-  const [selected, setSelected] = useState(0);
   const [totalUSD, setNetworkUSD] = useState(0);
 
   // Cosmos-Based Networks
@@ -101,18 +100,6 @@ export const useForboleStakesHook = () => {
       let totalSelfDelegations = 0;
 
       for (let i = 0; i < cosmosData[x].validator_address.length; i++) {
-        // const totalSelfDelegation = networkFunction?.converter(
-        //   R.pathOr([], ["result"], delegationsJson)
-        //     .filter(
-        //       (y) =>
-        //         y?.[cosmosData[x]?.address ?? null] ===
-        //           cosmosData[x]?.validator_address[i] ?? null
-        //     )
-        //     .reduce(
-        //       (a, b) => (a += Number(b?.balance?.amount ?? b?.balance) ?? 0.0),
-        //       totalSelfDelegations ?? 0.0
-        //     )
-        // );
         const totalSelfDelegation = networkFunction?.converter(
           R.pathOr([""], ["result"], delegationsJson)
             .filter((y) =>
@@ -392,9 +379,7 @@ export const useForboleStakesHook = () => {
   };
 
   useEffect(() => {
-    getCosmosBasedNetwork()
-      // .then(() => getIrisNetwork())
-      .then(() => getVSYSNetwork());
+    getCosmosBasedNetwork().then(() => getVSYSNetwork());
   }, []);
 
   useEffect(() => {
@@ -418,7 +403,5 @@ export const useForboleStakesHook = () => {
     iris,
     vsys,
     totalUSD,
-    selected,
-    setSelected,
   };
 };

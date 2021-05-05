@@ -81,7 +81,7 @@ export const BlockCSS = styled.div`
     }
 
     &.active {
-      height: 345px !important;
+      height: 340px !important;
       // width: inherit !important;
     }
 
