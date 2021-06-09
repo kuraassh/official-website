@@ -60,7 +60,7 @@ const CareerDetails = ({ post, raw }: any) => {
     datePublished: `${publishedAt}`,
     dateModified: modified,
     description: `${excerpt}`,
-    discussionUrl: `${url}/career/${slug}#comments`,
+    discussionUrl: `${url}/careers/${slug}#comments`,
     inLanguage: "English",
     sourceOrganization: {
       "@id": `${slug}#organisation`,
@@ -74,7 +74,7 @@ const CareerDetails = ({ post, raw }: any) => {
         url: `${url}/images/logo.png`,
       },
     },
-    mainEntityOfPage: `${url}/career/${slug}`,
+    mainEntityOfPage: `${url}/careers/${slug}`,
   };
 
   const [isLoading, setLoading] = useState(true);
