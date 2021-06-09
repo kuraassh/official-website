@@ -5,7 +5,7 @@ import { Go } from "@icons";
 import { OpeningCSS } from "./styles";
 
 const Opening = (props: any) => {
-  const { t } = useTranslation("team");
+  const { t } = useTranslation("careers");
   const { title, description, slug } = props;
   return (
     <OpeningCSS>
@@ -16,7 +16,7 @@ const Opening = (props: any) => {
             <p>{description}</p>
           </div>
           <p className="see-more">
-            {t("explorer")} <Go />
+            {t("learnMore")} <Go />
           </p>
         </a>
       </Link>
