@@ -14,6 +14,7 @@
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx"
   },
   "dependencies": {
+    "@fullhuman/postcss-purgecss": "^4.0.3",
     "@n8tb1t/use-scroll-position": "^1.0.43",
     "@socialgouv/matomo-next": "^1.1.2",
     "@tryghost/admin-api": "^1.3.5",
@@ -31,6 +32,8 @@
     "next-compose-plugins": "^2.2.0",
     "next-i18next": "^4.5.0",
     "nodemailer": "^6.4.16",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-preset-env": "^6.7.0",
     "ramda": "^0.27.0",
     "react": "^17.0.2",
     "react-animated-numbers": "^0.2.2",
@@ -64,6 +67,7 @@
     "eslint-plugin-react": "^7.20.3",
     "file-loader": "4.1.0",
     "fomantic-ui": "^2.8.6",
+    "next-purgecss": "^4.0.0",
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
     "ts-node": "^8.10.2",

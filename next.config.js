@@ -1,5 +1,6 @@
 const withPlugins = require("next-compose-plugins");
 const css = require("@zeit/next-css");
+const withPurgeCss = require("next-purgecss");
 
 const nextConfig = {
   target: "serverless",
@@ -21,8 +22,21 @@ const nextConfig = {
 };
 
 module.exports = {
-  css: withPlugins([[css]], nextConfig),
-  images: {
-    domains: [process.env.NEXT_PUBLIC_URL],
-  },
+  css: withPlugins(
+    [
+      [
+        css,
+        withPurgeCss({
+          purgeCss: {
+            safelist: { greedy: [/ui$/, /CarouselCSS$/] },
+            whitelistPatterns: [/ui$/],
+          },
+        }),
+      ],
+    ],
+    nextConfig
+  ),
+  // images: {
+  //   domains: [process.env.NEXT_PUBLIC_URL],
+  // },
 };
