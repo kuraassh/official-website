@@ -17,7 +17,11 @@ const Post = (props: any) => {
           <div className="image-container">
             <Image
               loader={cmsLoader}
-              src={featureImage}
+              src={
+                featureImage == null
+                  ? "/static/images/assets/blog-placeholder.png"
+                  : featureImage
+              }
               alt="Feature Image"
               className="image"
               layout="fill"
