@@ -11,6 +11,7 @@ export const productsData = [
     name: "Forbole X",
     description:
       "Forbole Portal provides a secured and easy way to manage crypto assets.",
+    link: "https://x.forbole.com/",
   },
   {
     icon: "/static/images/icons/desmos.svg",

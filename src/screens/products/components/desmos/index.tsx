@@ -25,7 +25,7 @@ export const DesmosContent = () => {
             <li>{t("dd3")}</li>
           </ul>
           <a href="https://www.desmos.network/">
-            {t("explorer")} <Go />
+            {t("learnMore")} <Go />
           </a>
         </div>
       </div>

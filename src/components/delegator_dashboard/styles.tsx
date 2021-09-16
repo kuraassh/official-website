@@ -50,6 +50,18 @@ export const DashboardContentCSS = styled.div`
     right: 0.5rem;
     z-index: -1;
   }
+  a {
+    display: flex;
+    padding-left: 1.5rem;
+    align-items: center;
+    color: ${colors.forboleRed};
+    svg {
+      margin: 0.3rem;
+      path {
+        fill: ${colors.forboleRed};
+      }
+    }
+  }
   ${media.tablet`
     padding: 5rem;
     .pbg {
@@ -90,6 +102,9 @@ export const DashboardContentCSS = styled.div`
       .image {
         height: 350px !important;
       }
+    }
+    a {
+      padding-top: 1.5rem;
     }
   `}
 `;

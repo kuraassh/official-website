@@ -270,6 +270,12 @@ const logos = {
     name: "Sharering",
     key: "sharering",
   },
+  cardano: {
+    image: "/static/images/icons/cardano.png",
+    name: "Cardano",
+    key: "cardano",
+    delegate: "https://www.forbole.com/blog/ada-cardano-staking-guide",
+  },
   ["fetch.ai"]: {
     image: "/static/images/icons/fetch-ai.png",
     name: "Fetch.ai",
@@ -353,6 +359,20 @@ const logos = {
     // delegate: "https://elrond.forbole.com/",
     // bigDipper: "https://elrond.bigdipper.live/",
     disable: true,
+  },
+  lido: {
+    image: "/static/images/icons/lido.png",
+    name: "Lido",
+    key: "lido",
+    // delegate: awaiting staking link ,
+    disable: true,
+  },
+  ixo: {
+    image: "/static/images/icons/ixo.png",
+    name: "IXO",
+    key: "ixo",
+    delegate:
+      "https://blockscan.ixo.world/account/ixo1dvr6jp0j7jqjrzqp4xz333h2s85pxvzgg3ad8c",
   },
 };
 

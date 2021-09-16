@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "i18n";
 import Image from "next/image";
 import { DashboardContentCSS } from "./styles";
+import { Go } from "@icons";
 
 export const DashboardContent = () => {
   const { t } = useTranslation("products");
@@ -21,12 +22,17 @@ export const DashboardContent = () => {
           alt="Portal ellipse"
           className="pbg"
         ></img>
-        <ul className="content">
-          <h1>{t("forboleX")}</h1>
-          <li>{t("fp1")}</li>
-          <li>{t("fp2")}</li>
-          <li>{t("fp3")}</li>
-        </ul>
+        <div className="content">
+          <ul>
+            <h1>{t("forboleX")}</h1>
+            <li>{t("fp1")}</li>
+            <li>{t("fp2")}</li>
+            <li>{t("fp3")}</li>
+          </ul>
+          <a href="https://www.desmos.network/">
+            {t("learnMore")} <Go />
+          </a>
+        </div>
       </div>
     </DashboardContentCSS>
   );

@@ -32,7 +32,7 @@ export const BigDipperContent = () => {
             <li>{t("bd3")}</li>
           </ul>
           <a href="https://bigdipper.live/">
-            {t("explorer")} <Go />
+            {t("learnMore")} <Go />
           </a>
         </div>
       </div>

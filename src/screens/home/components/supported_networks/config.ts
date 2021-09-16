@@ -34,4 +34,7 @@ export const networkKeys = [
   "elrond",
   "radix",
   "wormhole",
+  "cardano",
+  "lido",
+  "ixo",
 ].sort();
