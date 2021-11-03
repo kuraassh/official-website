@@ -46,7 +46,7 @@
     "reactjs-popup": "^2.0.4",
     "semantic-ui-react": "^0.88.2",
     "styled-components": "^5.1.1",
-    "validator": "^13.1.17"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "@types/node": "^12.12.21",
