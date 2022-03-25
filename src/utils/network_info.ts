@@ -6,7 +6,7 @@ import * as R from "ramda";
 
 const logos = {
   cosmos: {
-    image: "/static/images/icons/cosmos-hub.png",
+    image: "/static/images/icons/cosmos-hub.svg",
     name: "Cosmos Hub",
     label: "Cosmos Hub - ATOM",
     key: "cosmos",
@@ -63,7 +63,7 @@ const logos = {
     },
   },
   kava: {
-    image: "/static/images/icons/kava.png",
+    image: "/static/images/icons/kava.svg",
     name: "Kava",
     label: "Kava - KAVA",
     key: "kava",
@@ -145,8 +145,8 @@ const logos = {
     key: "cyberd",
   },
   iov: {
-    image: "/static/images/icons/iov.png",
-    name: "IOV",
+    image: "/static/images/icons/starname.svg",
+    name: "Starname",
     label: "Iov - IOV",
     key: "iov",
     denom: "IOV",
@@ -195,7 +195,7 @@ const logos = {
     delegate: "https://play.bitsong.io/",
   },
   ["band-protocol"]: {
-    image: "/static/images/icons/band-protocol.png",
+    image: "/static/images/icons/band-protocol.svg",
     name: "Band Protocol",
     label: "Band Protocol - BAND",
     key: "band-protocol",
@@ -227,7 +227,7 @@ const logos = {
     delegate: "https://wallet.v.systems/",
   },
   polkadot: {
-    image: "/static/images/icons/polkadot.png",
+    image: "/static/images/icons/polkadot.svg",
     name: "Polkadot",
     key: "polkadot",
     delegate: "https://polkadot.js.org/apps/#/accounts",
@@ -248,10 +248,11 @@ const logos = {
     bigDipper: "https://celo.bigdipper.live/",
   },
   agoric: {
-    image: "/static/images/icons/agoric.png",
+    image: "/static/images/icons/agoric.svg",
     name: "Agoric",
     key: "agoric",
     bigDipper: "https://testnet.explorer.agoric.net/",
+    disable: true,
   },
   flow: {
     image: "/static/images/icons/flow.png",
@@ -301,11 +302,11 @@ const logos = {
     name: "Oasis Labs",
     key: "oasis-labs",
   },
-  cosmwasm: {
-    image: "/static/images/icons/cosmwasm.png",
-    name: "CosmWasm",
-    key: "cosmwasm",
-    delegate: "https://www.cosmwasm.com/",
+  tgrade: {
+    image: "/static/images/icons/tgrade.png",
+    name: "Tgrade",
+    key: "tgrade",
+    delegate: "https://tgrade.finance/",
     disable: true,
   },
   ["crypto.org"]: {
@@ -320,8 +321,9 @@ const logos = {
     image: "/static/images/icons/moonriver.png",
     name: "Moonriver",
     key: "moonriver",
-    delegate: "",
-    disable: true,
+    delegate:
+      "https://www.forbole.com/blog/how-to-nominate-forbole-on-moonriver",
+    nominate: true,
   },
   moonbeam: {
     image: "/static/images/icons/moonbeam.png",
@@ -373,6 +375,52 @@ const logos = {
     key: "ixo",
     delegate:
       "https://blockscan.ixo.world/account/ixo1dvr6jp0j7jqjrzqp4xz333h2s85pxvzgg3ad8c",
+  },
+  bitcanna: {
+    image: "/static/images/icons/bitcanna.png",
+    name: "BitCanna",
+    key: "bitcanna",
+    delegate:
+      "https://cosmos-explorer.bitcanna.io/validators/bcnavaloper1kkpevanspcg0zkxhnvptjszus52svxpcwe32yp",
+  },
+  rizon: {
+    image: "/static/images/icons/rizon.png",
+    name: "Rizon",
+    key: "rizon",
+    delegate:
+      "https://www.mintscan.io/rizon/validators/rizonvaloper1axa2p2klp4er2z0a29msplf9mtmq7venrmudk7",
+  },
+  chihuahua: {
+    image: "/static/images/icons/chihuahua.png",
+    name: "Chihuahua",
+    key: "chihuahua",
+    delegate: "https://chihuahua.omniflix.co/",
+  },
+  ["lum.network"]: {
+    image: "/static/images/icons/lum-network.png",
+    name: "Lum Network",
+    key: "lum.network",
+    delegate: "https://wallet.lum.network/welcome",
+  },
+  ["axelar-network"]: {
+    image: "/static/images/icons/axelar-network.png",
+    name: "Axelar Network",
+    key: "axelar-network",
+    // delegate: "https://axelar.network/",
+    disable: true,
+  },
+  ssv: {
+    image: "/static/images/icons/ssv.png",
+    name: "SSV Network",
+    key: "ssv",
+    // delegate: "https://ssv.network/",
+    disable: true,
+  },
+  comdex: {
+    image: "/static/images/icons/comdex.png",
+    name: "Comdex",
+    key: "comdex",
+    delegate: "https://comdex.omniflix.co/",
   },
 };
 

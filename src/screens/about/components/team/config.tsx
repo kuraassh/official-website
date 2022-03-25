@@ -1,7 +1,7 @@
 export const membersData = [
   {
     name: "Kwun Yeung",
-    position: "cofounderConductor",
+    position: "cofounderCTO",
     image: "/static/images/team/kwun.jpg",
     links: {
       linkedin: "https://www.linkedin.com/in/kwunyeung/",
@@ -12,7 +12,7 @@ export const membersData = [
   },
   {
     name: "Terence Lam",
-    position: "cofounderEvangelist",
+    position: "cofounderCEO",
     image: "/static/images/team/terence-lam.jpg",
     links: {
       linkedin: "https://www.linkedin.com/in/terencesflam/",
@@ -23,7 +23,7 @@ export const membersData = [
   },
   {
     name: "Shilin Zheng",
-    position: "projectContent",
+    position: "directorParternship",
     image: "/static/images/team/shilin.jpeg",
     links: {
       linkedin: "https://www.linkedin.com/in/ruoyin-zheng-b6687a32/",
@@ -33,7 +33,7 @@ export const membersData = [
   },
   {
     name: "Michael Wu",
-    position: "financeOperationManager",
+    position: "directorParternship",
     image: "/static/images/team/michael.jpg",
     links: {
       linkedin: "https://www.linkedin.com/in/michael-wu-a959123b",
@@ -65,7 +65,7 @@ export const membersData = [
   },
   {
     name: "Ravi Soni",
-    position: "infrastructureEngineer",
+    position: "infrastructureLead",
     image: "/static/images/team/ravi.jpg",
     links: {
       linkedin: "https://www.linkedin.com/in/rav-s/",
@@ -83,8 +83,18 @@ export const membersData = [
     slug: "charles",
   },
   {
+    name: "Hiep Mai",
+    position: "trainDevOpsEng",
+    image: "/static/images/team/hiep.jpg",
+    links: {
+      linkedin: "https://www.linkedin.com/in/quanghiep-mai/",
+      twitter: "https://twitter.com/hiepmq",
+    },
+    slug: "hiep",
+  },
+  {
     name: "Calvin Kei",
-    position: "sswe",
+    position: "leadFrontDev",
     image: "/static/images/team/calvin.jpg",
     links: {
       linkedin: "https://www.linkedin.com/in/calvinkei/",
@@ -94,7 +104,7 @@ export const membersData = [
   },
   {
     name: "Wingman Lee",
-    position: "swe",
+    position: "sswe",
     image: "/static/images/team/wingman.jpg",
     links: {
       linkedin: "https://www.linkedin.com/in/wingman-lee/",
@@ -103,8 +113,18 @@ export const membersData = [
     slug: "wingman",
   },
   {
+    name: "Kevin Pang",
+    position: "sswe",
+    image: "/static/images/team/kevin.jpg",
+    links: {
+      linkedin: "https://www.linkedin.com/in/kppang/",
+      github: "https://github.com/Moistbobo",
+    },
+    slug: "kevin",
+  },
+  {
     name: "Leonardo Bragagnolo",
-    position: "swe",
+    position: "sswe",
     image: "/static/images/team/leo.jpg",
     links: {
       linkedin: "https://www.linkedin.com/in/leonardo-bragagnolo-9a2ab4186/",
@@ -115,7 +135,7 @@ export const membersData = [
   },
   {
     name: "Manuel Turetta ",
-    position: "swe",
+    position: "sswe",
     image: "/static/images/team/manuel.jpg",
     links: {
       linkedin: "https://www.linkedin.com/in/manuel-turetta-9b3272160/",
@@ -165,18 +185,39 @@ export const membersData = [
     slug: "paul",
   },
   {
-    name: "Tina Liao",
+    name: "Franco Chau",
     position: "swe",
-    image: "/static/images/team/tina.jpeg",
+    image: "/static/images/team/franco.jpg",
     links: {
-      linkedin: "https://www.linkedin.com/in/yu-hsin-liao-0625319a/",
-      github: "https://github.com/YuhsinLiao1995",
+      linkedin: "https://www.linkedin.com/in/franco-chau-96411317b",
+      github: "https://github.com/francochau",
     },
-    slug: "tina",
+    slug: "franco",
+  },
+  {
+    name: "Aaron Tsou",
+    position: "swe",
+    image: "/static/images/team/aaron.jpg",
+    links: {
+      twitter: "https://twitter.com/AaronTsou",
+      linkedin: "https://www.linkedin.com/in/atsou/",
+      github: "https://github.com/huichiaotsou",
+    },
+    slug: "aaron",
+  },
+  {
+    name: "Ellie Yang",
+    position: "swe",
+    image: "/static/images/team/ellie.jpg",
+    links: {
+      linkedin: "https://www.linkedin.com/in/ellie-y/",
+      github: "https://github.com/yayay927",
+    },
+    slug: "ellie",
   },
   {
     name: "Caroline Lau",
-    position: "associate",
+    position: "communityManager",
     image: "/static/images/team/caroline.jpeg",
     links: {
       linkedin: "https://www.linkedin.com/in/caroline-lauhy/",
@@ -186,7 +227,7 @@ export const membersData = [
   },
   {
     name: "Laura Nori",
-    position: "communicationDesigner",
+    position: "communityManager",
     image: "/static/images/team/laura-nori.jpg",
     links: {
       linkedin: "https://www.linkedin.com/in/laura-nori-67826015a/",
@@ -205,7 +246,7 @@ export const membersData = [
   },
   {
     name: "Nicole To",
-    position: "uxDesigner",
+    position: "uiuxDesigner",
     image: "/static/images/team/nicole.jpg",
     links: {
       linkedin: "https://www.linkedin.com/in/wan-ting-nicole-to-ab9314215",
@@ -223,13 +264,43 @@ export const membersData = [
   },
   {
     name: "Jade Lai",
-    position: "marketingManager",
+    position: "directorProductMkt",
     image: "/static/images/team/jade.jpg",
     links: {
       linkedin: "https://www.linkedin.com/in/jade-lai-18543432",
       twitter: "https://twitter.com/jadelaiwy",
     },
     slug: "jade",
+  },
+  {
+    name: "Brian Chan",
+    position: "talentAqt",
+    image: "/static/images/team/brian.jpg",
+    links: {
+      linkedin: "https://www.linkedin.com/in/brian-chan-bhn/",
+      twitter: "https://twitter.com/brianchan_bhn",
+    },
+    slug: "brian",
+  },
+  {
+    name: "Ron Roy",
+    position: "prodLead",
+    image: "/static/images/team/ron.jpg",
+    links: {
+      linkedin: "https://www.linkedin.com/in/ronroyhk/",
+    },
+    slug: "ron",
+  },
+  {
+    name: "Kannie Chu",
+    position: "projManager",
+    image: "/static/images/team/kannie.jpg",
+    links: {
+      linkedin: "https://www.linkedin.com/in/kannie-chu/",
+      twitter: "https://twitter.com/kachujai",
+      github: "https://github.com/kanniec826",
+    },
+    slug: "kannie",
   },
   // {
   // name: "You",

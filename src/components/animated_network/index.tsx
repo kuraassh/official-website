@@ -10,6 +10,7 @@ const Network = (props: INetworkProps) => {
     image,
     name,
     disable,
+    nominate,
     delegate = process.env.NEXT_PUBLIC_URL,
   } = props;
   const { t } = useTranslation("stake_now");
@@ -29,7 +30,7 @@ const Network = (props: INetworkProps) => {
           <p className="amount"></p>
           <div className="button-container">
             <Button className={classNames({ disabled: disable == true })}>
-              {disable ? t("coming") : t("stakeNow")}
+              {disable ? t("coming") : nominate ? t("nominate") : t("stakeNow")}
             </Button>
           </div>
         </div>

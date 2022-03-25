@@ -28,6 +28,7 @@ const SupportedNetworks = () => {
             name={x?.name}
             image={x?.image}
             disable={x?.disable}
+            nominate={x?.nominate}
             // amount={state[x.key]}
             delegate={x?.delegate}
           />

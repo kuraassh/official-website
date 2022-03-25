@@ -4,4 +4,5 @@ export interface INetworkProps {
   amount?: number | string;
   delegate?: string;
   disable?: boolean;
+  nominate?: boolean;
 }

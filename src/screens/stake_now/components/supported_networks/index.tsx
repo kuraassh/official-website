@@ -32,6 +32,7 @@ const SupportedNetworks = () => {
             image={x?.image}
             // amount={state[x.key]}
             delegate={x?.delegate}
+            nominate={x?.nominate}
           />
         ))}
       </NetworkListCSS>

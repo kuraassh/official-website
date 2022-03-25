@@ -41,12 +41,12 @@ const ForboleStakes = () => {
     totalUSD,
   }: any = hookProps;
   const networkData: INetworkDataProps[] = [
-    { network: cosmos, icon: "cosmos-hub.png" },
+    { network: cosmos, icon: "cosmos-hub.svg" },
     { network: terra, icon: "terra.png" },
-    { network: kava, icon: "kava.png" },
+    { network: kava, icon: "kava.svg" },
     { network: likecoin, icon: "likecoin.png" },
     { network: iov, icon: "iov.png" },
-    { network: band, icon: "band-protocol.png" },
+    { network: band, icon: "band-protocol.svg" },
     { network: akash, icon: "akash.png" },
     { network: emoney, icon: "e-money.png" },
     { network: iris, icon: "iris.png" },
