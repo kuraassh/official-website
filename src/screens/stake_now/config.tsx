@@ -17,7 +17,7 @@ export const networkKeys = [
   "oasis-protocol",
   "bitsong",
   "solana",
-  // "agoric",
+  "agoric",
   "flow",
   // "persistence-one",
   // "sharering",
@@ -41,4 +41,5 @@ export const networkKeys = [
   "lum.network",
   "axelar-network",
   "ssv",
+  "comdex",
 ].sort();

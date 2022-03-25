@@ -283,6 +283,15 @@ export const membersData = [
     slug: "brian",
   },
   {
+    name: "Ron Roy",
+    position: "prodLead",
+    image: "/static/images/team/ron.jpg",
+    links: {
+      linkedin: "https://www.linkedin.com/in/ronroyhk/",
+    },
+    slug: "ron",
+  },
+  {
     name: "Kannie Chu",
     position: "projManager",
     image: "/static/images/team/kannie.jpg",

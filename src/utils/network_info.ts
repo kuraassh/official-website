@@ -145,8 +145,8 @@ const logos = {
     key: "cyberd",
   },
   iov: {
-    image: "/static/images/icons/iov.png",
-    name: "IOV",
+    image: "/static/images/icons/starname.svg",
+    name: "Starname",
     label: "Iov - IOV",
     key: "iov",
     denom: "IOV",
@@ -248,10 +248,11 @@ const logos = {
     bigDipper: "https://celo.bigdipper.live/",
   },
   agoric: {
-    image: "/static/images/icons/agoric.png",
+    image: "/static/images/icons/agoric.svg",
     name: "Agoric",
     key: "agoric",
     bigDipper: "https://testnet.explorer.agoric.net/",
+    disable: true,
   },
   flow: {
     image: "/static/images/icons/flow.png",
@@ -414,6 +415,12 @@ const logos = {
     key: "ssv",
     // delegate: "https://ssv.network/",
     disable: true,
+  },
+  comdex: {
+    image: "/static/images/icons/comdex.png",
+    name: "Comdex",
+    key: "comdex",
+    delegate: "https://comdex.omniflix.co/",
   },
 };
 
