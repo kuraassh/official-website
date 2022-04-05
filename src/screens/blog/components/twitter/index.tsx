@@ -12,7 +12,7 @@ const Twitter = () => {
       <TwitterTimelineEmbed
         noHeader
         sourceType="profile"
-        screenName="forbole"
+        screenName="postcap_io"
         options={{ height: 500 }}
       />
     </TwitterCSS>
