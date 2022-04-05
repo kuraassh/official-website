@@ -27,7 +27,7 @@ const socialMedia = {
   },
   twitter: {
     key: "twitter",
-    url: "https://twitter.com/forbole",
+    url: "https://twitter.com/postcap_io",
     component: Twitter,
   },
   github: {
