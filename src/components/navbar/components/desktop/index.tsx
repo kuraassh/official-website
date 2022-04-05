@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import Link from "next/link";
-import { Forbole as ForboleLogo } from "@icons";
+import { POSTCAPITALIST as POSTCAPITALISTlogo } from "@icons";
 import { theme } from "@styles";
 import NavItems from "./components/nav_items";
 import { DesktopNavCSS } from "./styles";
@@ -19,7 +19,7 @@ const DesktopNav = (props: any) => {
     >
       <Link href="/">
         <a>
-          <ForboleLogo />
+          <POSTCAPITALISTlogo />
         </a>
       </Link>
       <NavItems
