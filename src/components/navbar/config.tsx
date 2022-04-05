@@ -31,7 +31,7 @@ export const navItems = [
 
 export const mapLanguages = {
   en: "English",
-  not_en: "НЕ ИНГЛИШ"
+  // not_en: "НЕ ИНГЛИШ"
   // zht: "中文",
 };
 
