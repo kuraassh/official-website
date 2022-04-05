@@ -1,6 +1,6 @@
 import React from "react";
 
-const POSTCAPITALIST = () => {
+const Forbole = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -24,4 +24,4 @@ const POSTCAPITALIST = () => {
   );
 };
 
-export default POSTCAPITALIST;
+export default Forbole;
