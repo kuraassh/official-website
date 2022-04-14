@@ -37,7 +37,6 @@ export const milestonesData = [
     date: "q12022",
     title: "tools",
     detail: "abouttools",
-    row: true,
   },
   {
     year: "2022",
@@ -71,7 +70,6 @@ export const milestonesData = [
     date: "q2q32022",
     title: "charitydao",
     detail: "aboutcharitydao",
-    row: true,
   },
   {
     year: "2023",
