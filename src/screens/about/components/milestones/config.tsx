@@ -16,14 +16,12 @@ export const milestonesData = [
     date: "q12022",
     title: "website",
     detail: "aboutwebsite",
-    row: true,
   },
   {
     year: "2022",
     date: "q12022",
     title: "explorerandtelemetry",
     detail: "aboutexplorerandtelemetry",
-    row: true,
   },
   {
     year: "2022",
@@ -48,14 +46,12 @@ export const milestonesData = [
     date: "q2q32022",
     title: "servicemigration",
     detail: "aboutservicemigration",
-    row: true,
   },
   {
     year: "2022",
     date: "q2q32022",
     title: "partnerships",
     detail: "aboutpartnerships",
-    row: true,
   },
   {
     year: "2022",
