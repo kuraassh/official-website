@@ -10,7 +10,7 @@ export const milestonesData = [
     date: "q12022",
     title: "phase1",
     detail: "aboutphase1",
-    row: false,
+    row: true,
   },
   {
     date: "q12022",
