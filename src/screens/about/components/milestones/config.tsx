@@ -11,14 +11,14 @@ export const milestonesData = [
     date: "q12022",
     title: "phase1",
     detail: "aboutphase1",
-    row: true,
+    row: false,
   },
   {
     year: "2022",
     date: "q12022",
     title: "website",
     detail: "aboutwebsite",
-    row: true,
+    row: false,
   },
   {
     year: "2022",
