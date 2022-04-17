@@ -7,7 +7,7 @@ export const getPosts = async ({
   limit = 11,
   page = 1,
   // filter = "tag:-[hash-zhs,hash-zht]",
-  filter = "tags:-[careers]",
+  filter = "tags:-[careers,cis]",
 }: IPost) => {
   try {
     return await api.posts.browse({
@@ -27,7 +27,7 @@ export const getPosts = async ({
 export const getAllPosts = async ({
   limit,
   // filter = "tag:-[hash-zhs,hash-zht]",
-  filter = "tags:-[careers]",
+  filter = "tags:-[careers,cis]",
 }: IPost) => {
   try {
     return await api.posts.browse({
