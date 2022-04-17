@@ -6,4 +6,5 @@ export const calculatorKeys = [
   "band-protocol",
   "akash",
   "iov",
+  "bitcanna",
 ].sort();
