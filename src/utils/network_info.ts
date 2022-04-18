@@ -383,7 +383,7 @@ const logos = {
     key: "bitcanna",
     denom: "BCNA",
     color: "#00000",
-    heightSocket: "wss://ws.band.forbole.com",
+    heightSocket: "ws-bitcanna.postcapitalist.io",
     bigDipper: "https://explorer.postcapitalist.io/bitcanna",
     delegate:
       "https://explorer.postcapitalist.io/bitcanna/staking/bcnavaloper15dz9pjxqgzfz80fvkxscjksvz7u6r07x4k9esy",
