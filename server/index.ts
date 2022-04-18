@@ -26,7 +26,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const ghostAdminApi = new GhostAdminAPI({
-  url: 'https://admin.forbole.com',
+  url: 'https://postcapitalist.ghost.io',
   // Admin API key goes here
   key: process.env.GHOST_PRIVATE_KEY,
   version: 'v3'
