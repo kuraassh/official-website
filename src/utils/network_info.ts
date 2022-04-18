@@ -379,9 +379,21 @@ const logos = {
   bitcanna: {
     image: "/static/images/icons/bitcanna.png",
     name: "BitCanna",
+    label: "BitCanna - BCNA",
     key: "bitcanna",
+    denom: "BCNA",
+    color: "#00000",
+    heightSocket: "wss://ws.band.forbole.com",
+    bigDipper: "https://explorer.postcapitalist.io/bitcanna",
     delegate:
-      "https://cosmos-explorer.bitcanna.io/validators/bcnavaloper1kkpevanspcg0zkxhnvptjszus52svxpcwe32yp",
+      "https://explorer.postcapitalist.io/bitcanna/staking/bcnavaloper15dz9pjxqgzfz80fvkxscjksvz7u6r07x4k9esy",
+    calculator: {
+      bonded: "https://bitcanna.postcapitalist.io/staking/pool",
+      inflation: "https://bitcanna.postcapitalist.io/minting/inflation",
+      supply: "https://bitcanna.postcapitalist.io/supply/total/ubcna",
+      stakingParams:
+        "https://bitcanna.postcapitalist.io/staking/validators/bcnavaloper15dz9pjxqgzfz80fvkxscjksvz7u6r07x4k9esy",
+    },
   },
   rizon: {
     image: "/static/images/icons/rizon.png",
