@@ -198,13 +198,14 @@ const logos = {
     heightSocket: "ws-bitcanna.postcapitalist.io",
     bigDipper: "https://explorer.postcapitalist.io/bitsong",
     delegate:
-      "https://explorer.postcapitalist.io/bitsong/staking/bcnavaloper15dz9pjxqgzfz80fvkxscjksvz7u6r07x4k9esy",
+      "https://explorer.postcapitalist.io/bitsong/staking/bitsongvaloper1slnkc2a8lhxgz5cc7lg9zlgzfedfpdve0rh2p6",
     calculator: {
       bonded: "https://bitsong.postcapitalist.io/staking/pool",
       inflation: "https://bitsong.postcapitalist.io/minting/inflation",
       supply: "https://bitsong.postcapitalist.io/supply/total/ubtsg",
       stakingParams:
         "https://bitsong.postcapitalist.io/staking/validators/bitsongvaloper1slnkc2a8lhxgz5cc7lg9zlgzfedfpdve0rh2p6",
+    },
   },
   ["band-protocol"]: {
     image: "/static/images/icons/band-protocol.svg",
