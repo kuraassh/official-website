@@ -37,6 +37,8 @@ export const uRegenToRegen = defaultConverter(1000000);
 
 export const uBitsongToBitsong = defaultConverter(1000000);
 
+export const uBitCannaToBitCanna = defaultConverter(1000000);
+
 export const uOasisToOasis = defaultConverter(1);
 
 // need to adjust the converter
@@ -143,6 +145,9 @@ const regen = R.clone(defaultFunctions(uRegenToRegen));
 const bitsong = R.clone(defaultFunctions(uBitsongToBitsong));
 bitsong.gecko = "https://api.coingecko.com/api/v3/coins/bitsong";
 
+const bitcanna = R.clone(defaultFunctions(uBitCannaToBitCanna));
+bitcanna.gecko = "https://api.coingecko.com/api/v3/coins/bitcanna";
+
 const oasis = R.clone(defaultFunctions(uOasisToOasis));
 oasis.gecko = "https://api.coingecko.com/api/v3/coins/oasis-network";
 
@@ -174,6 +179,7 @@ export const networkFunctions = {
   ["fetch.ai"]: fetchAI,
   "regen-network": regen,
   bitsong,
+  bitcanna,
   "oasis-protocol": oasis,
   kusama,
   flow,
