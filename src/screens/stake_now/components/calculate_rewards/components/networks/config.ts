@@ -7,4 +7,5 @@ export const calculatorKeys = [
   "akash",
   "iov",
   "bitcanna",
+  "bitsong",
 ].sort();
