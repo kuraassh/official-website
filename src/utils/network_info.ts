@@ -202,10 +202,9 @@ const logos = {
     calculator: {
       bonded: "https://bitsong.postcapitalist.io/staking/pool",
       inflation: "https://bitsong.postcapitalist.io/minting/inflation",
-      supply: "https://bitsong.postcapitalist.io/supply/total/ubcna",
+      supply: "https://bitsong.postcapitalist.io/supply/total/ubtsg",
       stakingParams:
-        "https://bitsong.postcapitalist.io/staking/validators/bcnavaloper15dz9pjxqgzfz80fvkxscjksvz7u6r07x4k9esy",
-    delegate: "https://play.bitsong.io/",
+        "https://bitsong.postcapitalist.io/staking/validators/bitsongvaloper1slnkc2a8lhxgz5cc7lg9zlgzfedfpdve0rh2p6",
   },
   ["band-protocol"]: {
     image: "/static/images/icons/band-protocol.svg",
