@@ -192,6 +192,19 @@ const logos = {
     image: "/static/images/icons/bitsong.png",
     name: "BitSong",
     key: "bitsong",
+    label: "BitSong - BTSG",
+    denom: "BTSG",
+    color: "#00000",
+    heightSocket: "ws-bitcanna.postcapitalist.io",
+    bigDipper: "https://explorer.postcapitalist.io/bitsong",
+    delegate:
+      "https://explorer.postcapitalist.io/bitsong/staking/bcnavaloper15dz9pjxqgzfz80fvkxscjksvz7u6r07x4k9esy",
+    calculator: {
+      bonded: "https://bitsong.postcapitalist.io/staking/pool",
+      inflation: "https://bitsong.postcapitalist.io/minting/inflation",
+      supply: "https://bitsong.postcapitalist.io/supply/total/ubcna",
+      stakingParams:
+        "https://bitsong.postcapitalist.io/staking/validators/bcnavaloper15dz9pjxqgzfz80fvkxscjksvz7u6r07x4k9esy",
     delegate: "https://play.bitsong.io/",
   },
   ["band-protocol"]: {

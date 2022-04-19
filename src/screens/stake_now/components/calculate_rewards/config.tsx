@@ -10,7 +10,8 @@ const stakingParams = {
   kava: { inflation: 0.1508, stakingRatio: 0.5603, commissionRate: 0.15 },
   likecoin: { inflation: 0.0795, stakingRatio: 0.7524, commissionRate: 1 },
   iov: { inflation: 0.1489, stakingRatio: 0.5254, commissionRate: 0.15 },
-  bitcanna: { inflation: 0.1489, stakingRatio: 0.5254, commissionRate: 0.15 },
+  bitcanna: { inflation: 0.0566, stakingRatio: 0.2395, commissionRate: 0.11 },
+  bitsong: { inflation: 0.1365, stakingRatio: 0.3612, commissionRate: 0.11 },
 };
 
 export const getStakingParams = (key) => {
