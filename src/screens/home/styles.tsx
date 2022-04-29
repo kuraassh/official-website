@@ -30,7 +30,7 @@ export const HomeCSS = styled.div`
     --control-button-background: transparent;
     --control-bullet-color: #fcd0a8;
     --control-bullet-active-color: #d6b18f;
-    --loader-bar-color: #ffffff;
+    --loader-bar-color: #D9D5F8;
     --loader-bar-height: 1px;
   }
   .hero-slider {
