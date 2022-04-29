@@ -1,7 +1,7 @@
 const theme = {
   colors: {
     white: "rgba(217, 213, 248, 1)",
-    offwhite: "rgba(230, 230, 230, 1)",
+    offwhite: "rgba(72, 64, 125, 1)",
     black: "rgba(0, 0, 0, 1)",
     red: "rgba(253, 59, 76, 1)",
     orange: "rgba(253, 119, 69, 1)",
